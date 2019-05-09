@@ -1,0 +1,87 @@
+<div class="col-lg-12 col-md-12 col-sm-12 gate_metrics block">
+
+    <!--Gate METRICS Popup Section Start-->
+
+    <div id="popover-content-gate" class="hide">
+        <button type="button" class="close" data-dismiss="popover" aria-hidden="true"><img alt="" src="../../../assets/images/close_icon.png"></button>
+        <h3>Gate Metrics</h3>
+        <div class="popup_content">
+            <div class="visitor_profile ml-0"><span><img alt="" src="../../../assets/images/visitor_img3.png"></span></div>
+            <div class="visitor_details">
+                <h4>Nikhil Sharma</h4>
+                <table>
+                    <tr>
+                        <td>Current location</td>
+                        <td>: Tower A, Garder Area</td>
+                    </tr>
+                    <tr>
+                        <td>In time</td>
+                        <td>: 02:00 pm</td>
+                    </tr>
+                    <tr>
+                        <td>Expected out time</td>
+                        <td>: 04:00 pm</td>
+                    </tr>
+                    <tr>
+                        <td>Where to go</td>
+                        <td>: Tower B, Flat Number - 156</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!--Gate METRICS Popup Section End-->
+
+    <h4>Gate metrics</h4>
+    <ul id="tabsJustified" class="nav nav-tabs">
+        <li *ngFor="let item of gateCount" class="nav-item"><a href="javascript:void(0)" [attr.data-target]="'#gate'+item.value" (click)="onGateSelected(item.label)" data-toggle="tab" class="nav-link" [class.active]="item.value===selectedLabel"><span>{{item.value}}</span></a></li>
+    </ul>
+
+
+    <div id="tabsJustifiedContent" class="tab-content">
+        <div [attr.id]="selectedGate" class="tab-pane  fade active show">
+            <h4>Gate Pass metrics ({{selectedGate}})</h4>
+            <div id="gateAlet" class="alert_list">
+                <ul>
+                    <li *ngFor="let gate of selectedMetric" [class]="gate.type"><a data-toggle="popover" data-container="body" data-placement="top" type="button" data-html="true" href="javascript:void(0);" id="gate">{{gate.zone_name +' '+gate.text}}</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="gatelight" class="white_content">
+        <button type="button" class="close" (click)="closePopUp()" data-dismiss="popover" aria-hidden="true"><img alt="" src="../../../assets/images/close_icon.png"></button>
+        <h3>GATE METRIX</h3>
+        <div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12  col-sm-12">GATE NUMBER 1</div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12  col-sm-12">{{gateTime}}</div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-6  col-sm-6">
+                    <div class="row">
+                        <div class="col-lg-5 col-md-5  oj-sm-5">
+                            GATE ENTRIES
+                        </div>
+                        <div class="col-lg-7 col-md-7  oj-sm-7">
+                            <div style="border:1px solid orange;">SELECT ANOTHER GATE</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6"></div>
+            </div>
+        </div>
+    </div>
+    <div id="gatefade" class="black_overlay"></div>
+</div>
+<div class="col-lg-12 col-md-12 col-sm-12 alert_feed block">
+    <h4>Alert Feed</h4>
+    <div id="alertFeed" class="alert_list">
+        <ul>
+            <li *ngFor="let alert of selectedalert " [class]="alert.type">{{alert.zone_name +' '+alert.text}}</li>
+
+        </ul>
+    </div>
+
+</div>

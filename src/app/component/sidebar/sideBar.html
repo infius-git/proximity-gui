@@ -1,0 +1,13 @@
+<nav class="col-sm-1 col-md-1 sidebar">
+    <div class="sidebar-sticky">
+        <ul class="nav flex-column">
+            <li *ngFor="let menu of sideBarData.access_links" class="nav-item">
+                <a class="nav-link" [class.active]="menu.link_label=='Fire Extenguisher'" [attr.href]="menu.link_url">
+                    <i class="fa fa-dashboard"></i> {{menu.link_label}}
+                </a>
+            </li>
+
+        </ul>
+
+    </div>
+</nav>

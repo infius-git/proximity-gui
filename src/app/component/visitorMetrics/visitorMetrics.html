@@ -1,0 +1,108 @@
+<div class="col-lg-12 col-md-12 col-sm-12 block visitor_metrix">
+    <h4>visitor metrics</h4>
+    <div class="visitor_marics">
+        <!--VISITOR METRICS Popup Section Start-->
+        <ng-template #popContent>
+            <div id="popover-content-visitor_metrics" class="hide visitor_popup">
+                <button type="button" class="close" data-dismiss="popover" aria-hidden="true"><img alt="" src="../../../assets/images/close_icon.png"></button>
+                <h3>Visitors</h3>
+                <div class="popup_content">
+                    <div class="visitor_profile ml-0"><span><img alt="" src="../../../assets/images/visitor_img2.png"></span></div>
+                    <div class="visitor_details">
+                        <h4>{{selectedVisitor.name}}</h4>
+                        <table>
+                            <tr>
+                                <td>Current location</td>
+                                <td>: {{selectedVisitor.current_location}}</td>
+                            </tr>
+                            <tr>
+                                <td>In time</td>
+                                <td>: {{selectedVisitor.arrival_time}}</td>
+                            </tr>
+                            <tr>
+                                <td>Expected out time</td>
+                                <td>: {{selectedVisitor.exp_out_time}}</td>
+                            </tr>
+                            <tr>
+                                <td>Where to go</td>
+                                <td>: {{selectedVisitor.where_to_go}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+
+        <!--VISITOR METRICS Popup Section End-->
+
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th *ngFor="let item of columData">{{item}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of visitorMetrics">
+                    <td><a data-container="body" data-placement="top" type="button" (click)="drawPath(item)" data-html="true" href="javascript:void(0);" [attr.id]="visitor_metrics">{{item.name}}</a>
+                    </td>
+                    <td>{{item.mobile}}</td>
+                    <td>{{!!item.vehicles?item.vehicles[0].vehicleNo:''}}</td>
+                    <td>{{!!item.vehicles?item.vehicles[0].make:''}}</td>
+                    <td>{{item.actualInTime}}</td>
+                    <td>{{item.expectedOut}}</td>
+                    <td>{{!!item.vehicles?item.vehicles[0].parkingSlot:''}}</td>
+                    <td>{{item.barcode}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<!--Visitors Metrixs Section end-->
+
+<!--Visitors Section start, width:875px, Height:93px;-->
+<div class="col-lg-12 col-md-12 col-sm-12 block visitor_section">
+    <div class="row">
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            <h4>Visitors</h4>
+        </div>
+        <div class="col-sm-10 col-md-10 col-lg-10">
+            <ul class="visitor" id="lightslider-demo">
+                <li *ngFor="let item of visitorMetrics">
+                    <div class="visitor_profile"><span><img (click)="openPopover(item)" alt="" [attr.src]="item.guestPic"></span></div>
+                    <h5>{{item.name}}</h5>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div id="visitorlight" class="white_content">
+    <button type="button" class="close" (click)="closePopUp()" data-dismiss="popover" aria-hidden="true"><img alt="" src="../../../assets/images/close_icon.png"></button>
+    <h3>Visitors</h3>
+    <div class="popup_content">
+        <div class="visitor_profile ml-0"><span><img alt="" [attr.src]="selectedVisitor.guestPic"></span></div>
+        <div class="visitor_details">
+            <h4>{{selectedVisitor.name}}</h4>
+            <table>
+                <tr>
+                    <td>Current location :</td>
+                    <td> {{!!selectedVisitor.fromAddress?selectedVisitor.fromAddress.address1+' '+selectedVisitor.fromAddress.address2+' '+selectedVisitor.fromAddress.address3:''}}</td>
+                </tr>
+                <tr>
+                    <td>In time</td>
+                    <td>: {{selectedVisitor.actualInTime}}</td>
+                </tr>
+                <tr>
+                    <td>Expected out time</td>
+                    <td>: {{selectedVisitor.expectedOut}}</td>
+                </tr>
+                <tr>
+                    <td>Where to go</td>
+                    <td>: {{!!selectedVisitor.toAddress?selectedVisitor.toAddress.address1+' '+selectedVisitor.toAddress.address2+' '+selectedVisitor.toAddress.address3:''}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<div id="visitorfade" class="black_overlay"></div>

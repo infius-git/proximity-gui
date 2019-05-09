@@ -1,0 +1,37 @@
+<div class="col-lg-4 col-md-4 col-sm-4 tower_entry">
+    <h4>Tower Entry</h4>
+    <div *ngFor="let item of towerEntry.entry_types">
+        <strong>{{item.type}}</strong><span class="pull-right">{{item.count_per}}</span>
+        <div [class]="item.count_per>50?'progress progress-success active':item.count_per>25?'progress progress-info active':'progress progress-warning active'">
+            <div class="bar" [style.width]="item.count_per+'%'"></div>
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-4 col-md-4 col-sm-4 parking">
+    <h4>Guest Parking</h4>
+    <div *ngFor="let item of towerEntry.parking_metrics.metrics" [attr.id]="item.line" class="line1">
+        <ul>
+            <li *ngFor="let slot of item.slots" [class.active]="slot.active">{{slot.number}}</li>
+
+        </ul>
+    </div>
+
+
+
+    <ul class="parking_booking">
+        <li class="available">Available</li>
+        <li class="booked">Booked</li>
+    </ul>
+</div>
+
+<div class="col-lg-4 col-md-4 col-sm-4">
+    <h4>Amomaly Detection</h4>
+    <amCharts id="chart2" [options]="options" class="chartdiv"></amCharts>
+    <ul class="chart_no">
+        <li class="first">01</li>
+        <li class="second">02</li>
+        <li class="third">03</li>
+        <li class="fourth">04</li>
+    </ul>
+</div>

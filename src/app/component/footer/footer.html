@@ -1,0 +1,97 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-2 col-md-2 footer_total_alert">
+            <h4>Total Alerts</h4>
+            <div id="graph_chart2" [chart]="alertChart" style=" width:430px !important; height:180px;"></div>
+        </div>
+        <div class="col-sm-2 col-md-2 parking">
+            <h4>Parking</h4>
+            <div *ngFor="let item of parkingMetrics.metrics" [attr.id]="item.line" class="line1">
+                <ul>
+                    <li *ngFor="let slot of item.slots" [class.active]="slot.active">{{slot.number}}</li>
+
+                </ul>
+            </div>
+
+            <ul class="parking_booking">
+                <li class="available">Available</li>
+                <li class="booked">Booked</li>
+            </ul>
+        </div>
+
+
+        <div class="col-sm-2 col-md-2 predictive">
+            <h4>predictive analytics</h4>
+            <div id="predictive" [chart]="predictiveChart" style="min-width: 320px; height: 150px; margin: 0 auto"></div>
+
+        </div>
+
+
+
+        <div class="col-sm-2 col-md-2 Surveillance">
+            <h4>Surveillance</h4>
+            <h5>distracted <img alt="" src="../../../assets/images/footer_arrow.png"></h5>
+            <div class="clear"></div>
+            <div class="visitor_profile ml-0"><span>2</span></div><img alt="" src="../../../assets/images/footer_arrow.png">
+            <div class="visitor_profile"><span>4</span></div><img alt="" src="../../../assets/images/footer_arrow.png">
+            <div class="visitor_profile mr-0"><span>3</span></div><img alt="" src="../../../assets/images/footer_arrow.png">
+            <div class="visitor_profile ml-0"><span>1</span></div><img alt="" src="../../../assets/images/footer_arrow.png">
+            <div class="visitor_profile"><span>5</span></div>
+
+            <div class="clear"></div>
+            <ul>
+                <li>It is a long established - fact that a reader <span>Established</span></li>
+                <li>It is a long established - fact that a reader <span>Established</span></li>
+                <li>It is a long established - fact that a reader <span>Established</span></li>
+            </ul>
+        </div>
+
+
+        <div class="col-sm-1 pl-2 pr-2 col-md-1 ml-2 mr-2">
+            <h4>INTERZONAL</h4>
+            <h5>distracted <img alt="" src="../../../assets/images/footer_arrow.png"></h5>
+            <div class="clear"></div>
+            <div class="visitor_profile ml-0"><span><img alt="" src="../../../assets/images/visitor_img1.png"></span></div>
+            <div class="visitor_profile"><span><img alt="" src="../../../assets/images/visitor_img2.png"></span></div>
+            <div class="visitor_profile mr-0"><span><img alt="" src="../../../assets/images/visitor_img3.png"></span></div>
+            <ul>
+                <li>It is a long established <span>Established</span></li>
+                <li>It is a long established <span>Established</span></li>
+                <li>It is a long established <span>Established</span></li>
+            </ul>
+        </div>
+
+
+        <div class="col-sm-1 pl-2 pr-2 col-md-1 ml-3 mr-3">
+            <!--BLACK LISTED Popup Section Start-->
+
+            <div id="popover-content-visitor" class="hide">
+                <button type="button" class="close" data-dismiss="popover" aria-hidden="true"><img alt="" src="../../../assets/images/close_icon.png"></button>
+                <h3>Blacklisted</h3>
+                <div class="popup_content">
+                    <div class="visitor_profile ml-0"><span><img alt="" src="../../../assets/images/visitor_img1.png"></span></div>
+                    <h4>Nikhil Sharma</h4>
+                    <h5>Blame to threat someone</h5>
+                </div>
+            </div>
+            <!--BLACK LISTED Popup Section End-->
+
+            <h4>black listed</h4>
+            <h5>distracted <img alt="" src="../../../assets/images/footer_arrow.png"></h5>
+            <div class="clear"></div>
+            <div class="visitor_profile ml-0"><a data-toggle="popover" data-container="body" data-placement="top" type="button" data-html="true" href="javascript:void();" id="visitor"><span><img alt="" src="../../../assets/images/visitor_img1.png"></span></a></div>
+            <div class="visitor_profile"><a data-toggle="popover" data-container="body" data-placement="top" type="button" data-html="true" href="javascript:void();" id="visitor"><span><img alt="" src="../../../assets/images/visitor_img1.png"></span></a></div>
+            <div class="visitor_profile mr-0"><a data-toggle="popover" data-container="body" data-placement="top" type="button" data-html="true" href="javascript:void();" id="visitor"><span><img alt="" src="../../../assets/images/visitor_img1.png"></span></a></div>
+            <ul>
+                <li>It is a long established <span>Established</span></li>
+                <li>It is a long established <span>Established</span></li>
+                <li>It is a long established <span>Established</span></li>
+            </ul>
+        </div>
+        <div class="col-sm-2 col-md-2">
+            <h4>Our Paertners</h4>
+            <img alt="" src="../../../assets/images/partner_logo.png">
+            <div class="copyright">© 2018 proximity. All rights reserved.</div>
+        </div>
+    </div>
+</div>

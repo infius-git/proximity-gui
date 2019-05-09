@@ -1,0 +1,55 @@
+<div class="col-lg-12 col-md-12 col-sm-12 activate_rafid block">
+    <div class="row">
+        <div *ngFor="let item of entrySummary.activity_summary" class="col-lg-4 col-md-4 col-sm-4 pl-1 pr-1">
+            <i [class]="item.event_icon"></i>
+
+            <h6><span>{{item.event_count}}</span>{{item.event_name}}</h6>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!--Activare Rafid section start-->
+
+<!--speed treker section start, width:432px; height:173px;-->
+<div class="col-lg-12 col-md-12 col-sm-12 speed_treker block">
+    <div class="row">
+        <div *ngFor="let item of entrySummary.progress_summary" class="col-lg-4 col-md-4 col-sm-12">
+            <h4>{{item.name}}</h4>
+            <h6>{{item.type}}</h6>
+            <div class="progress-bar">
+                <div class="barOverflow2">
+                    <div class="bar2" [style.transform]="'rotate('+(45+(item.data*1.8))+'deg)'" [style.border-bottom-color]="item.data>=70?'green':(item.data<70 && item.data>30)?'blue':'red'" [style.border-right-color]="item.data>=70?'green':(item.data<70 && item.data>30)?'blue':'red'"></div>
+                </div>
+                <span>{{item.data}}</span>
+                <em>{{item.data>=70?'High':(item.data<70 && item.data>30)?'Medium':'Low'}}</em>
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+
+<!--speed treker section end-->
+
+<!--Entry Summary section Start, width:432px; height:202px;-->
+<div class="col-lg-12 col-md-12 col-sm-12 block entry_summry">
+    <h4>Entry Summary</h4>
+    <!-- <amCharts class="chartdiv" [options]="armchart" id="chart1"></amCharts> -->
+    <amCharts id="chart1" [options]="options" class="chartdiv"></amCharts>
+    <ul class="chart_no">
+        <li *ngFor="let item of entrySummary.entry_data" [class]="item.class">{{item.value}}</li>
+    </ul>
+</div>
+<!--Entry Summary section end-->
+
+
+<!--entry/exit pattern section Start, width:432px; height:253px;-->
+<div class="col-lg-12 col-md-12 col-sm-12 block entry_pattern">
+    <h4>entry/exit pattern</h4>
+    <div id="graph_chart" [chart]="chart" style=" width:430px !important; height:215px;"></div>
+</div>
+<!--entry/exit pattern section end-->

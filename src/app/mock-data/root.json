@@ -1,0 +1,174 @@
+{
+    "top_bar": {
+        "product_title": {
+            "icon": "proximity.png",
+            "url": "",
+            "hover_text": "Proximity 2.0 - Security Redefined"
+        },
+        "access_links": [{
+                "link_label": "Guest",
+                "link_url": "#!guest",
+                "link_target": "",
+                "icon": "guest.png"
+            },
+            {
+                "link_label": "Domestic Help",
+                "link_url": "#!domestic_help",
+                "link_target": "",
+                "icon": "dom_help.png"
+            }
+        ]
+    },
+    "side_bar": {
+        "open": true,
+        "scroll_type": "auto //defines what scroll behaviour we want",
+        "access_links": [{
+                "link_label": "Fire Extenguisher",
+                "link_url": "#!fire",
+                "link_target": "",
+                "icon": "fire_ex.png"
+            },
+            {
+                "link_label": "CCTV Cameras",
+                "link_url": "#!cctv_cam",
+                "link_target": "",
+                "icon": "cctv_cams.png"
+            }
+        ]
+    },
+    "main_panel": {
+        "grid_canvas": {
+            "TBD": "????",
+            "comment": "this section's JSON structure is yet to be decided ",
+            "grid": [{
+                    "row1": []
+                },
+                {
+                    "row1": []
+                },
+                {
+                    "row...": []
+                },
+                {
+                    "rowN": []
+                }
+            ]
+        },
+        "widgets": {
+            "security_overview": {
+                "counts": {
+                    "day": 88,
+                    "night": 67
+                },
+                "team_stats": {
+                    "allocations": {
+                        "zone_a": 3,
+                        "zone_b": 2,
+                        "zone_c": 5,
+                        "zone_d": 2,
+                        "zone_e": 6,
+                        "zone_f": 4
+                    },
+                    "count_bars": {
+                        "TBD": "???"
+                    }
+                }
+            },
+            "event_summary": [{
+                    "event_name": "QR Code",
+                    "event_count": 27,
+                    "event_icon": "qrc.png"
+                },
+                {
+                    "event_name": "Guest Not.",
+                    "event_count": 36,
+                    "event_icon": "guest_notif.png"
+                },
+                {
+                    "event_name": "Bounce Rate",
+                    "event_count": 28.009,
+                    "event_icon": "bounce_rate.png"
+                }
+            ],
+            "monitor_metrics": [{
+                    "label": "gate_1",
+                    "gate_pass_metrics": [{
+                            "type": "warning",
+                            "color": "yellow",
+                            "zone_name": "Zone 3",
+                            "text": "Tower-B Gatepass ID XYZ time expiry"
+                        },
+                        {
+                            "type": " alert",
+                            "color": "red",
+                            "zone_name": "Zone 2",
+                            "text": "Tower-A ID XYZ - exit premises"
+                        }
+                    ],
+                    "alert_feed": [{
+                            "type": " info",
+                            "color": "Green",
+                            "zone_name": "Zone 3",
+                            "text": "Tower-B RFID mismatch"
+                        },
+                        {
+                            "type": " warning",
+                            "color": "yellow",
+                            "zone_name": "Zone 2",
+                            "text": "Tower-A ID XYZ - exit premises"
+                        }
+                    ]
+                },
+                {
+                    "label": "gate_2",
+                    "gate_pass_metrics": [{
+                            "type": " warning",
+                            "color": "yellow",
+                            "zone_name": "Zone 3",
+                            "text": "Tower-B Gatepass ID XYZ time expiry"
+                        },
+                        {
+                            "type": " warning",
+                            "color": "yellow",
+                            "zone_name": "Zone 2",
+                            "text": "Tower-A ID XYZ - exit premises"
+                        }
+                    ],
+                    "alert_feed": [{
+                            "type": " Warning",
+                            "color": "yellow",
+                            "zone_name": "Zone 3",
+                            "text": "Tower-B RFID mismatch"
+                        },
+                        {
+                            "type": " Alert",
+                            "color": "red",
+                            "zone_name": "Zone 2",
+                            "text": "Tower-A ID XYZ - exit premises"
+                        }
+                    ]
+                }
+            ],
+            "visitor_metrics": {
+                "TBD": "???? - how to summarize it in color bars shown with label of TOWER ENTRY",
+
+                "data_labels": ["name", "mobile", "vehicle", "name", "arrival time", "exp out time", "parking allocation time", "QRC"],
+                "metrics": []
+            },
+            "parking_metrics": {
+                "TBD": "???? - need to think what information one parking picket can have - and what all we should display here",
+                "metrics": [
+                    [false, false, false, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true],
+                    [false, false, false, true, true, true, true, true, true, true, true, true, true, true, true, true, false, false, false, false],
+                    [false, false, false, true, true, true, true, true, true, true, true, true, true, true, true, true, false, false, false, false]
+                ]
+            },
+            "anomaly_summary": {
+                "TBD": "????"
+            },
+
+            "visitors_scroll": {}
+        }
+    },
+    "bottom_panel": {}
+}
