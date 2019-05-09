@@ -134,7 +134,7 @@ export class AppComponent implements OnInit {
   getPathInfo(id) {
     this.proximityService.getPathData(id).subscribe(path => {
       this.pathData = path;
-    })
+    });
   }
   // getProximity(): void {
   //   this.proximityService.getAllData()
