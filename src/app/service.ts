@@ -18,7 +18,9 @@ export class ProximityService {
     private globalConstant: GlobalConstant = new GlobalConstant();
     //private pathUrl = './assets/mock-data/path.json';
     //private pathUrl = this.globalConstant.BASE_URL + this.globalConstant.DATA_SERVICE_CONTEXT + '/api/dashboard/map-by-visitIds?visitId=ffb70d1b-70cb-4715-ab97-42de362f78cf';
-    private pathUrl = 'https://qu2873cpck.execute-api.us-west-2.amazonaws.com/prod';
+   // private pathUrl = 'https://qu2873cpck.execute-api.us-west-2.amazonaws.com/prod';
+    private pathUrl = this.globalConstant.BASE_URL + this.globalConstant.DATA_SERVICE_CONTEXT+this.globalConstant.API_CONTEXT_DASHBOARD+this.globalConstant.PATH_MAP_BY_VISIT_ID;
+   // private pathUrl = 'http://34.231.195.192:9090/services/proximity/api/dashboard/map-by-visitIds?visitId=';
     private urlRootRequest = this.globalConstant.BASE_URL + this.globalConstant.DATA_SERVICE_CONTEXT + this.globalConstant.API_CONTEXT_DASHBOARD_ROOT;
     // private urlRootRequest = './assets/mock-data/root.json';
 
@@ -29,13 +31,13 @@ export class ProximityService {
 
     /** GET heroes from the server */
     getAllData(): Observable<CommonResponse> {
-        return this.http.get<CommonResponse>(this.urlRootRequest);
+        return this.http.get<CommonResponse>(this.urlRootRequest + '?isSendCompleteResponse=true&asOfTimestamp='+ moment(new Date()).valueOf());
     }
 
     getPartialData(): Observable<CommonResponse> {
-        let dateTime = new Date();
-        let newDateTime = moment(dateTime).format("YYYY-MM-DDTHH:mm:ss.000");
-        return this.http.get<CommonResponse>(this.urlRootPartial + newDateTime);
+        let t = new Date();
+        t.setSeconds(t.getSeconds() - 41);
+        return this.http.get<CommonResponse>(this.urlRootPartial + moment(t).valueOf());
     }
 
     getStaticData(): Observable<proximity> {
@@ -43,7 +45,7 @@ export class ProximityService {
     }
 
     getPathData(visitId): Observable<any> {
-        return this.http.get<any>(this.pathUrl);
+        return this.http.get<any>(this.pathUrl + visitId);
     }
 
     getMapData(): Observable<mapData> {

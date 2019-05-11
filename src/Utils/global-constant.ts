@@ -7,9 +7,12 @@ export class GlobalConstant {
 
   DATA_SERVICE_CONTEXT_LOCAL : string = "";
   MODULE_SERVICE_CONTEXT_LOCAL : string = "";
+  
   QUERY_PARAM_IS_COMPLETE_RESPONSE : string = "isSendCompleteResponseool";
   QUERY_PARAM_TIME_STAMP : string = "asOfTimestamp";
  
-  API_CONTEXT_DASHBOARD_ROOT : string = "/api/dashboard/root";
-  
+  API_CONTEXT_DASHBOARD_ROOT : string = "/api/dashboard/root/v1";
+  API_CONTEXT_DASHBOARD : string = "/api/dashboard";
+  PATH_MAP_BY_VISIT_ID : string = "/map-by-visitIds?visitId=";
+
 }

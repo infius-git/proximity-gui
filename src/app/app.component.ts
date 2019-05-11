@@ -70,7 +70,7 @@ export class AppComponent implements OnInit {
       this.isDataAvailable = true;
     })
 
-    this.subscription = timer(30000, 40000).pipe(
+    this.subscription = timer(40000, 40000).pipe(
        
       switchMap(() => this.proximityService.getPartialData())).subscribe(partialData => {
         if (!!partialData.data.eventSummary && partialData.data.eventSummary.length > 0) {
@@ -81,7 +81,7 @@ export class AppComponent implements OnInit {
 
         }
         if (!!partialData.data.visitorSummary && partialData.data.visitorSummary.length > 0) {
-
+          this.visitorMetrics = partialData.data.visitorSummary;
         }
       })
   }

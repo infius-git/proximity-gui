@@ -898,6 +898,26 @@ line3 {
     display: inline-block !important;
 }
 
+.visitor_profile.visitor_invited_class {
+    border: 3px solid yellow;
+}
+
+.visitor_profile.visitor_qr_scan_class {
+    border: 3px solid orange;
+}
+
+.visitor_profile.visitor_check_in_class {
+    border: 3px solid green;
+}
+
+.visitor_profile.visitor_check_out_class {
+    border: 3px solid blue;
+}
+
+.visitor_profile.defaultVisitorClass {
+    border: 3px solid yellow;
+}
+
 .visitor_profile span {
     display: table-cell !important;
     height: 53px !important;
