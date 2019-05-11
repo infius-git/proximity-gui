@@ -6,7 +6,7 @@
             style="position:absolute; " [style.stroke]="zone.color" (click)="openZoneImage(zone)"/>
           </svg>
         <svg *ngIf="drawPath" [style.width]="mapData.baseMapImageResolution[0] " [style.height]="mapData.baseMapImageResolution[1] " style="position:absolute; ">
-            <path  [attr.d]="'M'+pathpoints.pathDetail[0].path.toString()"  fill="none" style="position:absolute;" stroke="red" stroke-width="10"/>
+            <path  [attr.d]="'M'+pathpoints.pathDetail[0].path.toString()"  fill="none" style="position:absolute;" [style.stroke]="pathpoints.pathDetail[0].color" stroke-width="10"/>
           </svg>
     </div>
     <div id="light" class="white_content">
