@@ -1,7 +1,7 @@
 import { AddressRequest } from "./addressRequest";
 import { AdditionalVisitorDetail } from "./additionalVisitorDetail";
 import {VehicleDetail} from './vehicleDetail';
-export class VisitorVisitDetailView{
+export class VisitorVisitDetailView {
     
    
 

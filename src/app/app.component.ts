@@ -50,18 +50,17 @@ export class AppComponent implements OnInit {
       this.staticProximity = proximity;
       this.topBar = proximity.top_bar;
       this.sideBar = proximity.side_bar;
-
-      this.securityOverview = proximity.main_panel.widgets.security_overview;
-      this.entrySummary = proximity.main_panel.widgets.entry_summary;
-      this.anomalySummary = proximity.main_panel.widgets.anomaly_summary;
-      this.towerEntry = proximity.main_panel.widgets.tower_entry;
-      this.parkingMetrics = this.towerEntry.parking_metrics;
     })
 
     this.proximityService.getAllData().subscribe(proximity => {
 
       // this.securityOverview = proximity.data.securityGuardsSummary;
       this.eventSummary = proximity.data.eventSummary;
+      this.securityOverview = proximity.data.security_overview;
+      this.entrySummary = proximity.data.entry_summary;
+      this.anomalySummary = proximity.data.anomaly_summary;
+      this.towerEntry = proximity.data.tower_entry;
+      this.parkingMetrics = this.towerEntry.parking_metrics;
       this.calculateEventData();
 
 
@@ -94,6 +93,7 @@ export class AppComponent implements OnInit {
     this.eventData = [];
     let color = '';
     this.eventSummary.forEach(item => {
+     // alert(JSON.stringify(item.eventCatagory));
       if (!!temp[item.eventCatagory]) {
         temp[item.eventCatagory]['count'] = temp[item.eventCatagory]['count'] + 1;
       } else {
@@ -124,6 +124,7 @@ export class AppComponent implements OnInit {
         }
       }
     })
+  
     for (let item in newTemp) {
       this.monitorMetrics.push(newTemp[item]);
     }

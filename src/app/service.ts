@@ -19,10 +19,13 @@ export class ProximityService {
     //private pathUrl = './assets/mock-data/path.json';
     //private pathUrl = this.globalConstant.BASE_URL + this.globalConstant.DATA_SERVICE_CONTEXT + '/api/dashboard/map-by-visitIds?visitId=ffb70d1b-70cb-4715-ab97-42de362f78cf';
     private pathUrl = 'https://qu2873cpck.execute-api.us-west-2.amazonaws.com/prod';
-    private urlRootRequest = this.globalConstant.BASE_URL + this.globalConstant.DATA_SERVICE_CONTEXT + this.globalConstant.API_CONTEXT_DASHBOARD_ROOT;
+    // private urlRootRequest = this.globalConstant.BASE_URL + this.globalConstant.DATA_SERVICE_CONTEXT + this.globalConstant.API_CONTEXT_DASHBOARD_ROOT;
+    private urlRootRequest = this.globalConstant.BASE_URL + this.globalConstant.API_CONTEXT_DASHBOARD_ROOT;
     // private urlRootRequest = './assets/mock-data/root.json';
 
-    private urlRootPartial = this.urlRootRequest + '?isSendCompleteResponse=false&asOfTimestamp=';
+    // private urlRootPartial = this.urlRootRequest + '?isSendCompleteResponse=false&asOfTimestamp=';
+
+    private urlRootPartial = this.urlRootRequest;
 
     constructor(private http: HttpClient) {
     }
@@ -35,7 +38,8 @@ export class ProximityService {
     getPartialData(): Observable<CommonResponse> {
         let dateTime = new Date();
         let newDateTime = moment(dateTime).format("YYYY-MM-DDTHH:mm:ss.000");
-        return this.http.get<CommonResponse>(this.urlRootPartial + newDateTime);
+      //  return this.http.get<CommonResponse>(this.urlRootPartial + newDateTime);
+        return this.http.get<CommonResponse>(this.urlRootPartial);
     }
 
     getStaticData(): Observable<proximity> {

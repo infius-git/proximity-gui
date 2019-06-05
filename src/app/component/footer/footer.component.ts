@@ -142,7 +142,7 @@ this.predictiveChart = new Chart(<any>{
         {
 			"color": '#05e764',
           "name": "Chrome",
-          "y": 80,
+          "y": 85,
           "drilldown": "Chrome"
         },
         {

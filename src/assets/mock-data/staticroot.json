@@ -18,7 +18,7 @@
                 "icon": "guest.png"
             },
             {
-                "link_label": "Staff/wroker",
+                "link_label": "Staff/worker",
                 "link_url": "#!domestic_help",
                 "link_target": "",
                 "icon": "dom_help.png"
@@ -63,8 +63,8 @@
         "widgets": {
             "security_overview": {
                 "counts": {
-                    "day": 88,
-                    "night": 67
+                    "day": 85,
+                    "night": 65
                 },
                 "team_stats": {
                     "allocations": {
@@ -158,34 +158,34 @@
             "entry_summary": {
                 "activity_summary": [{
                         "event_name": "Active Rfid",
-                        "event_count": "230",
+                        "event_count": "240",
                         "event_icon": "fa fa-dashboard"
                     },
                     {
                         "event_name": "Device Entry",
-                        "event_count": "74%",
+                        "event_count": "75%",
                         "event_icon": "fa fa-dashboard"
                     },
                     {
-                        "event_name": "Alarms Detected",
-                        "event_count": "8",
+                        "event_name": "Alarms",
+                        "event_count": "25",
                         "event_icon": "fa fa-dashboard"
                     }
                 ],
                 "progress_summary": [{
                         "name": "Protection Quality",
                         "type": "Occupancy (Out)",
-                        "data": "23"
+                        "data": "25"
                     },
                     {
                         "name": "Protection \n level",
                         "type": "Occupancy (In)",
-                        "data": "59"
+                        "data": "50"
                     },
                     {
                         "name": "Threat\nlevel",
                         "type": "Threat Level (Loc.)",
-                        "data": "90"
+                        "data": "25"
                     }
                 ],
                 "entry_data": [{
@@ -225,13 +225,13 @@
                     "color": "#f13c5a"
                 }, {
                     "country": "DOM",
-                    "visits": 1000,
+                    "visits": 501,
                     "color": "#7a3ed4"
                 }],
                 "entry_summary_graph": [{
                     "name": "Alert",
                     "color": "#ff0000",
-                    "data": [502, 635, 809, 947, 1402, 3634, 5268]
+                    "data": [502, 635, 809, 947, 1502, 3634, 5268]
                 }, {
                     "name": "Warning",
                     "color": "#e17f20",
@@ -387,15 +387,15 @@
             "tower_entry": {
                 "entry_types": [{
                         "type": "DS",
-                        "count_per": "67"
+                        "count_per": "60"
                     },
                     {
                         "type": "VND",
-                        "count_per": "28"
+                        "count_per": "20"
                     },
                     {
                         "type": "VS",
-                        "count_per": "14"
+                        "count_per": "24"
                     }
                 ],
                 "parking_metrics": {
@@ -404,7 +404,7 @@
                             "line": "line1",
                             "slots": [{
                                     "number": "1",
-                                    "active": true
+                                    "active": false
                                 },
                                 {
                                     "number": "2",
@@ -551,7 +551,7 @@
                 "TBD": "????",
                 "anomaly_data": [{
                     "country": "01",
-                    "visits": 1000,
+                    "visits": 1001,
                     "color": "#ffb70f"
                 }, {
                     "country": "02",
