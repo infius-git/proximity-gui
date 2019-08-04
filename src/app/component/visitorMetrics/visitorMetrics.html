@@ -69,7 +69,9 @@
         <div class="col-sm-10 col-md-10 col-lg-10">
             <ul class="visitor" id="lightslider-demo">
                 <li *ngFor="let item of visitorMetrics">
-                    <div class="visitor_profile"><span><img (click)="openPopover(item)" alt="" [attr.src]="item.guestPic"></span></div>
+                    <div class="visitor_profile">
+                        <div [class]="setVisitorTypeColor(item.visitorVisitStatus)"><span><img  (click)="openPopover(item)" alt="" [attr.src]="item.guestPic"></span></div>
+                    </div>
                     <h5>{{item.name}}</h5>
                 </li>
             </ul>

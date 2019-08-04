@@ -62,4 +62,19 @@ document.getElementById('visitorfade').style.display='block';
     document.getElementById('visitorlight').style.display='none';
     document.getElementById('visitorfade').style.display='none';
    }
+
+  setVisitorTypeColor(type) {
+    switch(type){
+    case 'INVITED':
+        return "visitor_profile visitor_invited_class";
+    case "QR_SCAN":
+        return "visitor_profile visitor_qr_scan_class";
+    case "CHECK_IN":
+      return "visitor_profile visitor_check_in_class"; 
+    case "CHECK_OUT":
+        return "visitor_profile visitor_check_out_class";
+    default:
+      return "visitor_profile defaultVisitorClass";    
+    }
+  }
 }
