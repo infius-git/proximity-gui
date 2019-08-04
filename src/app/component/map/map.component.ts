@@ -23,11 +23,14 @@ export class mapComponent implements OnInit,OnChanges {
   }
   ngOnChanges(changes: SimpleChanges){
     if(!!changes.pathData && !changes.pathData.firstChange){
+      if(changes.pathData.currentValue.pathDetail.length>0){
     this.drawPath = true;
     this.pathpoints=changes.pathData.currentValue;
+      }
     }
   }
   openZoneImage(zone):void{
+    this.drawPath = false;
     this.zoneName = zone.name;
     this.zoneImage = this.sanitization.bypassSecurityTrustUrl(zone.zoneImage);
     document.getElementById('light').style.display='block';
