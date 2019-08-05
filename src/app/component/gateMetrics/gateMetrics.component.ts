@@ -80,7 +80,7 @@ export class GateMetricsComponent implements OnInit {
     document.getElementById('gatefade').style.display = 'block';
     document.getElementById('guestlight').style.display = 'block';
     document.getElementById('guestfade').style.display = 'block';
-    document.getElementById('visitorlight').style.display = 'block';
+    document.getElementById('registeredVisitorlight').style.display = 'block';
     document.getElementById('visitorfade').style.display = 'block';
   }
   closePopUp(): void {
@@ -94,7 +94,7 @@ export class GateMetricsComponent implements OnInit {
   }
   closePopUp2(): void {
 
-    document.getElementById('visitorlight').style.display = 'none';
+    document.getElementById('registeredVisitorlight').style.display = 'none';
     document.getElementById('visitorfade').style.display = 'none';
   }
   ngOnDestroy() {

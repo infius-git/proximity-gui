@@ -4,10 +4,12 @@
         <!--VISITOR METRICS Popup Section Start-->
         <ng-template #popContent>
             <div id="popover-content-visitor_metrics" class="hide visitor_popup">
-                <button type="button" class="close" data-dismiss="popover" aria-hidden="true"><img alt="" src="../../../assets/images/close_icon.png"></button>
+                <button type="button" class="close" data-dismiss="popover" aria-hidden="true"><img alt=""
+                        src="../../../assets/images/close_icon.png"></button>
                 <h3>Visitors</h3>
                 <div class="popup_content">
-                    <div class="visitor_profile ml-0"><span><img alt="" src="../../../assets/images/visitor_img2.png"></span></div>
+                    <div class="visitor_profile ml-0"><span><img alt=""
+                                src="../../../assets/images/visitor_img2.png"></span></div>
                     <div class="visitor_details">
                         <h4>{{selectedVisitor.name}}</h4>
                         <table>
@@ -70,7 +72,8 @@
             <ul class="visitor" id="lightslider-demo">
                 <li *ngFor="let item of visitorMetrics">
                     <div class="visitor_profile">
-                        <div [class]="setVisitorTypeColor(item.visitorVisitStatus)"><span><img  (click)="openPopover(item)" alt="" [attr.src]="item.guestPic"></span></div>
+                        <div [class]="setVisitorTypeColor(item.visitorVisitStatus)"><span><img
+                                    (click)="openPopover(item)" alt="" [attr.src]="item.guestPic"></span></div>
                     </div>
                     <h5>{{item.name}}</h5>
                 </li>
@@ -80,7 +83,8 @@
 </div>
 
 <div id="visitorlight" class="white_content">
-    <button type="button" class="close" (click)="closePopUp()" data-dismiss="popover" aria-hidden="true"><img alt="" src="../../../assets/images/close_icon.png"></button>
+    <button type="button" class="close" (click)="closePopUp()" data-dismiss="popover" aria-hidden="true"><img alt=""
+            src="../../../assets/images/close_icon.png"></button>
     <h3>Visitors</h3>
     <div class="popup_content">
         <div class="visitor_profile ml-0"><span><img alt="" [attr.src]="selectedVisitor.guestPic"></span></div>
@@ -88,20 +92,25 @@
             <h4>{{selectedVisitor.name}}</h4>
             <table>
                 <tr>
-                    <td>Current location :</td>
-                    <td> {{!!selectedVisitor.fromAddress?selectedVisitor.fromAddress.address1+' '+selectedVisitor.fromAddress.address2+' '+selectedVisitor.fromAddress.address3:''}}</td>
+                    <td>Visit Status</td>
+                    <td>: {{setCurrentVisitStatus(selectedVisitor.visitorVisitStatus)}}</td>
                 </tr>
                 <tr>
-                    <td>In time</td>
-                    <td>: {{selectedVisitor.actualInTime}}</td>
+                    <td>Visiting Person/Zone</td>
+                    <td>: {{setVisitingZonePerson(selectedVisitor)}}
+                    </td>
                 </tr>
                 <tr>
-                    <td>Expected out time</td>
-                    <td>: {{selectedVisitor.expectedOut}}</td>
+                    <td>Entry Time</td>
+                    <td>: {{selectedVisitor.actualInTime | date:'medium'}}</td>
                 </tr>
                 <tr>
-                    <td>Where to go</td>
-                    <td>: {{!!selectedVisitor.toAddress?selectedVisitor.toAddress.address1+' '+selectedVisitor.toAddress.address2+' '+selectedVisitor.toAddress.address3:''}}</td>
+                    <td>Expected Exit Time</td>
+                    <td>: {{selectedVisitor.expectedOut | date:'medium'}}</td>
+                </tr>
+                <tr>
+                    <td>Current Status</td>
+                    <td>: {{setVisitorCurrentZone(selectedVisitor)}}</td>
                 </tr>
             </table>
         </div>

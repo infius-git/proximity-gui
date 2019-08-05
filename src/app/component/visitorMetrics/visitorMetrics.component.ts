@@ -4,6 +4,7 @@ import { visitorMetrics, metrics } from '../../../proximity';
 import {VisitorVisitDetailView} from '../../../model/visitorVisitDetailView';
 import * as $ from "jquery";
 import "lightslider";
+import { IfStmt } from '@angular/compiler';
 @Component({
   selector: 'visitor-metrics',
   styleUrls:['./visitorMetrics.component.css'],
@@ -77,4 +78,50 @@ document.getElementById('visitorfade').style.display='block';
       return "visitor_profile defaultVisitorClass";    
     }
   }
+
+  setCurrentVisitStatus(type){
+    switch(type){
+      case 'INVITED':
+          return "Visitor Invited";
+      case "QR_SCAN":
+          return "Visitor Checking In";
+      case "CHECK_IN":
+        return "Visitor Checked In";
+      case "CHECK_OUT":
+          return "Visitor Checked Out";
+      default:
+        return "Not Available";
+      }
+  }
+
+  setVisitingZonePerson(selectedVisitor){
+    let visitingZonePersonDetails = '';
+    if(!!selectedVisitor.toAddress) {
+      visitingZonePersonDetails =visitingZonePersonDetails + selectedVisitor.toAddress.address1 + ', ' + selectedVisitor.toAddress.address2 + ', '+ selectedVisitor.toAddress.address3 +', ';
+    }
+    if(!!selectedVisitor.targetZone) {
+      visitingZonePersonDetails = visitingZonePersonDetails+ 'Zone-'+selectedVisitor.targetZone ;
+    }
+    if(!!selectedVisitor.targetSite) {
+      visitingZonePersonDetails =visitingZonePersonDetails+ ', Site-'+ selectedVisitor.targetSite + '';
+    }
+    if(!selectedVisitor.toAddress && !selectedVisitor.targetZone && !selectedVisitor.targetSite) {
+      visitingZonePersonDetails='Details Not Available';
+    }
+    return visitingZonePersonDetails;
+  }
+
+  setVisitorCurrentZone(selectedVisitor){
+    // TBD based on events received for the visitor inside the premises.
+    if(selectedVisitor.visitorVisitStatus === 'CHECK_IN' && new Date(selectedVisitor.expectedOut) < new Date() && !!selectedVisitor.actualInTime){
+      return 'Visitor Visiting Session Expired. Checkout immediate or extend visitng hours.';
+    }
+
+    if(selectedVisitor.visitorVisitStatus === 'INVITED' && new Date(selectedVisitor.expectedOut) < new Date() && !selectedVisitor.actualInTime){
+        return 'Visitor could not visit within allowed visit session.';
+    } else  {
+    return 'Visitor checked out of the premise.';
+    }
+  }
+  
 }
