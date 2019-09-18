@@ -1,1 +1,102 @@
-﻿<div class="col-sm-6 col-md-6 map">    <div class='canvas'>        <img style="height:1247px; position:absolute; " [src]="image ">        <svg [style.width]="mapData.baseMapImageResolution[0] " [style.height]="mapData.baseMapImageResolution[1] " style="position:absolute; z-index:1; opacity:0.7;">            <polygon *ngFor="let zone of mapData.zonesDetail " [attr.points]="zone.polygon.toString()"            style="position:absolute; " [style.stroke]="zone.color" (click)="openZoneImage(zone)"/>          </svg>        <svg *ngIf="drawPath" [style.width]="mapData.baseMapImageResolution[0] " [style.height]="mapData.baseMapImageResolution[1] " style="position:absolute; ">            <path  [attr.d]="'M'+pathpoints.pathDetail[0].path.toString()"  fill="none" style="position:absolute;" [attr.stroke]="pathpoints.pathDetail[0].color" stroke-width="10"/>          </svg>    </div>    <div id="light" class="white_content">        <button type="button" class="close" (click)="closePopUp()" data-dismiss="popover" aria-hidden="true"><img alt="" src="../../../assets/images/close_icon.png"></button>        <h3>{{zoneName}}</h3>        <div>            <img [src]="zoneImage">        </div>    </div>    <div id="fade" class="black_overlay"></div></div>
+﻿<div class="col-sm-6 col-md-6 map" style="position: relative;  padding-left:0px; padding-right:0px;">
+    <div class="canvas" style="z-index: -1; width: inherit; height:inherit;">
+        <img style="width: inherit; height:inherit; position:absolute; " [src]="image ">
+        <svg [style.width]="mapData.baseMapImageResolution[0]" [style.height]="mapData.baseMapImageResolution[1] " style="position:absolute; border: 1px solid lawngreen; z-index:1; opacity:1;">  
+        <polygon *ngFor="let zone of mapData.zonesDetail " id="{{'zone-'+ zone.id}}"  [attr.points]="zone.polygon.toString()"
+            style="position:relative;" [style.stroke]="!!zone && !!zone.zoneAlerts && zone.zoneAlerts!==undefined && !!zone.zoneAlerts[0]  ? zone.zoneAlerts[0].color : zone.color" (click)="openZoneImage(zone)" > 
+                <animate
+                id="{{'animate-'+zone.id}}"
+                *ngIf="!!zone && !!zone.zoneAlerts && zone.zoneAlerts!==undefined && !!zone.zoneAlerts[0] && zone.zoneAlerts[0].type=='ALERT'"
+                attributeType="CSS"
+                attributeName="fill"
+                from="0"
+                to="1"
+                values="#800;#f00;#f00;#g00"
+                begin="0s"
+                dur="0.8s"
+                repeatCount="indefinite"
+            fill="freeze"/>
+        </polygon>
+        </svg>
+        <svg *ngIf="drawPath" [style.width]="mapData.baseMapImageResolution[0] " [style.height]="mapData.baseMapImageResolution[1] " style="position:absolute; ">
+            <path  [attr.d]="'M'+pathpoints.pathDetail[0].path.toString()"  fill="none" style="position:absolute;" [attr.stroke]="pathpoints.pathDetail[0].color" stroke-width="10"/>
+        </svg>
+    </div>
+    <div [hidden]="!openTheTable" style="position: absolute; float: unset; z-index: 100; top: 250px; left: 250px;" class="mat-elevation-z8">
+
+        <table mat-table [dataSource]="sortedData" matSort (matSortChange)="sortData($event)">
+
+            <!--- Note that these columns can be defined in any order.
+                              The actual rendered columns are set as a property on the row definition" -->
+            <!-- Position Column -->
+            <ng-container *ngFor="let filterCol of displayedColumns">
+
+                <ng-container matColumnDef="{{filterCol}}">
+                    <th mat-header-cell *matHeaderCellDef>
+                        <br>
+                        <span mat-sort-header>{{filterCol | uppercase}}</span>
+                        <br>
+                        <mat-form-field class="filter" floatLabel="never">
+                            <mat-label>Search</mat-label>
+                            <input matInput (keyup)="applyFilter($event.target.value)" (focus)="setupFilter(filterCol)">
+                        </mat-form-field>
+                    </th>
+                    <br>
+                    <td mat-cell *matCellDef="let element"> {{element[filterCol]}} </td>
+                </ng-container>
+            </ng-container>
+            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+        <mat-paginator [length]="sortedData!==undefined && sortedData.paginator!==undefined? sortedData.paginator.length : 25" [pageSize]="sortedData!==undefined && sortedData.paginator!==undefined? sortedData.paginator.pageSize : 5" [pageSizeOptions]="sortedData!==undefined && sortedData.paginator!==undefined? sortedData.paginator.pageSizeOptions : [1, 5, 10, 15, 20, 25]"
+            (page)="updatePage($event)">
+        </mat-paginator>
+    </div>
+
+    <div class="row" style="margin-left: 50px;">
+        <div id="light" class="white_content" style="margin-left: 0px;
+        left: auto;
+        width: auto;
+        height: auto;">
+            <button type="button" class="close" (click)="closePopUp()" data-dismiss="popover" aria-hidden="true"><img alt="" src="../../../assets/images/close_icon.png"></button>
+            <h3>{{zoneName}}</h3>
+            <div>
+                <img [src]="zoneImage">
+            </div>
+        </div>
+        <div id="light2" class="white_content" style="margin-left: 20%;
+        width: auto;
+        height: auto;
+        background-color: aliceblue">
+            <button type="button" class="close" (click)="closePopUp()" data-dismiss="popover" aria-hidden="true"><img alt="" src="../../../assets/images/close_icon.png"></button>
+            <h3>{{zoneName + ' : ' +'Devices'}}</h3>
+            <div style="margin-left: 10px; margin-right: 5px;">
+                <table>
+                    <tr>
+                        <h6>Device Name: RFID | Status: Working | IP: '190.162.1.105'</h6>
+                    </tr>
+                    <hr/>
+                    <tr>
+                        <h6>Device Name: CAM1 | Status: Not Working | IP: '190.162.1.106'</h6>
+                    </tr>
+                    <hr/>
+                    <tr>
+                        <h6>Device Name: Fire Sensor | Status: Alert | IP: '190.162.1.107'</h6>
+                    </tr>
+                    <hr/>
+                    <tr>
+                        <h6>Device Name: Relay | Status: Working | IP: '190.162.1.108'</h6>
+                    </tr>
+                    <hr/>
+                    <tr>
+                        <h6>Device Name: RFID | Status: Working | IP: '190.162.1.109'</h6>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div id="fade" class="black_overlay"></div>
+</div>

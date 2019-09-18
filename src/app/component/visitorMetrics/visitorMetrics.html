@@ -1,4 +1,6 @@
 <div class="col-lg-12 col-md-12 col-sm-12 block visitor_metrix">
+    <button type="button" class="close" data-dismiss="popover" (click)="openTabularReport()" aria-hidden="true"><img alt=""
+            src="../../../assets/images/close_icon.png"></button>
     <h4>visitor metrics</h4>
     <div class="visitor_marics">
         <!--VISITOR METRICS Popup Section Start-->
@@ -11,6 +13,7 @@
                     <div class="visitor_profile ml-0"><span><img alt=""
                                 src="../../../assets/images/visitor_img2.png"></span></div>
                     <div class="visitor_details">
+
                         <h4>{{selectedVisitor.name}}</h4>
                         <table>
                             <tr>
@@ -50,7 +53,7 @@
                     </td>
                     <td>{{item.mobile}}</td>
                     <td>{{!!item.vehicles?item.vehicles[0].vehicleNo:''}}</td>
-                    <td>{{!!item.vehicles?item.vehicles[0].make:''}}</td>
+                    <!-- <td>{{!!item.vehicles?item.vehicles[0].make:''}}</td> -->
                     <td>{{item.actualInTime}}</td>
                     <td>{{item.expectedOut}}</td>
                     <td>{{!!item.vehicles?item.vehicles[0].parkingSlot:''}}</td>
@@ -64,53 +67,54 @@
 
 <!--Visitors Section start, width:875px, Height:93px;-->
 <div class="col-lg-12 col-md-12 col-sm-12 block visitor_section">
-    <div class="row">
+    <div class="row row-no-gutters">
         <div class="col-sm-2 col-md-2 col-lg-2">
             <h4>Visitors</h4>
         </div>
         <div class="col-sm-10 col-md-10 col-lg-10">
-            <ul class="visitor" id="lightslider-demo">
-                <li *ngFor="let item of visitorMetrics">
+            <div id="autoplay" calss="visitor">
+                <span *ngFor="let item of visitorMetrics">
                     <div class="visitor_profile">
                         <div [class]="setVisitorTypeColor(item.visitorVisitStatus)"><span><img
-                                    (click)="openPopover(item)" alt="" [attr.src]="item.guestPic"></span></div>
-                    </div>
-                    <h5>{{item.name}}</h5>
-                </li>
-            </ul>
+                                            (click)="openPopover(item)" alt="" [attr.src]="item.guestPic"></span></div>
         </div>
+        <h5>{{item.name}}</h5>
+        </span>
     </div>
 </div>
+</div>
+</div>
+
 
 <div id="visitorlight" class="white_content">
     <button type="button" class="close" (click)="closePopUp()" data-dismiss="popover" aria-hidden="true"><img alt=""
             src="../../../assets/images/close_icon.png"></button>
     <h3>Visitors</h3>
     <div class="popup_content">
-        <div class="visitor_profile ml-0"><span><img alt="" [attr.src]="selectedVisitor.guestPic"></span></div>
+        <div class="visitor_profile ml-0"><span><img alt="" [attr.src]="!!selectedVisitor ? selectedVisitor.guestPic : 'No Data Available'"></span></div>
         <div class="visitor_details">
-            <h4>{{selectedVisitor.name}}</h4>
+            <h4>{{!!selectedVisitor ? selectedVisitor.name: ''}}</h4>
             <table>
                 <tr>
                     <td>Visit Status</td>
-                    <td>: {{setCurrentVisitStatus(selectedVisitor.visitorVisitStatus)}}</td>
+                    <td>: {{!!selectedVisitor ? setCurrentVisitStatus(selectedVisitor.visitorVisitStatus) : 'No Data Available'}}</td>
                 </tr>
                 <tr>
                     <td>Visiting Person/Zone</td>
-                    <td>: {{setVisitingZonePerson(selectedVisitor)}}
+                    <td>: {{!!selectedVisitor ? setVisitingZonePerson(selectedVisitor) : 'No Data Available'}}
                     </td>
                 </tr>
                 <tr>
                     <td>Entry Time</td>
-                    <td>: {{selectedVisitor.actualInTime | date:'medium'}}</td>
+                    <td>: {{!!selectedVisitor ? (selectedVisitor.actualInTime | date:'medium') : 'No Data Available'}}</td>
                 </tr>
                 <tr>
                     <td>Expected Exit Time</td>
-                    <td>: {{selectedVisitor.expectedOut | date:'medium'}}</td>
+                    <td>: {{!!selectedVisitor ? (selectedVisitor.expectedOut | date:'medium') : 'No Data Available'}}</td>
                 </tr>
                 <tr>
                     <td>Current Status</td>
-                    <td>: {{setVisitorCurrentZone(selectedVisitor)}}</td>
+                    <td>: {{!!selectedVisitor ? setVisitorCurrentZone(selectedVisitor) : 'No Data Available'}}</td>
                 </tr>
             </table>
         </div>

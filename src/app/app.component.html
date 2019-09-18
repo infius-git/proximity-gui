@@ -6,7 +6,7 @@
             <side-bar style="display: contents" [sideBarData]="sideBar"></side-bar>
             <main role="main" style="margin-left:0!important;" class="col-sm-9 col-md-9 ml-sm-auto">
                 <div class="row">
-                    <main-map *ngIf="isMapAvailable" [mapData]="mapData" [pathData]="pathData" style="display: contents"></main-map>
+                    <main-map [datasource]="visitorMetrics" *ngIf="isMapAvailable" [mapData]="mapData" [openTable]="openTable" [pathData]="pathData" style="display: contents"></main-map>
                     <div class="col-sm-6 col-md-6 P-left content_right" style="margin-left:10px !important;">
                         <div class="">
                             <div class="col-sm-12 col-md-12 col-lg-12">
@@ -14,7 +14,7 @@
                                     <div class="col-sm-6 col-md-6 col-lg-6 third_colunm">
                                         <security-overview style="display: contents" [securityOverview]="securityOverview"></security-overview>
                                         <event-summary style="display: contents" [eventSummary]="eventSummary" [eventData]="eventData"></event-summary>
-                                        <monitor-metric style="display: contents" [monitorMetrics]="monitorMetrics"></monitor-metric>
+                                        <monitor-metric style="display: contents" [monitorMetrics]="monitorMetrics" [alertFeedMetrics]="alertFeedMetrics"></monitor-metric>
                                     </div>
                                     <div class="col-sm-6 col-md-6 col-lg-6 fourth_colunm">
                                         <entry-summary style="display: contents" [entrySummary]="entrySummary"></entry-summary>
@@ -28,8 +28,7 @@
                                 <tower-entry style="display: contents" [towerEntry]="towerEntry" [anomalySummary]="anomalySummary"></tower-entry>
                             </div>
                         </div>
-                        <visitor-metrics style="display: contents" [visitorMetrics]="visitorMetrics" (pathInfo)="getPathInfo($event)"></visitor-metrics>
-
+                        <visitor-metrics style="display: contents" [visitorMetrics]="visitorMetrics" (pathInfo)="getPathInfo($event)" (openTable)="openNewTable($event)"></visitor-metrics>
                     </div>
                 </div>
             </main>

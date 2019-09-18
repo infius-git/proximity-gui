@@ -1,13 +1,15 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgModule} from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {AmChartsModule} from '@amcharts/amcharts3-angular';
 import {ChartModule} from 'angular-highcharts';
 import {MalihuScrollbarModule} from 'ngx-malihu-scrollbar';
 import {NgxPopper} from 'angular-popper';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {MatTableModule, MatSortModule, MatPaginatorModule, MatInputModule, MatFormFieldModule} from '@angular/material';
+import {FlexLayoutModule} from '@angular/flex-layout';
 import {AppComponent} from './app.component';
 import {ToolbarComponent} from './component/toolbar/toolbar.component';
 import {sideBarComponent} from './component/sidebar/sideBar.component';
@@ -21,6 +23,7 @@ import {FooterComponent} from './component/footer/footer.component';
 import {TowerEntryComponent} from './component/towerEntry/towerEntry.component';
 import {VisitorMetricsComponent} from './component/visitorMetrics/visitorMetrics.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
+
 
 
 @NgModule({
@@ -48,6 +51,13 @@ import {DashboardComponent} from './dashboard/dashboard.component';
         NgbModule,
         AmChartsModule,
         ChartModule,
+        MatTableModule,
+        MatPaginatorModule,
+        MatSortModule,
+        MatInputModule,
+        MatFormFieldModule,
+        ReactiveFormsModule,
+        FlexLayoutModule,
         HttpClientModule
     ],
     providers: [],

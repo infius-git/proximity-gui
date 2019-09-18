@@ -19,7 +19,7 @@
     left: 25%;
     width: 50%;
     height: auto;
-    padding: 16px;
+    /* padding: 16px; */
     border: 16px solid orange;
     /* background-color: white; */
     background-color: #343542;
@@ -53,4 +53,8 @@ button.close {
     margin-right: 30px !important;
     margin-top: 21px !important;
     opacity: 1 !important;
+}
+
+.mat-table#id {
+    font-family: 'Barlow Semi Condensed', sans-serif !important;
 }

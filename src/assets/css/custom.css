@@ -300,13 +300,13 @@ h6 {
 
 .map {
     /* width: 1327px !important; */
-    width: 1369px !important;
+    width: 1367px !important;
     flex: none !important;
     max-width: inherit !important;
     padding-right: 0 !important;
     margin-right: 10px !important;
     /* height: 1237px !important; */
-    height: 1247px !important;
+    height: 1245px !important;
     margin-left: 8px !important;
 }
 
@@ -428,7 +428,7 @@ h6 {
     position: relative !important;
     font-size: 14px !important;
     min-height: 20px !important;
-    color: #acaec5 !important;
+    /* color: #acaec5 !important; */
     font-family: 'Barlow Semi Condensed', sans-serif !important;
     font-weight: 400 !important;
     margin-bottom: 10px !important;
@@ -880,11 +880,6 @@ line3 {
     list-style: none !important;
 }
 
-.visitor li {
-    float: left !important;
-    text-align: center !important;
-}
-
 .visitor_profile {
     background: rgb(220, 220, 220) none repeat scroll 0 0 !important;
     border-radius: 50% !important;
@@ -1293,15 +1288,22 @@ tspan {
 }
 
 polygon {
-    stroke-width: 5;
     cursor: pointer;
+    stroke-width: 0;
+    stroke: rgb(175, 175, 175);
     fill: linen;
     fill-opacity: 0.01;
+    overflow: visible;
 }
 
 polygon:hover {
-    stroke-width: 10;
-    fill-opacity: 0.4;
+    stroke-width: 8;
+    fill-opacity: 0.3;
+}
+
+polygon.active {
+    stroke-width: 8;
+    fill-opacity: 0.6;
 }
 
 #footer h5 {

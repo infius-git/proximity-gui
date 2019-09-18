@@ -1,21 +1,23 @@
 import { Component, OnInit, Input, Renderer2, Inject, AfterViewInit, OnDestroy } from '@angular/core';
-import { DOCUMENT } from "@angular/platform-browser";
-import { monitorMetrics, gatePass } from '../../../proximity';
-import * as $ from "jquery";
-import "lightslider";
+import { DOCUMENT } from '@angular/common';
+import { monitorMetrics, gatePass, alertEvents, alertFeedMetrics } from '../../../proximity';
+import * as $ from 'jquery';
+import 'lightslider';
 import { MalihuScrollbarService, } from 'ngx-malihu-scrollbar';
 @Component({
   selector: 'monitor-metric',
   templateUrl: './gateMetrics.html',
   styleUrls: ['./gateMetrics.component.css']
 })
-export class GateMetricsComponent implements OnInit {
+export class GateMetricsComponent implements OnInit, AfterViewInit {
   @Input() monitorMetrics: Array<monitorMetrics>;
+  @Input() alertFeedMetrics: Array<alertFeedMetrics>;
   gateCount: Array<any>;
   selectedGate; any;
   selectedLabel: any;
   selectedMetric: Array<gatePass>;
   selectedalert: Array<gatePass>;
+  allAlerts: Array<alertEvents>;
   scrollbarOptions: any;
   gateTime: any;
   constructor(private mScrollbarService: MalihuScrollbarService, private _renderer2: Renderer2,
@@ -51,8 +53,9 @@ export class GateMetricsComponent implements OnInit {
   })
 }`;
     this._renderer2.appendChild(this._document.body, script);
-    this.selectedLabel = this.monitorMetrics[0].label;
+    this.selectedLabel = !!this.monitorMetrics && (this.monitorMetrics[0] !==undefined) && !!this.monitorMetrics[0].label ? !!this.monitorMetrics[0].label : 'No Data Available';
     var temp: any = {};
+    if(!!this.monitorMetrics && this.monitorMetrics[0] !==undefined){
     this.monitorMetrics.forEach((item) => {
       temp = {};
       temp.value = item.label;
@@ -61,8 +64,10 @@ export class GateMetricsComponent implements OnInit {
     })
     this.selectedGate = 'Gate ' + this.monitorMetrics[0].label;
     this.selectedMetric = this.monitorMetrics[0].gate_pass_metrics;
-    this.selectedalert = this.monitorMetrics[0].alert_feed;
+    this.selectedalert = this.monitorMetrics[0].gate_alert_feed;
   }
+  this.allAlerts = !!this.alertFeedMetrics  && this.alertFeedMetrics[0]!==undefined ? this.alertFeedMetrics[0].alert_event_feed : [{category:'None',type:'INFO', color: 'green',zone_name: 'No', text: 'No Alerts' ,deviceId: null,deviceType: null, timestamp: null, cardId: null }];
+}
 
   onGateSelected = function (label) {
     this.monitorMetrics.forEach((item) => {
@@ -70,7 +75,7 @@ export class GateMetricsComponent implements OnInit {
         this.selectedGate = 'Gate ' + item.label;
         this.selectedLabel = item.label;
         this.selectedMetric = item.gate_pass_metrics;
-        this.selectedalert = item.alert_feed;
+        this.selectedalert = item.gate_alert_feed;
       }
     })
     this.openPopUp();
