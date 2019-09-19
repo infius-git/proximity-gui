@@ -1,6 +1,5 @@
 <div class="col-lg-12 col-md-12 col-sm-12 block visitor_metrix">
-    <button type="button" class="close" data-dismiss="popover" (click)="openTabularReport()" aria-hidden="true"><img alt=""
-            src="../../../assets/images/close_icon.png"></button>
+    <button type="button" class="close" data-dismiss="popover" (click)="openTabularReport()" aria-hidden="true"><i class="fa fa-expand" aria-hidden="true"></i></button>
     <h4>visitor metrics</h4>
     <div class="visitor_marics">
         <!--VISITOR METRICS Popup Section Start-->
@@ -87,14 +86,13 @@
 
 
 <div id="visitorlight" class="white_content">
-    <button type="button" class="close" (click)="closePopUp()" data-dismiss="popover" aria-hidden="true"><img alt=""
-            src="../../../assets/images/close_icon.png"></button>
+    <button type="button" class="close" (click)="closePopUp()" data-dismiss="popover" aria-hidden="true">&times;</button>
     <h3>Visitors</h3>
     <div class="popup_content">
         <div class="visitor_profile ml-0"><span><img alt="" [attr.src]="!!selectedVisitor ? selectedVisitor.guestPic : 'No Data Available'"></span></div>
         <div class="visitor_details">
             <h4>{{!!selectedVisitor ? selectedVisitor.name: ''}}</h4>
-            <table>
+            <table class="table table-bordered">
                 <tr>
                     <td>Visit Status</td>
                     <td>: {{!!selectedVisitor ? setCurrentVisitStatus(selectedVisitor.visitorVisitStatus) : 'No Data Available'}}</td>
@@ -121,3 +119,81 @@
     </div>
 </div>
 <div id="visitorfade" class="black_overlay"></div>
+
+
+<!--------------------- Guest PopUP with qr code--------------------------------------->
+
+
+<div id="visitorlight" class="white_content_visitor">
+    <button type="button" class="close" (click)="closePopUp()" data-dismiss="popover" aria-hidden="true">&times;</button>
+    <h3>Plat NUMBER : Q809</h3>
+    <div class="popup_content">
+        <div class="row"> 
+            <div class="col-md-6">
+                <div class="visitormaintitle">
+                    Guest Details
+                </div>
+                <div class="visitor_profile ml-0"><span><img alt="" [attr.src]="!!selectedVisitor ? selectedVisitor.guestPic : 'No Data Available'"></span></div>
+        <div class="visitor_details">
+            <!-- <h4>{{!!selectedVisitor ? selectedVisitor.name: ''}}</h4> -->
+            <h4>SARITA SUNDAS</h4>
+            <p>Contact Number : +91 98928666</p>
+        </div>
+        <div style="clear:both;"></div>
+        <div class="visitor_detailstbl">
+                <img src="assets/images/qr.png" class="qrimage">
+        </div>
+        <div style="clear: both"></div>
+            </div>
+            <div class="col-md-6">
+                    <div class="visitormaintitle">
+                            Guest Details
+                        </div>
+                    <div class="visitor_profile ml-0"><span><img alt="" [attr.src]="!!selectedVisitor ? selectedVisitor.guestPic : 'No Data Available'"></span></div>
+                    <div class="visitor_details">
+                        <!-- <h4>{{!!selectedVisitor ? selectedVisitor.name: ''}}</h4> -->
+                        <h4>SARITA SUNDAS</h4>
+                        <p>Contact Number : +91 98928666</p>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <div class="visitor_detailstbl">
+                        <table class="table">
+                            <tr>
+                                <td>Expected Arrival Time</td>
+                                <td>14:30 PM, 15 AUG</td>
+                            </tr>
+                            <tr>
+                                <td>Visiting Person/Zone</td>
+                                <td>{{!!selectedVisitor ? setVisitingZonePerson(selectedVisitor) : 'No Data Available'}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>EXPECTED TIME OUT</td>
+                                <td>15:30 PM, 16 AUG</td>
+                            </tr>
+                            <tr>
+                                <td>NUMBER OF GUEST</td>
+                                <td>5</td>
+                            </tr>
+                            <tr>
+                                <td>PARKING REQUIRED</td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td>VIHICLES</td>
+                                <td>HP - 01C 8989</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div style="clear: both"></div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+<div id="visitorfade" class="black_overlay" style="position: fixed;"></div>
+
+
+
+
+<!---------------------------------------------------------------------------------->
