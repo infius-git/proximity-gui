@@ -58,3 +58,19 @@ button.close {
 .mat-table#id {
     font-family: 'Barlow Semi Condensed', sans-serif !important;
 }
+.visitor-mat-tbl
+{
+    position: absolute;
+    float: unset;
+    z-index: 100;
+    top: 49px;
+    left: 53px;
+    width: 93%;
+    overflow-x: scroll;
+    z-index: 99999;
+}
+#tbl-expand .fa-expand
+ {
+    font-size: 23px;
+    color: white;
+ }

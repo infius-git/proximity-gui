@@ -40,7 +40,7 @@ export class VisitorMetricsComponent implements OnInit {
                 slideMargin: 0,
                 slideWidth: -250,
                 slideMove: 1,
-                pager: true,
+                pager: false,
                 pauseOnHover: true,
                 onBeforeSlide: function(el) {
                     $('#current').text(el.getCurrentSlideCount());
@@ -64,6 +64,7 @@ export class VisitorMetricsComponent implements OnInit {
 
   openTabularReport() {
     this.openTable.emit(true);
+    document.getElementById('fade').style.display = 'block';
   }
   closePopUp(): void {
     document.getElementById('visitorlight').style.display = 'none';

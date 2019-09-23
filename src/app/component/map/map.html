@@ -22,8 +22,8 @@
             <path  [attr.d]="'M'+pathpoints.pathDetail[0].path.toString()"  fill="none" style="position:absolute;" [attr.stroke]="pathpoints.pathDetail[0].color" stroke-width="10"/>
         </svg>
     </div>
-    <div [hidden]="!openTheTable" style="position: absolute; float: unset; z-index: 100; top: 250px; left: 250px;" class="mat-elevation-z8">
-
+    <div [hidden]="!openTheTable" class="mat-elevation-z8 visitor-mat-tbl">
+        <span id="tbl-expand"  (click)="expandTabularReport()"><i class="fa fa-expand pull-right" aria-hidden="true"></i></span><span id="tbl-expand"  (click)="closeTabularReport()"><i class="fas fa-times pull-right"></i></span>
         <table mat-table [dataSource]="sortedData" matSort (matSortChange)="sortData($event)">
 
             <!--- Note that these columns can be defined in any order.
