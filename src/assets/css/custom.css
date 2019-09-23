@@ -828,11 +828,7 @@ line3 {
     margin-top: 0 !important;
 }
 
-.visitor_marics tbody {
-    display: block !important;
-    height: 84px !important;
-    overflow: auto !important;
-}
+
 
 .visitor_marics thead,
 .visitor_metrix tbody tr {

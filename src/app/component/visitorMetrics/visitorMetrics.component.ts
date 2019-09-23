@@ -33,7 +33,7 @@ export class VisitorMetricsComponent implements OnInit {
         {
           $(document).ready(function() {
             var autoplaySlider = $('#autoplay').lightSlider({
-                item: 4,
+                item: 6,
                 auto: true,
                 loop: true,
                 autoWidth: false,
@@ -57,7 +57,7 @@ export class VisitorMetricsComponent implements OnInit {
 
   openPopover = function (item) {
     this.selectedVisitor = item;
-    document.getElementById('visitorlight').style.display = 'block';
+    document.getElementById('visitorlight1').style.display = 'block';
     document.getElementById('visitorfade').style.display = 'block';
   }
   drawPath = function (item) {
@@ -70,6 +70,7 @@ export class VisitorMetricsComponent implements OnInit {
   }
   closePopUp(): void {
     document.getElementById('visitorlight').style.display = 'none';
+    document.getElementById('visitorlight1').style.display = 'none';
     document.getElementById('visitorfade').style.display = 'none';
   }
 

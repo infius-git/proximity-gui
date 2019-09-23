@@ -1,8 +1,5 @@
 
-#autoplay span:nth-of-type(1)
-{
-    margin-left: 3.4%;
-}
+
 .visitor_detailstbl table
 {
     margin-top:48px;
@@ -99,3 +96,31 @@ button.close {
     font-weight: 600;
     font-size: 27px
 }
+.visitor_marics tbody {
+    display: block !important;
+    height: 70px !important;
+    overflow-y: scroll;
+}
+.ng-star-inserted
+{
+    text-align: center;
+}
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
