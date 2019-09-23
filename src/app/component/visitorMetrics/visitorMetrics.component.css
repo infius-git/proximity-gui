@@ -5,10 +5,10 @@
 }
 .visitor_detailstbl table
 {
-    margin-top:10px;
+    margin-top:48px;
 }
 .visitor_detailstbl table tr td {
-    padding: .75rem 0px !important;
+    padding: .75rem 13px !important;
     vertical-align: top;
     border-top: 1px solid #dee2e6;
     font-size: 17px !important;
@@ -56,10 +56,10 @@
     max-width: inherit;
     /* margin-top: -50px !important; */
 }
-.visitor_details table tr td:first-child {
+/* .visitor_details table tr td:first-child {
     color: #333 !important;
     border:none;
-}
+} */
 
 .white_content_visitor h3 {
     font-size: 19px;

@@ -51,14 +51,28 @@
             <h4>INTERZONAL</h4>
             <h5>distracted <img alt="" src="../../../assets/images/footer_arrow.png"></h5>
             <div class="clear"></div>
-            <div class="visitor_profile ml-0"><span><img alt="" src="../../../assets/images/visitor_img1.png"></span></div>
-            <div class="visitor_profile"><span><img alt="" src="../../../assets/images/visitor_img2.png"></span></div>
-            <div class="visitor_profile mr-0"><span><img alt="" src="../../../assets/images/visitor_img3.png"></span></div>
+            <ngb-carousel>
+                <ng-template ngbSlide>
+            <div class="visitor_profile ml-0"><span><img alt="" src="../../../assets/images/visitor_img1.png" (click)="openFVisitorPopup()"></span></div>
+            <div class="visitor_profile"><span><img alt="" src="../../../assets/images/visitor_img2.png" (click)="openFVisitorPopup()"></span></div>
+            <div class="visitor_profile mr-0"><span><img alt="" src="../../../assets/images/visitor_img3.png" (click)="openFVisitorPopup()"></span></div>
             <ul>
                 <li>It is a long established <span>Established</span></li>
                 <li>It is a long established <span>Established</span></li>
                 <li>It is a long established <span>Established</span></li>
             </ul>
+            </ng-template>
+            <ng-template ngbSlide>
+                    <div class="visitor_profile ml-0"><span><img alt="" src="../../../assets/images/visitor_img1.png" (click)="openFVisitorPopup()"></span></div>
+                    <div class="visitor_profile"><span><img alt="" src="../../../assets/images/visitor_img1.png" (click)="openFVisitorPopup()"></span></div>
+                    <div class="visitor_profile mr-0"><span><img alt="" src="../../../assets/images/visitor_img1.png" (click)="openFVisitorPopup()"></span></div>
+                    <ul>
+                        <li>It is a long established <span>Established</span></li>
+                        <li>It is a long established <span>Established</span></li>
+                        <li>It is a long established <span>Established</span></li>
+                    </ul>
+                    </ng-template>
+                </ngb-carousel>
         </div>
 
 
@@ -79,6 +93,8 @@
             <h4>black listed</h4>
             <h5>distracted <img alt="" src="../../../assets/images/footer_arrow.png"></h5>
             <div class="clear"></div>
+            <ngb-carousel>
+                    <ng-template ngbSlide>
             <div class="visitor_profile ml-0"><a data-toggle="popover" data-container="body" data-placement="top" type="button" data-html="true" href="javascript:void();" id="visitor"><span><img alt="" src="../../../assets/images/visitor_img1.png"></span></a></div>
             <div class="visitor_profile"><a data-toggle="popover" data-container="body" data-placement="top" type="button" data-html="true" href="javascript:void();" id="visitor"><span><img alt="" src="../../../assets/images/visitor_img1.png"></span></a></div>
             <div class="visitor_profile mr-0"><a data-toggle="popover" data-container="body" data-placement="top" type="button" data-html="true" href="javascript:void();" id="visitor"><span><img alt="" src="../../../assets/images/visitor_img1.png"></span></a></div>
@@ -87,6 +103,18 @@
                 <li>It is a long established <span>Established</span></li>
                 <li>It is a long established <span>Established</span></li>
             </ul>
+            </ng-template>
+            <ng-template ngbSlide>
+                    <div class="visitor_profile ml-0"><a data-toggle="popover" data-container="body" data-placement="top" type="button" data-html="true" href="javascript:void();" id="visitor"><span><img alt="" src="../../../assets/images/visitor_img1.png"></span></a></div>
+                    <div class="visitor_profile"><a data-toggle="popover" data-container="body" data-placement="top" type="button" data-html="true" href="javascript:void();" id="visitor"><span><img alt="" src="../../../assets/images/visitor_img2.png"></span></a></div>
+                    <div class="visitor_profile mr-0"><a data-toggle="popover" data-container="body" data-placement="top" type="button" data-html="true" href="javascript:void();" id="visitor"><span><img alt="" src="../../../assets/images/visitor_img1.png"></span></a></div>
+                    <ul>
+                        <li>It is a long established <span>Established</span></li>
+                        <li>It is a long established <span>Established</span></li>
+                        <li>It is a long established <span>Established</span></li>
+                    </ul>
+                    </ng-template>
+            </ngb-carousel>
         </div>
         <div class="col-sm-2 col-md-2">
             <h4>Our Partners</h4>

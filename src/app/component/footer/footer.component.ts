@@ -1,15 +1,30 @@
 import { Component, OnInit,Input } from '@angular/core';
 import {parkingMetrics} from '../../../proximity';
+import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 import {Chart} from 'angular-highcharts'
 @Component({
   selector: 'foot-bar',
-  templateUrl: './footer.html'
+  templateUrl: './footer.html',
+  providers: [ NgbCarouselConfig ]
 })
 export class FooterComponent implements OnInit {
 @Input() parkingMetrics:parkingMetrics;
 alertChart:Chart;
 predictiveChart:Chart;
-  constructor() { }
+  constructor(config: NgbCarouselConfig) {
+    config.interval = 2000;
+    config.wrap = true;
+    config.keyboard = false;
+    config.pauseOnHover = true;
+    config.showNavigationArrows = false;
+    config.showNavigationIndicators = false;
+   }
+
+
+   openFVisitorPopup=function(){
+    document.getElementById('visitorlight').style.display = 'block';
+    document.getElementById('visitorfade').style.display = 'block';
+   }
 
   ngOnInit() {
 this.drawGraph()

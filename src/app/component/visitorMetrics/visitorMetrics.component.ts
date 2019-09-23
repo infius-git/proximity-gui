@@ -5,7 +5,7 @@ import { visitorMetrics, metrics } from '../../../proximity';
 import { VisitorVisitDetailView } from '../../../model/visitorVisitDetailView';
 import * as $ from 'jquery';
 import 'lightslider';
-import { IfStmt } from '@angular/compiler';
+import { IfStmt, CompileShallowModuleMetadata } from '@angular/compiler';
 @Component({
   selector: 'visitor-metrics',
   styleUrls: ['./visitorMetrics.component.css'],
@@ -51,6 +51,8 @@ export class VisitorMetricsComponent implements OnInit {
         }
     `;
     this._renderer2.appendChild(this._document.body, script);
+
+   
   }
 
   openPopover = function (item) {
