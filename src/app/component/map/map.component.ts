@@ -85,17 +85,22 @@ export class mapComponent implements OnInit, OnChanges, AfterViewInit {
     document.getElementById('fullfade').style.display = 'none';
     $('.visitor-mat-tbl').hide();
   }
+  
   openZoneImage(zone): void {
     this.drawPath = false;
     this.zoneName = zone.name;
     this.zoneImage = this.sanitization.bypassSecurityTrustUrl(zone.zoneImage);
-    document.getElementById('light').style.display = 'block';
-    document.getElementById('light2').style.display = 'block';
+    //document.getElementById('light').style.display = 'block';
+    //document.getElementById('light2').style.display = 'block';
+    document.getElementById('zonepopup').style.display = 'block';
     document.getElementById('fade').style.display = 'block';
     // Zone Alert Flash/Blink Animation Removal.
     this.removeAlertFlash(zone);
   }
   closePopUp(): void {
+    document.getElementById('visitorlight').style.display = 'none';
+    document.getElementById('zonepopup').style.display = 'none';
+    document.getElementById('visitorlight1').style.display = 'none';
   document.getElementById('light').style.display = 'none';
   document.getElementById('light2').style.display = 'none';
   document.getElementById('fade').style.display = 'none';

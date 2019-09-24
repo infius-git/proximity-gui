@@ -16,7 +16,8 @@ export class VisitorMetricsComponent implements OnInit {
   @Output() pathInfo = new EventEmitter<any>();
   @Output() openTable = new EventEmitter<any>();
   selectedVisitor: VisitorVisitDetailView;
-  columData = ['name', 'mobile', 'Vehicle No.', 'Make', 'Arrival Time', 'Exp. Out Time', 'parking allocation time', 'Barcode'];
+  //columData = ['name', 'mobile', 'Vehicle No.', 'Make', 'Arrival Time', 'Exp. Out Time', 'parking allocation time', 'Barcode'];
+  columData = ['name', 'mobile', 'Vehicle No.', 'In Time', 'Out Time'];
   constructor(private _renderer2: Renderer2, private sanitization: DomSanitizer,
     @Inject(DOCUMENT) private _document) { }
 
@@ -58,7 +59,7 @@ export class VisitorMetricsComponent implements OnInit {
   openPopover = function (item) {
     this.selectedVisitor = item;
     document.getElementById('visitorlight1').style.display = 'block';
-    document.getElementById('visitorfade').style.display = 'block';
+    document.getElementById('fade').style.display = 'block';
   }
   drawPath = function (item) {
     this.pathInfo.emit(item.visitId)

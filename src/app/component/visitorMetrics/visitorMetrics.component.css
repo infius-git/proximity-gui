@@ -8,7 +8,7 @@
     padding: .75rem 13px !important;
     vertical-align: top;
     border-top: 1px solid #dee2e6;
-    font-size: 17px !important;
+    font-size: 18px !important;
     vertical-align: middle;
     text-transform: uppercase;
     color:#dbdcde;
@@ -38,10 +38,14 @@
 .visitor_profile {
     border: 1px solid #d1d1d1;
 }
+#flatno
+{
+    color:#fff !important;
+}
 .white_content_visitor {
     display: none;
     position: fixed;
-    top: 15%;
+    top: 11%;
     left: 25%;
     width: 70%;
     height: auto;
@@ -91,15 +95,18 @@ button.close {
     margin-top: 75px;
     margin-left: 92px;
 }
-.fa-expand
+.fa-expand-arrows-alt
 {
-    font-weight: 600;
-    font-size: 27px
+    font-weight: 500;
+    font-size: 21px;
+    position: absolute;
+    right: 17px;
+    top: 11px;
 }
 .visitor_marics tbody {
     display: block !important;
-    height: 70px !important;
-    overflow-y: scroll;
+    overflow: hidden;
+    height: 92px;
 }
 .ng-star-inserted
 {
@@ -127,4 +134,12 @@ button.close {
   .visitor_marics table th{
       text-align: left;
   }
- 
+ .visitor_details h4{
+     color:#fff !important;
+ }
+ .visitor_detailstbl table tr td:nth-of-type(2)
+ {
+     color:#fff !important;
+     font-size: 19px !important;
+    font-weight: 600;
+ }

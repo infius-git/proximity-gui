@@ -1,5 +1,5 @@
 <div class="col-lg-12 col-md-12 col-sm-12 block visitor_metrix">
-    <button type="button" class="close" data-dismiss="popover" (click)="openTabularReport()" aria-hidden="true"><i class="fa fa-expand" aria-hidden="true"></i></button>
+    <button type="button" class="close" data-dismiss="popover" (click)="openTabularReport()" aria-hidden="true"><i class="fas fa-expand-arrows-alt"></i></button>
     <h4>visitor metrics</h4>
     <div class="visitor_marics">
         <!--VISITOR METRICS Popup Section Start-->
@@ -55,8 +55,8 @@
                     <!-- <td>{{!!item.vehicles?item.vehicles[0].make:''}}</td> -->
                     <td>{{item.actualInTime}}</td>
                     <td>{{item.expectedOut}}</td>
-                    <td>{{!!item.vehicles?item.vehicles[0].parkingSlot:''}}</td>
-                    <td>{{item.barcode}}</td>
+                    <!-- <td>{{!!item.vehicles?item.vehicles[0].parkingSlot:''}}</td> -->
+                    <!-- <td>{{item.barcode}}</td> -->
                 </tr>
             </tbody>
         </table>
@@ -91,29 +91,30 @@
     <div class="popup_content">
         <div class="visitor_profile ml-0"><span><img alt="" [attr.src]="!!selectedVisitor ? selectedVisitor.guestPic : 'No Data Available'"></span></div>
         <div class="visitor_details">
-            <h4>{{!!selectedVisitor ? selectedVisitor.name: ''}}</h4>
+            <h4>Nikhil Sharma</h4>
             <table class="table table-bordered">
                 <tr>
-                    <td>Visit Status</td>
-                    <td>: {{!!selectedVisitor ? setCurrentVisitStatus(selectedVisitor.visitorVisitStatus) : 'No Data Available'}}</td>
+                    <td>Contact Detail</td>
+                    <td>: 9868956996</td>
                 </tr>
                 <tr>
-                    <td>Visiting Person/Zone</td>
-                    <td>: {{!!selectedVisitor ? setVisitingZonePerson(selectedVisitor) : 'No Data Available'}}
+                    <td>Last Visited Date</td>
+                    <td>: 12-08-2019</td>
+                </tr>
+                <tr>
+                    <td>Frequent Zones Visited</td>
+                    <td>: No Data Available
                     </td>
                 </tr>
                 <tr>
-                    <td>Entry Time</td>
-                    <td>: {{!!selectedVisitor ? (selectedVisitor.actualInTime | date:'medium') : 'No Data Available'}}</td>
+                    <td>Invitee</td>
+                    <td>: Mohan, Zone 1</td>
                 </tr>
                 <tr>
-                    <td>Expected Exit Time</td>
-                    <td>: {{!!selectedVisitor ? (selectedVisitor.expectedOut | date:'medium') : 'No Data Available'}}</td>
+                    <td>Breach</td>
+                    <td>: Yes on 27th Sep 2019.</td>
                 </tr>
-                <tr>
-                    <td>Current Status</td>
-                    <td>: {{!!selectedVisitor ? setVisitorCurrentZone(selectedVisitor) : 'No Data Available'}}</td>
-                </tr>
+                
             </table>
         </div>
     </div>
@@ -121,79 +122,3 @@
 <div id="visitorfade" class="black_overlay"></div>
 
 
-<!--------------------- Guest PopUP with qr code--------------------------------------->
-
-
-<div id="visitorlight1" class="white_content_visitor">
-    <button type="button" class="close" (click)="closePopUp()" data-dismiss="popover" aria-hidden="true">&times;</button>
-    <h3>Plat NUMBER : Q809</h3>
-    <div class="popup_content">
-        <div class="row"> 
-            <div class="col-md-6">
-                <div class="visitormaintitle">
-                    Guest Details
-                </div>
-                <div class="visitor_profile ml-0"><span><img alt="" [attr.src]="!!selectedVisitor ? selectedVisitor.guestPic : 'No Data Available'"></span></div>
-        <div class="visitor_details">
-            <!-- <h4>{{!!selectedVisitor ? selectedVisitor.name: ''}}</h4> -->
-            <h4>SARITA SUNDAS</h4>
-            <p>Contact Number : +91 98928666</p>
-        </div>
-        <div style="clear:both;"></div>
-        <div class="visitor_detailstbl">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTrr_6SZl1Az-DPPQrPoJqxl8H_rH2-xk8C7gzxoduRAHoFMTBQ" class="qrimage">
-        </div>
-        <div style="clear: both"></div>
-            </div>
-            <div class="col-md-6">
-                    <div class="visitormaintitle">
-                            Guest Details
-                        </div>
-                    <div class="visitor_profile ml-0"><span><img alt="" [attr.src]="!!selectedVisitor ? selectedVisitor.guestPic : 'No Data Available'"></span></div>
-                    <div class="visitor_details">
-                        <!-- <h4>{{!!selectedVisitor ? selectedVisitor.name: ''}}</h4> -->
-                        <h4>SARITA SUNDAS</h4>
-                        <p>Contact Number : +91 98928666</p>
-                    </div>
-                    <div style="clear:both;"></div>
-                    <div class="visitor_detailstbl">
-                        <table class="table">
-                            <tr>
-                                <td>Expected Arrival Time</td>
-                                <td>14:30 PM, 15 AUG</td>
-                            </tr>
-                            <tr>
-                                <td>Visiting Person/Zone</td>
-                                <td>{{!!selectedVisitor ? setVisitingZonePerson(selectedVisitor) : 'No Data Available'}}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>EXPECTED TIME OUT</td>
-                                <td>15:30 PM, 16 AUG</td>
-                            </tr>
-                            <tr>
-                                <td>NUMBER OF GUEST</td>
-                                <td>5</td>
-                            </tr>
-                            <tr>
-                                <td>PARKING REQUIRED</td>
-                                <td>1</td>
-                            </tr>
-                            <tr>
-                                <td>VIHICLES</td>
-                                <td>HP - 01C 8989</td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div style="clear: both"></div>
-            </div>
-        </div>
-        
-    </div>
-</div>
-<div id="visitorfade" class="black_overlay" style="position: fixed;"></div>
-
-
-
-
-<!---------------------------------------------------------------------------------->
