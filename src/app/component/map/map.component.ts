@@ -80,11 +80,11 @@ export class mapComponent implements OnInit, OnChanges, AfterViewInit {
     this.alertFlash();
   }
 
-  expandTabularReport()
-  {
-    $('.visitor-mat-tbl').css('width','auto');
+ 
+  closeTabularReport=function() {
+    document.getElementById('fullfade').style.display = 'none';
+    $('.visitor-mat-tbl').hide();
   }
-
   openZoneImage(zone): void {
     this.drawPath = false;
     this.zoneName = zone.name;

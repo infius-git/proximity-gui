@@ -66,8 +66,9 @@ export class VisitorMetricsComponent implements OnInit {
 
   openTabularReport() {
     this.openTable.emit(true);
-    document.getElementById('fade').style.display = 'block';
+    document.getElementById('fullfade').style.display = 'block';
   }
+ 
   closePopUp(): void {
     document.getElementById('visitorlight').style.display = 'none';
     document.getElementById('visitorlight1').style.display = 'none';

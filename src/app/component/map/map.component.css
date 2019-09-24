@@ -62,12 +62,18 @@ button.close {
 {
     position: absolute;
     float: unset;
-    z-index: 100;
-    top: 49px;
-    left: 53px;
-    width: 93%;
-    overflow-x: scroll;
+    top: 31%;
+    left: 25%;
     z-index: 99999;
+}
+#tbl-expand
+{
+    font-size: 53px;
+    cursor: pointer;
+    position: absolute;
+    right: 13px;
+    top: -26px;
+    color: #ffffff;
 }
 #tbl-expand .fa-expand
  {

@@ -124,3 +124,7 @@ button.close {
   ::-webkit-scrollbar-thumb:hover {
     background: #555; 
   }
+  .visitor_marics table th{
+      text-align: left;
+  }
+ 

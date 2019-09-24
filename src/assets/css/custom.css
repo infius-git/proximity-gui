@@ -12,7 +12,20 @@ h4 {
     font-weight: 600 !important;
     text-transform: uppercase !important;
 }
-
+#fullfade
+{
+    display: none;
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    width: 196%;
+    height: 100%;
+    background-color: black;
+    z-index: 1001;
+    -moz-opacity: 0.8;
+    opacity: .80;
+    filter: alpha(opacity=80);
+}
 .P-left {
     padding-left: 0 !important;
 }
@@ -1520,3 +1533,56 @@ polygon.active {
 .visitor_details table tr td:first-child {
     color: #b7b9d4 !important;
 }
+.mat-table thead, .mat-paginator
+{
+   background: #1f1f1f !important;
+}
+
+.mat-table tbody
+{
+   background: #343542 !important;
+   word-break: break-all !important;
+}
+.mat-header-cell, .mat-table thead th, .mat-paginator-page-size-label, .mat-table tbody td, .mat-paginator-range-label, .mat-paginator-icon, .mat-select-arrow {
+    color: #ffffff !important; 
+    font-family:'Barlow Semi Condensed', sans-serif !important;
+}
+.mat-form-field-appearance-legacy .mat-form-field-label
+{
+    color: rgba(255, 255, 255, 0.59) !important;
+}
+.mat-form-field-underline
+{
+    background-color: #ffffff !important;
+}
+.mat-form-field {
+    padding: 0px 4px !important;
+    margin-top: -11px;
+}
+.mat-select-value {
+    color: white !important;
+}
+.mat-form-field-infix {
+    width: 119px !important;
+}
+.mat-sort-header-button
+{
+    font-size: 15px !important;
+}
+ /* Track */
+ ::-webkit-scrollbar-track {
+    background: #1f1f1f; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #343542; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
+  .visitor_marics table th{
+      text-align: left;
+  }
