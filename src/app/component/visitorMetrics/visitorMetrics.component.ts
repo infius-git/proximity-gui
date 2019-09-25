@@ -73,7 +73,9 @@ export class VisitorMetricsComponent implements OnInit {
   closePopUp(): void {
     document.getElementById('visitorlight').style.display = 'none';
     document.getElementById('visitorlight1').style.display = 'none';
+    document.getElementById('visitorlightf').style.display = 'none';
     document.getElementById('visitorfade').style.display = 'none';
+    document.getElementById('fade').style.display = 'none';
   }
 
   setVisitorTypeColor(type) {

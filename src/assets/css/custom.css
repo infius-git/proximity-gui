@@ -12,6 +12,11 @@ h4 {
     font-weight: 600 !important;
     text-transform: uppercase !important;
 }
+.redcolor
+{
+    color:red;
+}
+
 #fullfade
 {
     display: none;

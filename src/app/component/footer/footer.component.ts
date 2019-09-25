@@ -23,7 +23,12 @@ predictiveChart:Chart;
 
    openFVisitorPopup=function(){
     document.getElementById('visitorlight').style.display = 'block';
-    document.getElementById('visitorfade').style.display = 'block';
+    document.getElementById('fade').style.display = 'block';
+   }
+
+   openFVisitor1Popup=function(){
+    document.getElementById('visitorlightf').style.display = 'block';
+    document.getElementById('fade').style.display = 'block';
    }
 
   ngOnInit() {

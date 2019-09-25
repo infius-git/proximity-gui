@@ -55,6 +55,7 @@
     padding: 0;
     border-radius: 12px;
     max-width: inherit;
+    box-shadow: 1px 2px 7px #b5b5b5;
     /* margin-top: -50px !important; */
 }
 /* .visitor_details table tr td:first-child {
