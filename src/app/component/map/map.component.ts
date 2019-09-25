@@ -80,7 +80,10 @@ export class mapComponent implements OnInit, OnChanges, AfterViewInit {
     this.alertFlash();
   }
 
- 
+  onGateSelected=function(label) {
+    document.getElementById('gatemetricpopup').style.display = 'block';
+    document.getElementById('fade').style.display = 'block';
+  }
   closeTabularReport=function() {
     document.getElementById('fullfade').style.display = 'none';
     $('.visitor-mat-tbl').hide();
@@ -101,6 +104,7 @@ export class mapComponent implements OnInit, OnChanges, AfterViewInit {
     document.getElementById('visitorlight').style.display = 'none';
     document.getElementById('zonepopup').style.display = 'none';
     document.getElementById('visitorlight1').style.display = 'none';
+    document.getElementById('gatemetricpopup').style.display = 'none';
   document.getElementById('light').style.display = 'none';
   document.getElementById('light2').style.display = 'none';
   document.getElementById('fade').style.display = 'none';

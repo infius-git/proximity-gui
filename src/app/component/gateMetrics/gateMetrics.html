@@ -43,7 +43,7 @@
             <h4>Gate Pass metrics ({{selectedGate}})</h4>
             <div id="gateAlet" class="alert_list">
                 <ul>
-                    <li *ngFor="let gate of selectedMetric" [class]="gate.type"><a data-toggle="popover" data-container="body" data-placement="top" type="button" data-html="true" href="javascript:void(0);" id="gate">{{gate.zone_name +' '+gate.text}}</a></li>
+                    <li *ngFor="let gate of selectedMetric" [class]="gate.type"><i class="fa fa-circle text-warning"></i><a data-toggle="popover" data-container="body" data-placement="top" type="button" data-html="true" href="javascript:void(0);" id="gate">{{gate.zone_name +' '+gate.text}}</a></li>
                 </ul>
             </div>
         </div>
@@ -357,3 +357,4 @@
         </ul>
     </div>
 </div>
+

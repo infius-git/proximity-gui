@@ -450,7 +450,10 @@ h6 {
     font-family: 'Barlow Semi Condensed', sans-serif !important;
     font-weight: 400 !important;
     margin-bottom: 10px !important;
-    padding-left: 18px !important;
+}
+.alert_list ul li .fa
+{
+    margin-right:10px;
 }
 
 .alert_list ul li.alerts::before {
@@ -1591,3 +1594,11 @@ polygon.active {
   .visitor_marics table th{
       text-align: left;
   }
+  .nopadding
+{
+    padding:0px !important
+}
+.margint10
+{
+    margin-top:10px;
+}

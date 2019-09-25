@@ -69,16 +69,20 @@ export class GateMetricsComponent implements OnInit, AfterViewInit {
   this.allAlerts = !!this.alertFeedMetrics  && this.alertFeedMetrics[0]!==undefined ? this.alertFeedMetrics[0].alert_event_feed : [{category:'None',type:'INFO', color: 'green',zone_name: 'No', text: 'No Alerts' ,deviceId: null,deviceType: null, timestamp: null, cardId: null }];
 }
 
-  onGateSelected = function (label) {
-    this.monitorMetrics.forEach((item) => {
-      if (item.label === label) {
-        this.selectedGate = 'Gate ' + item.label;
-        this.selectedLabel = item.label;
-        this.selectedMetric = item.gate_pass_metrics;
-        this.selectedalert = item.gate_alert_feed;
-      }
-    })
-    this.openPopUp();
+  // onGateSelected = function (label) {
+  //   this.monitorMetrics.forEach((item) => {
+  //     if (item.label === label) {
+  //       this.selectedGate = 'Gate ' + item.label;
+  //       this.selectedLabel = item.label;
+  //       this.selectedMetric = item.gate_pass_metrics;
+  //       this.selectedalert = item.gate_alert_feed;
+  //     }
+  //   })
+  //   this.openPopUp();
+  // }
+  onGateSelected=function(label) {
+    document.getElementById('gatemetricpopup').style.display = 'block';
+    document.getElementById('fade').style.display = 'block';
   }
   openPopUp(): void {
     document.getElementById('gatelight').style.display = 'block';

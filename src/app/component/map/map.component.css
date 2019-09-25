@@ -310,11 +310,11 @@ button.close {
     left: 5%;
     z-index: 9999;
 }
-.alert-danger{
+/* .alert-danger{
     font-size: 13px !important;
     background: #f13c5b !important;
     text-align: center;
-}
+} */
 .white_content_new .table th
 {
     color:#9d9ea0;
@@ -409,3 +409,63 @@ button.close {
     width:auto !important;
 }
 /**************************************************************/
+
+/* gate matric css */
+.orgbutgm {
+    border: 1px solid #ffb70f;
+    color: #ffb70f;
+    padding: 1px 6px;
+    text-shadow: none;
+    background: transparent;
+    font-size: 16px;
+}
+.gatetxt
+{
+    color:#ffffff;
+    text-transform: uppercase;
+}
+.gatepopalertbox
+{
+    width: 100%;
+    position: relative;
+    left: 10px;
+    font-size: 13px;
+    padding: 7px;
+    margin-bottom: 5px;
+    color: white;
+}
+.alertblue
+{
+    background: #2d4571;
+    border: 2px solid #2261d2;
+}
+.alertgreen
+{
+    background:#28624a;
+    border: 2px solid #13b761;
+}
+.gatenotification
+{
+    color: white;
+    font-size: 16px;
+}
+.gatemetrixbinfo
+{
+    width: 100%;
+    padding: 10px 5px;
+    position: relative;
+    color: #fff;
+    font-size: 11px !important;
+    left: 10px;
+    margin-bottom: 2px;
+    background-color: #2d2d39;
+}
+table tr td:nth-of-type(2)
+{
+    text-align:right !important;
+}
+#gatemetricpopup
+{
+    display: none;
+}
+/*  */
