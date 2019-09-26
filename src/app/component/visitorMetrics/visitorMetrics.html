@@ -180,3 +180,74 @@
 <div id="visitorfade" class="black_overlay"></div>
 
 
+<!--------------------- Guest PopUP with qr code--------------------------------------->
+
+
+<div id="visitorlight1" class="white_content_visitor">
+        <button type="button" class="close" (click)="closePopUp()" data-dismiss="popover" aria-hidden="true">&times;</button>
+        <h3>Flat NUMBER : <span id="flatno">Q809</span></h3>
+        <div class="popup_content">
+            <div class="row"> 
+                <div class="col-md-6">
+                    <div class="visitormaintitle">
+                        Host Details
+                    </div>
+                    <div class="visitor_profile ml-0"><span><img alt="" [attr.src]="!!selectedVisitor ? selectedVisitor.guestPic : 'No Data Available'"></span></div>
+            <div class="visitor_details">
+                <!-- <h4>{{!!selectedVisitor ? selectedVisitor.name: ''}}</h4> -->
+                <h4>Rajesh Kumar</h4>
+                <p>Contact Number : +91 9892756865</p>
+            </div>
+            <div style="clear:both;"></div>
+            <div class="visitor_detailstbl">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTrr_6SZl1Az-DPPQrPoJqxl8H_rH2-xk8C7gzxoduRAHoFMTBQ" class="qrimage">
+            </div>
+            <div style="clear: both"></div>
+                </div>
+                <div class="col-md-6">
+                        <div class="visitormaintitle">
+                                Guest Details
+                            </div>
+                        <div class="visitor_profile ml-0"><span><img alt="" [attr.src]="!!selectedVisitor ? selectedVisitor.guestPic : 'No Data Available'"></span></div>
+                        <div class="visitor_details">
+                            <!-- <h4>{{!!selectedVisitor ? selectedVisitor.name: ''}}</h4> -->
+                            <h4>{{selectedVisitor.name}}</h4>
+                            <p>Contact Number : +91 {{selectedVisitor.mobile}}</p>
+                        </div>
+                        <div style="clear:both;"></div>
+                        <div class="visitor_detailstbl">
+                            <table class="table">
+                                <tr>
+                                    <td>Expected Arrival Time</td>
+                                    <td>{{selectedVisitor.actualInTime | date:medium}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Visiting Person/Zone</td>
+                                    <td>{{!!selectedVisitor ? setVisitingZonePerson(selectedVisitor) : 'No Data Available'}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>EXPECTED TIME OUT</td>
+                                    <td>{{selectedVisitor.actualOutTime | date:medium}}</td>
+                                </tr>
+                                <tr>
+                                    <td>NUMBER OF GUEST</td>
+                                    <td>{{selectedVisitor.otherGuests}}</td>
+                                </tr>
+                                <tr>
+                                    <td>PARKING REQUIRED</td>
+                                    <td>{{selectedVisitor.vehicles?'yes':'no'}}</td>
+                                </tr>
+                                <tr>
+                                    <td>VIHICLES</td>
+                                    <td>{{selectedVisitor.vehicles}}</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div style="clear: both"></div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    

@@ -44,10 +44,10 @@
 }
 .white_content_visitor {
     display: none;
-    position: fixed;
+    position: absolute;
     top: 11%;
-    left: 25%;
-    width: 70%;
+    left: -135%;
+    width: 108%;
     height: auto;
     background-color: #343542;
     z-index: 99999;
