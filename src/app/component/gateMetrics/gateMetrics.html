@@ -1,8 +1,8 @@
-﻿<div class="col-lg-12 col-md-12 col-sm-12 gate_metrics block">
+﻿<div class="col-lg-12 col-md-12 col-sm-12 gate_metrics block" style="padding: 0 !important;">
 
     <!--Gate METRICS Popup Section Start-->
 
-    <div id="popover-content-gate" class="hide">
+    <!-- <div id="popover-content-gate" class="hide">
         <button type="button" class="close" data-dismiss="popover" aria-hidden="true"><img alt="" src="../../../assets/images/close_icon.png"></button>
         <h3>Gate Metrics</h3>
         <div class="popup_content">
@@ -29,17 +29,17 @@
                 </table>
             </div>
         </div>
-    </div>
+    </div> -->
     <!--Gate METRICS Popup Section End-->
-
+    <div id="tabsJustifiedContent" class="tab-content">
     <h4>Gate metrics</h4>
     <ul id="tabsJustified" class="nav nav-tabs">
         <li *ngFor="let item of gateCount" style="cursor:pointer;" class="nav-item"><a href="javascript:void(0)" [attr.data-target]="'#gate'+item.value" (click)="onGateSelected(item.label)" data-toggle="tab" class="nav-link" [class.active]="item.value===selectedLabel"><span>{{item.value}}</span></a></li>
     </ul>
+    </div>
 
-
-    <div id="tabsJustifiedContent" class="tab-content">
-        <div [attr.id]="selectedGate" class="tab-pane  fade active show">
+    <div id="" class="tab-content">
+        <div [attr.id]="selectedGate" class="tab-pane gatematricsbody  fade active show">
             <h4>Gate Pass metrics ({{selectedGate}})</h4>
             <div id="gateAlet" class="alert_list">
                 <ul>

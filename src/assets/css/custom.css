@@ -26,7 +26,7 @@ h4 {
     width: 196%;
     height: 100%;
     background-color: black;
-    z-index: 1001;
+    z-index: 999;
     -moz-opacity: 0.8;
     opacity: .80;
     filter: alpha(opacity=80);
@@ -508,17 +508,28 @@ h6 {
 .gate_metrics .lSAction>a {
     top: 20px !important;
 }
-
+#chart1
+{
+    margin-left:67px;
+}
 .gate_metrics .nav-tabs {
     border: none !important;
-    margin-top: 20px !important;
+    margin-top: 11px !important;
+    margin-bottom: -10px;
 }
-
+.gate_metrics
+{
+    padding: 0 !important;
+}
+.gatematricsbody
+{
+    padding: 10px;
+}
 #tabsJustifiedContent {
-    margin: 0 -10px -19px -10px;
     background: #2c2d39 !important;
-    padding: 19px !important;
-    border-radius: 0 0 8px 8px !important;
+    padding: 7px !important;
+    border-top-left-radius: 12px !important;
+    border-top-right-radius: 12px !important;
 }
 
 .gate_metrics .nav-tabs .nav-item a {
@@ -774,7 +785,7 @@ line3 {
 }
 
 .entry_summry .chart_no {
-    margin-right: 33% !important;
+    /* margin-right: 33% !important; */
 }
 
 .entry_summry .chart_no li.first::before {

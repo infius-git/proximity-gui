@@ -51,10 +51,11 @@
                     <td><a data-container="body" data-placement="top" type="button" (click)="drawPath(item)" data-html="true" href="javascript:void(0);" [attr.id]="visitor_metrics">{{item.name}}</a>
                     </td>
                     <td>{{item.mobile}}</td>
-                    <td>{{!!item.vehicles?item.vehicles[0].vehicleNo:''}}</td>
+                    
                     <!-- <td>{{!!item.vehicles?item.vehicles[0].make:''}}</td> -->
-                    <td>{{item.actualInTime}}</td>
-                    <td>{{item.expectedOut}}</td>
+                    <td>{{item.actualInTime | date : medium}}</td>
+                    <td>{{item.expectedOut | date : medium}}</td>
+                    <td>{{!!item.vehicles?item.vehicles[0].vehicleNo:''}}</td>  
                     <!-- <td>{{!!item.vehicles?item.vehicles[0].parkingSlot:''}}</td> -->
                     <!-- <td>{{item.barcode}}</td> -->
                 </tr>

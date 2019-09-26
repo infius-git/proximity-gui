@@ -17,7 +17,7 @@ export class VisitorMetricsComponent implements OnInit {
   @Output() openTable = new EventEmitter<any>();
   selectedVisitor: VisitorVisitDetailView;
   //columData = ['name', 'mobile', 'Vehicle No.', 'Make', 'Arrival Time', 'Exp. Out Time', 'parking allocation time', 'Barcode'];
-  columData = ['name', 'mobile', 'Vehicle No.', 'In Time', 'Out Time'];
+  columData = ['name', 'mobile', 'In Time', 'Out Time', 'Vehicle No.'];
   constructor(private _renderer2: Renderer2, private sanitization: DomSanitizer,
     @Inject(DOCUMENT) private _document) { }
 
