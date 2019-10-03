@@ -121,11 +121,14 @@ export class mapComponent implements OnInit, OnChanges, AfterViewInit {
 }
 
 removeAlertFlash(zone) {
+  
   const zonePolygonEle = document.getElementById('zone-' + zone.id);
   if(zonePolygonEle.style.stroke === 'red') {
     zonePolygonEle.classList.remove('active');
-    zonePolygonEle.setAttribute('style', "position: 'absolute'; stroke: rgb(175, 175, 175);");
-    zonePolygonEle.removeChild(zonePolygonEle.firstElementChild); 
+    //zonePolygonEle.setAttribute('style', "position: 'absolute'; stroke: rgb(175, 175, 175);");
+    //zonePolygonEle.removeChild(zonePolygonEle.firstElementChild); 
+    this.mapData.zonesDetail[zone.id-1].zoneAlerts=[];
+    console.log('map data',this.mapData.zonesDetail[zone.id-1].zoneAlerts);
   }
 }
 

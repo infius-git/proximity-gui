@@ -352,8 +352,9 @@
     <h4>Alert Feed</h4>
     <div id="alertFeed" class="alert_list">
         <ul>
-            <li *ngFor="let alert of selectedalert " [style.color]="alert.color" [class]="alert.type">{{alert.zone_name +' '+alert.text}}</li>
-            <li *ngFor="let alert of allAlerts " [style.color]="alert.color" [class]="alert.type">{{alert.zone_name +' '+alert.text}}</li>
+            <!-- [style.color]="alert.color" -->
+            <li *ngFor="let alert of selectedalert " [class]="alert.type"><i class="fa fa-circle text-danger"></i> {{alert.zone_name +' '+alert.text}}</li>
+            <li *ngFor="let alert of allAlerts " [class]="alert.type"><i class="fa fa-circle text-danger"></i> {{alert.zone_name +' '+alert.text}}</li>
         </ul>
     </div>
 </div>

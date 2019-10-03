@@ -3,7 +3,7 @@
         <img style="width: inherit; height:inherit; position:absolute; " [src]="image ">
         <svg [style.width]="mapData.baseMapImageResolution[0]" [style.height]="mapData.baseMapImageResolution[1] " style="position:absolute; border: 1px solid lawngreen; z-index:1; opacity:1;">  
         <polygon *ngFor="let zone of mapData.zonesDetail " id="{{'zone-'+ zone.id}}"  [attr.points]="zone.polygon.toString()"
-            style="position:relative;" [style.stroke]="!!zone && !!zone.zoneAlerts && zone.zoneAlerts!==undefined && !!zone.zoneAlerts[0]  ? zone.zoneAlerts[0].color : zone.color" (click)="openZoneImage(zone)" > 
+            style="position:relative;" [attr.class]="!!zone && !!zone.zoneAlerts && zone.zoneAlerts!==undefined && !!zone.zoneAlerts[0]  ? 'active' : ''" [style.stroke]="!!zone && !!zone.zoneAlerts && zone.zoneAlerts!==undefined && !!zone.zoneAlerts[0]  ? zone.zoneAlerts[0].color : zone.color" (click)="openZoneImage(zone)" > 
                 <animate
                 id="{{'animate-'+zone.id}}"
                 *ngIf="!!zone && !!zone.zoneAlerts && zone.zoneAlerts!==undefined && !!zone.zoneAlerts[0] && zone.zoneAlerts[0].type=='ALERT'"

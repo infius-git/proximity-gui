@@ -445,6 +445,7 @@ h6 {
     list-style: none !important;
     position: relative !important;
     font-size: 14px !important;
+    color: #fff;
     min-height: 20px !important;
     /* color: #acaec5 !important; */
     font-family: 'Barlow Semi Condensed', sans-serif !important;

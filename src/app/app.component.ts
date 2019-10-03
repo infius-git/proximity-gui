@@ -7,6 +7,7 @@ import { CommonResponse } from "../model/commonresponse";
 import { SecurityGuardView } from "../model/securityGuardView";
 import { VisitorVisitDetailView } from "../model/visitorVisitDetailView";
 import { EventSummaryView } from "../model/eventSummaryView";
+import { ActiveDescendantKeyManager } from '@angular/cdk/a11y';
 const timeInterval = interval(50000);
 
 
@@ -25,7 +26,7 @@ export class AppComponent implements OnInit {
   securityOverview: securityOverview;
   eventSummary: Array<EventSummaryView>;
   monitorMetrics: Array<monitorMetrics> = [];
-  alertFeedMetrics: Array<alertFeedMetrics> = [];
+  alertFeedMetrics: any = [];
   entrySummary: entrySummary;
   towerEntry: towerEntry;
   eventData: any = [];
@@ -48,7 +49,7 @@ export class AppComponent implements OnInit {
         this.mapData = mapData;
         this.isMapAvailable = true;
       });
-
+  
     this.proximityService.getStaticData().subscribe(proximity => {
       this.staticProximity = proximity;
       this.topBar = proximity.top_bar;
@@ -77,7 +78,7 @@ export class AppComponent implements OnInit {
     });
 
     this.subscription = timer(40000, 40000).pipe(
-
+      
       switchMap(() => this.proximityService.getPartialData())).subscribe(partialData => {
         if (!!partialData.data.eventSummary && partialData.data.eventSummary.length > 0) {
           this.eventSummary = partialData.data.eventSummary;
@@ -95,13 +96,17 @@ export class AppComponent implements OnInit {
   calculateEventData() {
     let temp = {};
     let newTemp = {};
+    let zonedetails1 :any=[];
     let gateMetricData = [];
     let alertFeedData = [];
     this.eventData = [];
+    this.alertFeedMetrics=[];
     let alertsFeedOnly = [];
     let warnsFeedOnly = [];
     let alertsAndWarnsFeed = [];
     let color = '';
+   //
+   console.log(this.eventSummary);
     this.eventSummary.forEach(item => {
 
       if (!!temp[item.eventCatagory]) {
@@ -168,19 +173,27 @@ export class AppComponent implements OnInit {
         }
       }
     });
-
     alertsAndWarnsFeed.push.apply(alertsAndWarnsFeed, alertsFeedOnly);
     alertsAndWarnsFeed.push.apply(alertsAndWarnsFeed, warnsFeedOnly);   
     this.alertFeedMetrics.push({alert_event_feed: alertsAndWarnsFeed});
+    console.log(this.alertFeedMetrics);
     this.mapData.zonesDetail.forEach(zoneElement => {
+      zoneElement.zoneAlerts = [];
       this.alertFeedMetrics[0].alert_event_feed.forEach(alertElement => {
-        if(zoneElement.id===alertElement.zone_name){
-          zoneElement.zoneAlerts = [];
+        let date=new Date(alertElement.timestamp);
+        let alertTimestamp=date.getTime();
+        let currenttime=new Date();
+        let priortime=new Date(currenttime.setSeconds(currenttime.getSeconds() - 45));
+        let priorTimestamp=priortime.getTime();
+        if((zoneElement.id===alertElement.zone_name)&&(alertTimestamp>priorTimestamp)){
+          
           zoneElement.zoneAlerts.push(alertElement);
+         
         }
       });
+      zonedetails1.push(zoneElement);
     });
-    
+    this.mapData.zonesDetail=zonedetails1;
     for (let item in newTemp) {
       this.monitorMetrics.push(newTemp[item]);
     }
@@ -193,7 +206,6 @@ export class AppComponent implements OnInit {
       this.pathData = path;
     });
   }
-
   openNewTable() {
     this.openTable = true;
   }
