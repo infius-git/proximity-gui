@@ -211,36 +211,35 @@
                         <div class="visitor_profile ml-0"><span><img alt="" [attr.src]="!!selectedVisitor ? selectedVisitor.guestPic : 'No Data Available'"></span></div>
                         <div class="visitor_details">
                             <!-- <h4>{{!!selectedVisitor ? selectedVisitor.name: ''}}</h4> -->
-                            <h4></h4>
-                            <p>Contact Number : +91 </p>
+                            <h4>{{selectedVisitor.name}}</h4>
+                            <p>Contact Number : +91 {{selectedVisitor.mobile}}</p>
                         </div>
                         <div style="clear:both;"></div>
                         <div class="visitor_detailstbl">
                             <table class="table">
                                 <tr>
                                     <td>Expected Arrival Time</td>
-                                    <td></td>
+                                    <td>{{selectedVisitor.actualInTime}}</td>
                                 </tr>
                                 <tr>
                                     <td>Visiting Person/Zone</td>
-                                    <td>
-                                    </td>
+                                    <td>{{selectedVisitor.targetZone}}</td>
                                 </tr>
                                 <tr>
                                     <td>EXPECTED TIME OUT</td>
-                                    <td></td>
+                                    <td>{{selectedVisitor.actualOutTime}}</td>
                                 </tr>
                                 <tr>
                                     <td>NUMBER OF GUEST</td>
-                                    <td></td>
+                                    <td>{{selectedVisitor.otherGuests}}</td>
                                 </tr>
                                 <tr>
                                     <td>PARKING REQUIRED</td>
-                                    <td></td>
+                                    <td>{{selectedVisitor.vehicles?'Yes':'No'}}</td>
                                 </tr>
                                 <tr>
                                     <td>VIHICLES</td>
-                                    <td></td>
+                                    <td>{{selectedVisitor.vehicles}}</td>
                                 </tr>
                             </table>
                         </div>
