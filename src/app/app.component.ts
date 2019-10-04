@@ -180,7 +180,8 @@ export class AppComponent implements OnInit {
     this.mapData.zonesDetail.forEach(zoneElement => {
       zoneElement.zoneAlerts = [];
       this.alertFeedMetrics[0].alert_event_feed.forEach(alertElement => {
-        let date=new Date(alertElement.timestamp);
+        let alertDateTZ = alertElement.timestamp + "Z";
+        let date=new Date(alertDateTZ);
         let alertTimestamp=date.getTime();
         let currenttime=new Date();
         let priortime=new Date(currenttime.setSeconds(currenttime.getSeconds() - 45));
