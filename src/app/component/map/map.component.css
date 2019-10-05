@@ -323,15 +323,19 @@ button.close {
 .heading-data p
 {
     color: #bebfc3;
-    font-size: 17px;
+    font-size: 16px;
     font-weight: 600;
     letter-spacing: 2px;
 }
 .heading-data h1
 {
     color: #feffff;
-    font-size: 29px;
+    font-size: 26px;
     margin-bottom: 0;
+}
+..mat-table tbody td
+{
+    font-size:15px;
 }
 .orgbut
 {
