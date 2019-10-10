@@ -1,8 +1,10 @@
-import {Component, OnInit, AfterViewInit, Input, ViewChild, OnChanges, SimpleChanges} from '@angular/core';
+import {Component, OnInit, AfterViewInit,Renderer2, Input,Inject, ViewChild, OnChanges, SimpleChanges} from '@angular/core';
 import {DomSanitizer, SafeStyle, SafeUrl} from '@angular/platform-browser';
 import {mapData} from '../../../proximity';
 import { Sort, MatPaginator, MatTableDataSource} from '@angular/material';
 import { FormControl } from '@angular/forms';
+import { DOCUMENT } from '@angular/common';
+
 
 @Component({
   selector: 'main-map',
@@ -29,7 +31,9 @@ export class mapComponent implements OnInit, OnChanges, AfterViewInit {
  private currentPage: any;
  private pageSize: any;
  sortedData: any;
-  constructor(private sanitization: DomSanitizer) { }
+  constructor(private _renderer2: Renderer2,private sanitization: DomSanitizer,
+    @Inject(DOCUMENT) private _document) { }
+  
 
   ngOnInit() {
     this.sortedData = new MatTableDataSource(this.datasource);
@@ -59,6 +63,31 @@ export class mapComponent implements OnInit, OnChanges, AfterViewInit {
                               'targetZone',
                               'targetSite'
                             ];
+
+
+   let script = this._renderer2.createElement('script');
+    script.type = `text/javascript`;
+    script.text = `
+        {
+          $(document).ready(function() {
+            
+
+        function printData()
+        {
+           var divToPrint=document.getElementById("printTable");
+           newWin= window.open("");
+           newWin.document.write(divToPrint.outerHTML);
+           newWin.print();
+           newWin.close();
+        }
+        
+        $('#button').on('click',function(){
+        printData();
+        })
+      });
+    }
+    `;
+    this._renderer2.appendChild(this._document.body, script);
   }
 
   ngAfterViewInit() {
@@ -79,6 +108,8 @@ export class mapComponent implements OnInit, OnChanges, AfterViewInit {
     }
     this.alertFlash();
   }
+
+  
 
   onGateSelected=function(label) {
     document.getElementById('gatemetricpopup').style.display = 'block';

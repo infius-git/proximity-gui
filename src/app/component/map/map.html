@@ -24,7 +24,7 @@
     </div>
     <div [hidden]="!openTheTable" class="mat-elevation-z8 visitor-mat-tbl">
         <span id="tbl-expand"  (click)="closeTabularReport()">&times;</span>
-        <table mat-table [dataSource]="sortedData" matSort (matSortChange)="sortData($event)">
+        <table id="printTable" mat-table matTableExporter #exporter="matTableExporter" [dataSource]="sortedData" matSort (matSortChange)="sortData($event)">
 
             <!--- Note that these columns can be defined in any order.
                               The actual rendered columns are set as a property on the row definition" -->
@@ -53,6 +53,10 @@
         <mat-paginator [length]="sortedData!==undefined && sortedData.paginator!==undefined? sortedData.paginator.length : 25" [pageSize]="sortedData!==undefined && sortedData.paginator!==undefined? sortedData.paginator.pageSize : 5" [pageSizeOptions]="sortedData!==undefined && sortedData.paginator!==undefined? sortedData.paginator.pageSizeOptions : [1, 5, 10, 15, 20, 25]"
             (page)="updatePage($event)">
         </mat-paginator>
+
+        <button mat-raised-button (click)="exporter.exportTable('xlsx', {fileName:'Visitor Details', sheet: 'sheet_name', Props: {Author: 'Talha'}})">Excel</button>
+  <button mat-raised-button (click)="exporter.exportTable('csv')">Csv</button>
+  <button mat-raised-button id="button">Print</button>
     </div>
 
     <div class="row" style="margin-left: 50px;">

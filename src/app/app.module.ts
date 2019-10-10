@@ -23,6 +23,9 @@ import {FooterComponent} from './component/footer/footer.component';
 import {TowerEntryComponent} from './component/towerEntry/towerEntry.component';
 import {VisitorMetricsComponent} from './component/visitorMetrics/visitorMetrics.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTableExporterModule } from 'mat-table-exporter';
+import { MatSelectModule } from '@angular/material/select';
 
 
 
@@ -56,9 +59,12 @@ import {DashboardComponent} from './dashboard/dashboard.component';
         MatSortModule,
         MatInputModule,
         MatFormFieldModule,
+        MatButtonModule,
         ReactiveFormsModule,
         FlexLayoutModule,
-        HttpClientModule
+        HttpClientModule,
+        MatTableExporterModule,
+        MatSelectModule
     ],
     providers: [],
     bootstrap: [AppComponent]

@@ -34,6 +34,7 @@
         "jquery": "^3.4.1",
         "lightslider": "^1.1.6",
         "malihu-custom-scrollbar-plugin": "^3.1.5",
+        "mat-table-exporter": "^1.2.1",
         "moment": "^2.24.0",
         "ngx-malihu-scrollbar": "^8.0.0",
         "popper.js": "^1.15.0",
