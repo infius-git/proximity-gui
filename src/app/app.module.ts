@@ -26,6 +26,7 @@ import {DashboardComponent} from './dashboard/dashboard.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableExporterModule } from 'mat-table-exporter';
 import { MatSelectModule } from '@angular/material/select';
+import { DataTablesModule } from 'angular-datatables';
 
 
 
@@ -64,7 +65,8 @@ import { MatSelectModule } from '@angular/material/select';
         FlexLayoutModule,
         HttpClientModule,
         MatTableExporterModule,
-        MatSelectModule
+        MatSelectModule,
+        DataTablesModule
     ],
     providers: [],
     bootstrap: [AppComponent]

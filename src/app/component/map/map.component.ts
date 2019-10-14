@@ -28,23 +28,35 @@ export class mapComponent implements OnInit, OnChanges, AfterViewInit {
  zoneImage: SafeUrl;
  zoneName: string;
  displayedColumns: string[];
+ displayedColumnsReport: string[];
  private currentPage: any;
  private pageSize: any;
  sortedData: any;
   constructor(private _renderer2: Renderer2,private sanitization: DomSanitizer,
     @Inject(DOCUMENT) private _document) { }
+    dtOptions: any = {};
+    tableData:any;
   
 
   ngOnInit() {
-    this.sortedData = new MatTableDataSource(this.datasource);
-    // console.log(JSON.stringify(this.sortedData.data));
-    if (!!this.sortedData &&  this.sortedData !== undefined && this.datasource !==undefined) {
-        this.sortedData.paginator = this.paginator;
-        this.sortedData.paginator.length = this.datasource.length;
-        this.sortedData.paginator.pageSize = 5;
-        this.sortedData.paginator.pageSizeOptions = [1, 5, 10, 15, 20, 25, 50, 100];
-    }
-
+    this.dtOptions = {
+      dom: 'Bfrtip',
+      buttons: [
+        'copy',
+        'print',
+        'excel',
+        'pdf',
+      ]
+    };
+    // this.sortedData = new MatTableDataSource(this.datasource);
+    // // console.log(JSON.stringify(this.sortedData.data));
+    // if (!!this.sortedData &&  this.sortedData !== undefined && this.datasource !==undefined) {
+    //     this.sortedData.paginator = this.paginator;
+    //     this.sortedData.paginator.length = this.datasource.length;
+    //     this.sortedData.paginator.pageSize = 5;
+    //     this.sortedData.paginator.pageSizeOptions = [1, 5, 10, 15, 20, 25, 50, 100];
+    // }
+    console.log(this.datasource);
     this.image = this.sanitization.bypassSecurityTrustUrl(this.mapData.baseMapImage);
     this.imagestyle = this.sanitization.bypassSecurityTrustStyle(`url(${this.mapData.baseMapImage})`);
     this.alertFlash();
@@ -63,7 +75,14 @@ export class mapComponent implements OnInit, OnChanges, AfterViewInit {
                               'targetZone',
                               'targetSite'
                             ];
-
+                            this.displayedColumnsReport = [ 'Visitor Info',
+                            'Hardware carried',
+                            'Invitee Info',
+                            'In Time',
+                            'Out Time',
+                            'vehicle Details',
+                            'Additional Guest Info'
+                          ];
 
    let script = this._renderer2.createElement('script');
     script.type = `text/javascript`;
@@ -131,8 +150,10 @@ export class mapComponent implements OnInit, OnChanges, AfterViewInit {
     // Zone Alert Flash/Blink Animation Removal.
     this.removeAlertFlash(zone);
   }
+  
   closePopUp(): void {
     document.getElementById('visitorlight').style.display = 'none';
+    document.getElementById('visitor-report').style.display = 'none';
     document.getElementById('zonepopup').style.display = 'none';
     document.getElementById('visitorlight1').style.display = 'none';
     document.getElementById('gatemetricpopup').style.display = 'none';

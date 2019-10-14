@@ -11,5 +11,9 @@ export class ToolbarComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  openVisitorReport=function()
+  {
+    document.getElementById('visitor-report').style.display = 'block';
+    document.getElementById('fade').style.display = 'block';
+  }
 }

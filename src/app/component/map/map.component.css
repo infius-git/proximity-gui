@@ -67,14 +67,24 @@ button.close {
     left: 25%;
     z-index: 1000;
 }
+.visitor-mat-tbl-report
+{
+    position: absolute;
+    float: unset;
+    top: 2%;
+    left: 10%;
+    right:2%;
+    z-index: 1001;
+}
 #tbl-expand
 {
     font-size: 53px;
     cursor: pointer;
     position: absolute;
-    right: 13px;
-    top: -26px;
+    right: 9px;
+    top: -19px;
     color: #ffffff;
+    z-index: 9;
 }
 #tbl-expand .fa-expand
  {
@@ -131,6 +141,10 @@ button.close {
 #flatno
 {
     color:#fff !important;
+}
+.dataTables_filter
+{
+    color:#ffffff;
 }
 .white_content_visitor {
     display: none;
@@ -473,5 +487,8 @@ table tr td:nth-of-type(2)
 {
     display: none;
 }
-
+#visitor-report
+{
+    display: none;
+}
 /*  */

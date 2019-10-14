@@ -24,11 +24,9 @@
     </div>
     <div [hidden]="!openTheTable" class="mat-elevation-z8 visitor-mat-tbl">
         <span id="tbl-expand"  (click)="closeTabularReport()">&times;</span>
-        <table id="printTable" mat-table matTableExporter #exporter="matTableExporter" [dataSource]="sortedData" matSort (matSortChange)="sortData($event)">
+        <!-- <table id="printTable" mat-table matTableExporter #exporter="matTableExporter" [dataSource]="sortedData" matSort (matSortChange)="sortData($event)">
 
-            <!--- Note that these columns can be defined in any order.
-                              The actual rendered columns are set as a property on the row definition" -->
-            <!-- Position Column -->
+            
             <ng-container *ngFor="let filterCol of displayedColumns">
 
                 <ng-container matColumnDef="{{filterCol}}">
@@ -56,9 +54,22 @@
 
         <button mat-raised-button (click)="exporter.exportTable('xlsx', {fileName:'Visitor Details', sheet: 'sheet_name', Props: {Author: 'Talha'}})">Excel</button>
   <button mat-raised-button (click)="exporter.exportTable('csv')">Csv</button>
-  <button mat-raised-button id="button">Print</button>
-    </div>
+  <button mat-raised-button id="button">Print</button> -->
 
+  <table datatable [dtOptions]="dtOptions" class="row-border hover">
+    <thead>
+      <tr>
+        <th *ngFor="let filterCol of displayedColumns">{{filterCol}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr  *ngFor="let element of datasource">
+        <td *ngFor="let filterCol of displayedColumns">{{element[filterCol]}}</td>
+      </tr>
+      
+    </tbody>
+  </table>
+    </div>
     <div class="row" style="margin-left: 50px;">
         <div id="light" class="white_content" style="margin-left: 0px;
         left: auto;
@@ -499,4 +510,28 @@
       </div>
 
     <!---------------------------------------------------------------------------------->
+    <div id="visitor-report" class="mat-elevation-z8 visitor-mat-tbl-report">
+        <span id="tbl-expand"  (click)="closePopUp()">&times;</span>
+       
+
+  <table datatable [dtOptions]="dtOptions" class="row-border hover">
+    <thead>
+      <tr>
+        <th *ngFor="let filterCol of displayedColumnsReport">{{filterCol}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr  *ngFor="let element of datasource">
+        <td>Name: {{element.name}}<br>Address: {{element.fromAddress?element.fromAddress:"No Address"}}<br>Mobile: {{element.mobile}}<br>Purpose Of Visit: <br>Duration: {{element.expectedIn | date: "medium"}} to<br> {{element.expectedOut | date: "medium"}}</td>
+        <td style="text-align: left !important">Hardware</td>
+        <td>invitee</td>
+        <td>{{element.expectedIn | date: "medium"}}</td>
+        <td>{{element.expectedOut | date: "medium"}}</td>
+        <td><span *ngFor="let vehicle of element.vehicles">{{vehicle.vehicleNo}}<br></span></td>
+        <td><span *ngFor="let otherGuest of element.otherGuests">{{otherGuest.name}}<br></span></td>
+      </tr>
+      
+    </tbody>
+  </table>
+    </div>
 </div>
