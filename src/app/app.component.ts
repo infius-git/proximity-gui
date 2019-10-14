@@ -39,7 +39,8 @@ export class AppComponent implements OnInit {
   pathData: any;
   openTable: boolean;
   subscription: Subscription;
-   dateTime: any;
+  dateTime: any;
+  registeredUsersData: any;
   constructor(private proximityService: ProximityService) { }
   
   ngOnInit() {
@@ -48,6 +49,10 @@ export class AppComponent implements OnInit {
     this.proximityService.getMapData().subscribe(mapData => {
         this.mapData = mapData;
         this.isMapAvailable = true;
+      });
+	
+	this.proximityService.getAllUserData().subscribe(registeredUsersArray => {
+        this.registeredUsersData = registeredUsersArray.data;
       });
   
     this.proximityService.getStaticData().subscribe(proximity => {
@@ -72,6 +77,19 @@ export class AppComponent implements OnInit {
 
       if (!!proximity.data.visitorSummary && proximity.data.visitorSummary.length > 0) {
           this.visitorMetrics = proximity.data.visitorSummary;
+		  this.registeredUsersData.forEach(user => {
+          this.visitorMetrics.map((visitor, index) => {
+              if (user.id === visitor.hostUserId) {
+                  this.visitorMetrics[index].hostActiveMobileNo = user.activeMobileNumber;
+                  this.visitorMetrics[index].hostPic = user.actualPicUrl;
+                  this.visitorMetrics[index].hostThumbnailPic = user.thumbnailPicUrl;
+                  this.visitorMetrics[index].hostHouseNo = user.houseNo;
+                  this.visitorMetrics[index].hostName = user.name;
+                  this.visitorMetrics[index].hostPrimaryZone = user.primaryZone;
+                  this.visitorMetrics[index].hostSite = user.site;
+              }
+            });
+          });
       }
 
       this.isDataAvailable = true;
@@ -89,6 +107,19 @@ export class AppComponent implements OnInit {
         }
         if (!!partialData.data.visitorSummary && partialData.data.visitorSummary.length > 0) {
           this.visitorMetrics = partialData.data.visitorSummary;
+		  this.registeredUsersData.forEach(user => {
+          this.visitorMetrics.map((visitor, index) => {
+              if (user.id === visitor.hostUserId) {
+                  this.visitorMetrics[index].hostActiveMobileNo = user.activeMobileNumber;
+                  this.visitorMetrics[index].hostPic = user.actualPicUrl;
+                  this.visitorMetrics[index].hostThumbnailPic = user.thumbnailPicUrl;
+                  this.visitorMetrics[index].hostHouseNo = user.houseNo;
+                  this.visitorMetrics[index].hostName = user.name;
+                  this.visitorMetrics[index].hostPrimaryZone = user.primaryZone;
+                  this.visitorMetrics[index].hostSite = user.site;
+              }
+            });
+          });
         }
       });
   }
@@ -230,5 +261,3 @@ export class AppComponent implements OnInit {
 
 
 }
-
-
