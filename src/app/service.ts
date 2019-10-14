@@ -16,22 +16,31 @@ export class ProximityService {
 
     private proximityUrl = './assets/mock-data/staticroot.json';  // URL to web api
     private globalConstant: GlobalConstant = new GlobalConstant();
-    //private pathUrl = './assets/mock-data/path.json';
-    //private pathUrl = this.globalConstant.BASE_URL + this.globalConstant.DATA_SERVICE_CONTEXT + '/api/dashboard/map-by-visitIds?visitId=ffb70d1b-70cb-4715-ab97-42de362f78cf';
+    // private pathUrl = './assets/mock-data/path.json';
+    //  private pathUrl = this.globalConstant.BASE_URL + this.globalConstant.DATA_SERVICE_CONTEXT +
+    // '/api/dashboard/map-by-visitIds?visitId=ffb70d1b-70cb-4715-ab97-42de362f78cf';
    // private pathUrl = 'https://qu2873cpck.execute-api.us-west-2.amazonaws.com/prod';
-    private pathUrl = this.globalConstant.BASE_URL + this.globalConstant.DATA_SERVICE_CONTEXT+this.globalConstant.API_CONTEXT_DASHBOARD+this.globalConstant.PATH_MAP_BY_VISIT_ID;
+    private pathUrl = this.globalConstant.BASE_URL + this.globalConstant.DATA_SERVICE_CONTEXT +
+    this.globalConstant.API_CONTEXT_DASHBOARD + this.globalConstant.PATH_MAP_BY_VISIT_ID;
    // private pathUrl = 'http://34.231.195.192:9090/services/proximity/api/dashboard/map-by-visitIds?visitId=';
-    private urlRootRequest = this.globalConstant.BASE_URL + this.globalConstant.DATA_SERVICE_CONTEXT + this.globalConstant.API_CONTEXT_DASHBOARD_ROOT;
+
+   private urlRootRequest = this.globalConstant.BASE_URL + this.globalConstant.DATA_SERVICE_CONTEXT +
+   this.globalConstant.API_CONTEXT_DASHBOARD_ROOT;
     // private urlRootRequest = './assets/mock-data/root.json';
 
     private urlRootPartial = this.urlRootRequest + '?isSendCompleteResponse=false&asOfTimestamp=';
+
+    private urlGetAllRegisteredUsers = this.globalConstant.BASE_URL +
+    this.globalConstant.DATA_SERVICE_CONTEXT +
+    this.globalConstant.API_CONTEXT_REGISTERED_USER_DATA;
 
     constructor(private http: HttpClient) {
     }
 
     /** GET heroes from the server */
     getAllData(): Observable<CommonResponse> {
-        return this.http.get<CommonResponse>(this.urlRootRequest + '?isSendCompleteResponse=true&asOfTimestamp='+ moment(new Date()).valueOf());
+        return this.http.get<CommonResponse>(this.urlRootRequest +
+            '?isSendCompleteResponse=true&asOfTimestamp=' + moment(new Date()).valueOf());
     }
 
     getPartialData(): Observable<CommonResponse> {
@@ -55,6 +64,10 @@ export class ProximityService {
                 tap(_ => console.log('fetched heroes')),
                 catchError(this.handleError<mapData>('getmapdata'))
             );
+    }
+
+    getAllUserData(): Observable<any> {
+        return this.http.get<any>(this.urlGetAllRegisteredUsers);
     }
 
     handleError<T>(operation = 'operation', result?: T) {

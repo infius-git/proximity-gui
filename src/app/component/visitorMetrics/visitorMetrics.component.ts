@@ -25,7 +25,8 @@ export class VisitorMetricsComponent implements OnInit {
     this.selectedVisitor = (!!this.visitorMetrics && this.visitorMetrics !== undefined) ? this.visitorMetrics[0] : null;
     if (!!this.visitorMetrics) {
       this.visitorMetrics.forEach(item => {
-        item.guestPic = this.sanitization.bypassSecurityTrustUrl(item.guestPic)
+        item.guestPic = this.sanitization.bypassSecurityTrustUrl(item.guestPic);
+        item.hostPic = this.sanitization.bypassSecurityTrustUrl(item.hostPic);
       });
     }
     let script = this._renderer2.createElement('script');

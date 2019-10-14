@@ -51,11 +51,11 @@
                     <td><a data-container="body" data-placement="top" type="button" (click)="drawPath(item)" data-html="true" href="javascript:void(0);" [attr.id]="visitor_metrics">{{item.name}}</a>
                     </td>
                     <td>{{item.mobile}}</td>
-                    
+
                     <!-- <td>{{!!item.vehicles?item.vehicles[0].make:''}}</td> -->
-                    <td>{{item.actualInTime | date : medium}}</td>
-                    <td>{{item.expectedOut | date : medium}}</td>
-                    <td>{{!!item.vehicles?item.vehicles[0].vehicleNo:''}}</td>  
+                    <td>{{item.actualInTime | date : 'medium'}}</td>
+                    <td>{{item.expectedOut | date : 'medium'}}</td>
+                    <td>{{!!item.vehicles?item.vehicles[0].vehicleNo:''}}</td>
                     <!-- <td>{{!!item.vehicles?item.vehicles[0].parkingSlot:''}}</td> -->
                     <!-- <td>{{item.barcode}}</td> -->
                 </tr>
@@ -90,45 +90,45 @@
     <button type="button" class="close" (click)="closePopUp()" data-dismiss="popover" aria-hidden="true">&times;</button>
     <h3>Visitors</h3>
     <div class="popup_content">
-        <div class="row"> 
-            
+        <div class="row">
+
             <div class="col-md-12">
-                    <div class="visitor_profile ml-0"><span><img alt="" src="../../../assets/images/visitor_img1.png"></span></div>
-                    <div class="visitor_details">
-                        <!-- <h4>{{!!selectedVisitor ? selectedVisitor.name: ''}}</h4> -->
-                        <h4>Nikhl Sharma</h4>
-                        <p>Contact Number : +91 98928666</p>
-                    </div>
-                    <div style="clear:both;"></div>
-                    <div class="visitor_detailstbl">
-                        <table class="table">
-                            <tr>
-                                <td>Contact Details</td>
-                                <td>98928666</td>
-                            </tr>
-                            <tr>
-                                <td>Last Visited Date</td>
-                                <td>24-09-2019 1:00 PM
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Frequent Zones Visited</td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>Invitee</td>
-                                <td>Roshan, Flat - 408</td>
-                            </tr>
-                            <tr>
-                                <td>Breach</td>
-                                <td><span class="redcolor">Yes on 27th Sep 2019</span></td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div style="clear: both"></div>
+                <div class="visitor_profile ml-0"><span><img alt="" src="../../../assets/images/visitor_img1.png"></span></div>
+                <div class="visitor_details">
+                    <!-- <h4>{{!!selectedVisitor ? selectedVisitor.name: ''}}</h4> -->
+                    <h4>Nikhl Sharma</h4>
+                    <p>Contact Number : +91 98928666</p>
+                </div>
+                <div style="clear:both;"></div>
+                <div class="visitor_detailstbl">
+                    <table class="table">
+                        <tr>
+                            <td>Contact Details</td>
+                            <td>98928666</td>
+                        </tr>
+                        <tr>
+                            <td>Last Visited Date</td>
+                            <td>24-09-2019 1:00 PM
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Frequent Zones Visited</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Invitee</td>
+                            <td>Roshan, Flat - 408</td>
+                        </tr>
+                        <tr>
+                            <td>Breach</td>
+                            <td><span class="redcolor">Yes on 27th Sep 2019</span></td>
+                        </tr>
+                    </table>
+                </div>
+                <div style="clear: both"></div>
             </div>
         </div>
-        
+
     </div>
 </div>
 
@@ -136,45 +136,45 @@
     <button type="button" class="close" (click)="closePopUp()" data-dismiss="popover" aria-hidden="true">&times;</button>
     <h3>Visitors</h3>
     <div class="popup_content">
-        <div class="row"> 
-            
+        <div class="row">
+
             <div class="col-md-12">
-                    <div class="visitor_profile ml-0"><span><img alt="" src="../../../assets/images/visitor_img4.png"></span></div>
-                    <div class="visitor_details">
-                        <!-- <h4>{{!!selectedVisitor ? selectedVisitor.name: ''}}</h4> -->
-                        <h4>Rajesh Kumar</h4>
-                        <p>Contact Number : +91 98922666</p>
-                    </div>
-                    <div style="clear:both;"></div>
-                    <div class="visitor_detailstbl">
-                        <table class="table">
-                            <tr>
-                                <td>Contact Details</td>
-                                <td>98928666</td>
-                            </tr>
-                            <tr>
-                                <td>Last Visited Date</td>
-                                <td>24-09-2019 1:00 PM
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Frequent Zones Visited</td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>Invitee</td>
-                                <td>Roshan, Flat - 408</td>
-                            </tr>
-                            <tr>
-                                <td>Breach</td>
-                                <td><span class="redcolor">Yes on 27th Sep 2019</span></td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div style="clear: both"></div>
+                <div class="visitor_profile ml-0"><span><img alt="" src="../../../assets/images/visitor_img4.png"></span></div>
+                <div class="visitor_details">
+                    <!-- <h4>{{!!selectedVisitor ? selectedVisitor.name: ''}}</h4> -->
+                    <h4>Rajesh Kumar</h4>
+                    <p>Contact Number : +91 98922666</p>
+                </div>
+                <div style="clear:both;"></div>
+                <div class="visitor_detailstbl">
+                    <table class="table">
+                        <tr>
+                            <td>Contact Details</td>
+                            <td>98928666</td>
+                        </tr>
+                        <tr>
+                            <td>Last Visited Date</td>
+                            <td>24-09-2019 1:00 PM
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Frequent Zones Visited</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Invitee</td>
+                            <td>Roshan, Flat - 408</td>
+                        </tr>
+                        <tr>
+                            <td>Breach</td>
+                            <td><span class="redcolor">Yes on 27th Sep 2019</span></td>
+                        </tr>
+                    </table>
+                </div>
+                <div style="clear: both"></div>
             </div>
         </div>
-        
+
     </div>
 </div>
 <div id="visitorfade" class="black_overlay"></div>
@@ -184,69 +184,67 @@
 
 
 <div id="visitorlight1" class="white_content_visitor">
-        <button type="button" class="close" (click)="closePopUp()" data-dismiss="popover" aria-hidden="true">&times;</button>
-        <h3>Flat NUMBER : <span id="flatno">Q809</span></h3>
-        <div class="popup_content">
-            <div class="row"> 
-                <div class="col-md-6">
-                    <div class="visitormaintitle">
-                        Host Details
-                    </div>
-                    <div class="visitor_profile ml-0"><span><img alt="" [attr.src]="!!selectedVisitor ? selectedVisitor.guestPic : 'No Data Available'"></span></div>
-            <div class="visitor_details">
-                <!-- <h4>{{!!selectedVisitor ? selectedVisitor.name: ''}}</h4> -->
-                <h4>Rajesh Kumar</h4>
-                <p>Contact Number : +91 9892756865</p>
-            </div>
-            <div style="clear:both;"></div>
-            <div class="visitor_detailstbl">
+    <button type="button" class="close" (click)="closePopUp()" data-dismiss="popover" aria-hidden="true">&times;</button>
+    <h3>Flat NUMBER : <span id="flatno">{{!!selectedVisitor ? selectedVisitor.hostHouseNo : '-'}}</span></h3>
+    <div class="popup_content">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="visitormaintitle">
+                    Host Details
+                </div>
+                <div class="visitor_profile ml-0"><span><img alt="" [attr.src]="!!selectedVisitor ? selectedVisitor.hostPic : 'No Data Available'"></span></div>
+                <div class="visitor_details">
+                    <h4>{{!!selectedVisitor ? selectedVisitor.hostName : '-'}}</h4>
+                    <p>Contact Number : {{!!selectedVisitor ? selectedVisitor.hostActiveMobileNo : '-'}}</p>
+                </div>
+                <div style="clear:both;"></div>
+                <div class="visitor_detailstbl">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTrr_6SZl1Az-DPPQrPoJqxl8H_rH2-xk8C7gzxoduRAHoFMTBQ" class="qrimage">
-            </div>
-            <div style="clear: both"></div>
                 </div>
-                <div class="col-md-6">
-                        <div class="visitormaintitle">
-                                Guest Details
-                            </div>
-                        <div class="visitor_profile ml-0"><span><img alt="" [attr.src]="!!selectedVisitor ? selectedVisitor.guestPic : 'No Data Available'"></span></div>
-                        <div class="visitor_details">
-                            <!-- <h4>{{!!selectedVisitor ? selectedVisitor.name: ''}}</h4> -->
-                            <h4>{{selectedVisitor.name}}</h4>
-                            <p>Contact Number : +91 {{selectedVisitor.mobile}}</p>
-                        </div>
-                        <div style="clear:both;"></div>
-                        <div class="visitor_detailstbl">
-                            <table class="table">
-                                <tr>
-                                    <td>Expected Arrival Time</td>
-                                    <td>{{selectedVisitor.actualInTime}}</td>
-                                </tr>
-                                <tr>
-                                    <td>Visiting Person/Zone</td>
-                                    <td>{{selectedVisitor.targetZone}}</td>
-                                </tr>
-                                <tr>
-                                    <td>EXPECTED TIME OUT</td>
-                                    <td>{{selectedVisitor.actualOutTime}}</td>
-                                </tr>
-                                <tr>
-                                    <td>NUMBER OF GUEST</td>
-                                    <td>{{selectedVisitor.otherGuests}}</td>
-                                </tr>
-                                <tr>
-                                    <td>PARKING REQUIRED</td>
-                                    <td>{{selectedVisitor.vehicles?'Yes':'No'}}</td>
-                                </tr>
-                                <tr>
-                                    <td>VIHICLES</td>
-                                    <td>{{selectedVisitor.vehicles}}</td>
-                                </tr>
-                            </table>
-                        </div>
-                        <div style="clear: both"></div>
-                </div>
+                <div style="clear: both"></div>
             </div>
-            
+            <div class="col-md-6">
+                <div class="visitormaintitle">
+                    Guest Details
+                </div>
+                <div class="visitor_profile ml-0"><span><img alt="" [attr.src]="!!selectedVisitor ? selectedVisitor.guestPic : 'No Data Available'"></span></div>
+                <div class="visitor_details">
+                    <h4>{{!!selectedVisitor ? selectedVisitor.name: '-'}}</h4>
+                    <!-- <h4>{{selectedVisitor.name}}</h4> -->
+                    <p>Contact Number : {{!!selectedVisitor && !!selectedVisitor.mobile ? ('+91'+selectedVisitor.mobile) : '-'}}</p>
+                </div>
+                <div style="clear:both;"></div>
+                <div class="visitor_detailstbl">
+                    <table class="table">
+                        <tr>
+                            <td>Expected Arrival Time</td>
+                            <td>{{!!selectedVisitor && !!selectedVisitor.actualInTime ? selectedVisitor.actualInTime : '-'}}</td>
+                        </tr>
+                        <tr>
+                            <td>Visiting Person/Zone</td>
+                            <td>{{!!selectedVisitor && selectedVisitor.targetZone ? selectedVisitor.targetZone : '-'}}</td>
+                        </tr>
+                        <tr>
+                            <td>EXPECTED TIME OUT</td>
+                            <td>{{!!selectedVisitor && !!selectedVisitor.actualOutTime ? selectedVisitor.actualOutTime : '-'}}</td>
+                        </tr>
+                        <tr>
+                            <td>NUMBER OF GUEST</td>
+                            <td>{{!!selectedVisitor && !!selectedVisitor.otherGuests ? selectedVisitor.otherGuests : '-'}}</td>
+                        </tr>
+                        <tr>
+                            <td>PARKING REQUIRED</td>
+                            <td>{{!!selectedVisitor && !!selectedVisitor.vehicles ? 'Yes' : 'No'}}</td>
+                        </tr>
+                        <tr>
+                            <td>VEHICLES</td>
+                            <td>{{!!selectedVisitor && !!selectedVisitor.vehicles ? selectedVisitor.vehicles : '-'}}</td>
+                        </tr>
+                    </table>
+                </div>
+                <div style="clear: both"></div>
+            </div>
         </div>
+
     </div>
-    
+</div>
