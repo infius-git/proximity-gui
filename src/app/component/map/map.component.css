@@ -519,4 +519,21 @@ table tr td:nth-of-type(2)
 {
     display: none;
 }
+.visitor-mat-tbl-alert-report
+{
+    display: none;
+    position: absolute;
+    z-index: 1000;
+    width: 771px;
+    top: 0px;
+    left: -262%;
+}
+.visitor-mat-tbl-alert-report
+{
+    display: none;
+    position: absolute;
+    z-index: 1001;
+    top: 0px;
+    left: 2%;
+}
 /*  */

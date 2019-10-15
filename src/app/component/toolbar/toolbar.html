@@ -3,5 +3,6 @@
     <ul class="navbar-navc col-sm-9 col-md-9">
         <li *ngFor="let menu of topData.access_links"><a [attr.href]="menu.link_url=='Master Control'" [class.imgM]="menu.link_label=='Master Control'" [class.active]="menu.link_label=='Master Control'"><i class="fa fa-dashboard"></i><span>{{menu.link_label}}</span></a></li>
         <li><a href="#" (click)="openVisitorReport()"><i class="fa fa-dashboard"></i><span>Report</span></a></li>
+        <li><a href="#" (click)="openAlertReport()"><i class="fa fa-dashboard"></i><span>Alert Report</span></a></li>
     </ul>
 </nav>

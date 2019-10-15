@@ -16,4 +16,9 @@ export class ToolbarComponent implements OnInit {
     document.getElementById('visitor-report').style.display = 'block';
     document.getElementById('fade').style.display = 'block';
   }
+  openAlertReport=function()
+  {
+    document.getElementById('visitor-report-alert').style.display = 'block';
+    document.getElementById('fade').style.display = 'block';
+  }
 }

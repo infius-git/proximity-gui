@@ -1,6 +1,6 @@
 import {Component, OnInit, AfterViewInit,Renderer2, Input,Inject, ViewChild, OnChanges, SimpleChanges} from '@angular/core';
 import {DomSanitizer, SafeStyle, SafeUrl} from '@angular/platform-browser';
-import {mapData} from '../../../proximity';
+import {mapData,alertEvents, alertFeedMetrics} from '../../../proximity';
 import { Sort, MatPaginator, MatTableDataSource} from '@angular/material';
 import { VisitorVisitDetailView } from '../../../model/visitorVisitDetailView';
 import { FormControl } from '@angular/forms';
@@ -19,9 +19,11 @@ export class mapComponent implements OnInit, OnChanges, AfterViewInit {
 @Input() openTable: any;
 @Input() mapData: mapData;
 @Input() pathData: any;
+@Input() alertFeedMetrics: alertFeedMetrics;
 @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
  openTheTable: Boolean = false;
+ allAlerts: Array<alertEvents>;
  image: SafeUrl;
  imagestyle: SafeStyle;
  drawPath: Boolean = false;
@@ -30,6 +32,7 @@ export class mapComponent implements OnInit, OnChanges, AfterViewInit {
  zoneName: string;
  displayedColumns: string[];
  displayedColumnsReport: string[];
+ displayedColumnsAlertReport: string[];
  private currentPage: any;
  private pageSize: any;
  sortedData: any;
@@ -58,7 +61,7 @@ export class mapComponent implements OnInit, OnChanges, AfterViewInit {
     //     this.sortedData.paginator.pageSize = 5;
     //     this.sortedData.paginator.pageSizeOptions = [1, 5, 10, 15, 20, 25, 50, 100];
     // }
-    console.log(this.datasource);
+    this.allAlerts = !!this.alertFeedMetrics  && this.alertFeedMetrics[0]!==undefined ? this.alertFeedMetrics[0].alert_event_feed : [{category:'None',type:'INFO', color: 'green',zone_name: 'No', text: 'No Alerts' ,deviceId: null,deviceType: null, timestamp: null, cardId: null }];
     this.image = this.sanitization.bypassSecurityTrustUrl(this.mapData.baseMapImage);
     this.imagestyle = this.sanitization.bypassSecurityTrustStyle(`url(${this.mapData.baseMapImage})`);
     this.alertFlash();
@@ -85,6 +88,13 @@ export class mapComponent implements OnInit, OnChanges, AfterViewInit {
                             'vehicle Details',
                             'Additional Guest Info'
                           ];
+                          this.displayedColumnsAlertReport = [ 'Type',
+                          'Severity',
+                          'Time',
+                          'Status',
+                          'Resolved/Owened By'
+                        ];
+                          
 
    let script = this._renderer2.createElement('script');
     script.type = `text/javascript`;
@@ -138,6 +148,10 @@ export class mapComponent implements OnInit, OnChanges, AfterViewInit {
   closePopUpVRreport=function() {
     document.getElementById('visitorlight11').style.display = 'none';
     document.getElementById('fadereport').style.display = 'none';
+  }
+  closePopUpARreport=function() {
+    document.getElementById('visitor-report-alert').style.display = 'none';
+    document.getElementById('fade').style.display = 'none';
   }
   onGateSelected=function(label) {
     document.getElementById('gatemetricpopup').style.display = 'block';

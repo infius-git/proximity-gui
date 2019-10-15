@@ -1,1 +1,98 @@
-﻿.black_overlay {    display: none;    position: absolute;    top: 0%;    left: 0%;    width: 100%;    height: 100%;    background-color: black;    z-index: 1001;    -moz-opacity: 0.8;    opacity: .80;    filter: alpha(opacity=80);}.gatePopup {    display: none;    position: absolute;    top: -20px;    left: -520px;    height: auto;    width: 600px;    padding: 16px;    border: 16px solid orange;    /* background-color: white; */    background-color: #343542;    z-index: 1002;    overflow: auto;}.visitPopup {    display: none;    position: absolute;    top: 260px;    left: 100px;    height: auto;    width: 600px;    padding: 16px;    border: 16px solid orange;    /* background-color: white; */    background-color: #343542;    z-index: 1002;    overflow: auto;}.guestPopup {    display: none;    position: absolute;    top: -20px;    left: 100px;    height: auto;    width: 600px;    padding: 16px;    border: 16px solid orange;    /* background-color: white; */    background-color: #343542;    z-index: 1002;    overflow: auto;}.popupheader {    font-size: 18px;    color: #e1e2ee;    font-weight: 500;    text-transform: uppercase;    font-family: 'Barlow Semi Condensed', sans-serif;    height: 60px;    padding-left: 30px;    line-height: 60px;    border-radius: 12px 12px 0 0;    background: rgb(51, 52, 65) !important;    /* Old browsers */    background: -moz-linear-gradient(top, rgba(51, 52, 65, 1) 0%, rgba(38, 39, 50, 1) 100%) !important;    /* FF3.6-15 */    background: -webkit-linear-gradient(top, rgba(51, 52, 65, 1) 0%, rgba(38, 39, 50, 1) 100%) !important;    /* Chrome10-25,Safari5.1-6 */    background: linear-gradient(to bottom, rgba(51, 52, 65, 1) 0%, rgba(38, 39, 50, 1) 100%) !important;    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#333441', endColorstr='#262732', GradientType=0);    /* IE6-9 */}.gatePopup div {    color: #e1e2ee;}.guestPopup div {    color: #e1e2ee;}.visitPopup div {    color: #e1e2ee;}button.close {    margin-right: 30px !important;    margin-top: 21px !important;    opacity: 1 !important;}
+﻿.black_overlay {
+    display: none;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    z-index: 1001;
+    -moz-opacity: 0.8;
+    opacity: .80;
+    filter: alpha(opacity=80);
+}
+
+.gatePopup {
+    display: none;
+    position: absolute;
+    top: -20px;
+    left: -520px;
+    height: auto;
+    width: 600px;
+    padding: 16px;
+    border: 16px solid orange;
+    /* background-color: white; */
+    background-color: #343542;
+    z-index: 1002;
+    overflow: auto;
+}
+
+.visitPopup {
+    display: none;
+    position: absolute;
+    top: 260px;
+    left: 100px;
+    height: auto;
+    width: 600px;
+    padding: 16px;
+    border: 16px solid orange;
+    /* background-color: white; */
+    background-color: #343542;
+    z-index: 1002;
+    overflow: auto;
+}
+
+.guestPopup {
+    display: none;
+    position: absolute;
+    top: -20px;
+    left: 100px;
+    height: auto;
+    width: 600px;
+    padding: 16px;
+    border: 16px solid orange;
+    /* background-color: white; */
+    background-color: #343542;
+    z-index: 1002;
+    overflow: auto;
+}
+
+.popupheader {
+    font-size: 18px;
+    color: #e1e2ee;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    height: 60px;
+    padding-left: 30px;
+    line-height: 60px;
+    border-radius: 12px 12px 0 0;
+    background: rgb(51, 52, 65) !important;
+    /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(51, 52, 65, 1) 0%, rgba(38, 39, 50, 1) 100%) !important;
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(51, 52, 65, 1) 0%, rgba(38, 39, 50, 1) 100%) !important;
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(51, 52, 65, 1) 0%, rgba(38, 39, 50, 1) 100%) !important;
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#333441', endColorstr='#262732', GradientType=0);
+    /* IE6-9 */
+}
+
+.gatePopup div {
+    color: #e1e2ee;
+}
+
+.guestPopup div {
+    color: #e1e2ee;
+}
+
+.visitPopup div {
+    color: #e1e2ee;
+}
+
+button.close {
+    margin-right: 30px !important;
+    margin-top: 21px !important;
+    opacity: 1 !important;
+}

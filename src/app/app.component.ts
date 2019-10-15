@@ -137,7 +137,6 @@ export class AppComponent implements OnInit {
     let alertsAndWarnsFeed = [];
     let color = '';
    //
-   console.log(this.eventSummary);
     this.eventSummary.forEach(item => {
 
       if (!!temp[item.eventCatagory]) {

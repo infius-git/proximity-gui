@@ -1671,3 +1671,7 @@ polygon.active {
     margin-top: 10px;
     color: white !important;
 }
+.dataTables_wrapper .dataTables_info
+{
+    color:#ffffff !important;
+}
