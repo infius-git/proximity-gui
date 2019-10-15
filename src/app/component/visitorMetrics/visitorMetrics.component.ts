@@ -59,6 +59,7 @@ export class VisitorMetricsComponent implements OnInit {
 
   openPopover = function (item) {
     this.selectedVisitor = item;
+    console.log(this.selectedVisitor);
     document.getElementById('visitorlight1').style.display = 'block';
     document.getElementById('fade').style.display = 'block';
   }

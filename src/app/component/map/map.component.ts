@@ -2,6 +2,7 @@ import {Component, OnInit, AfterViewInit,Renderer2, Input,Inject, ViewChild, OnC
 import {DomSanitizer, SafeStyle, SafeUrl} from '@angular/platform-browser';
 import {mapData} from '../../../proximity';
 import { Sort, MatPaginator, MatTableDataSource} from '@angular/material';
+import { VisitorVisitDetailView } from '../../../model/visitorVisitDetailView';
 import { FormControl } from '@angular/forms';
 import { DOCUMENT } from '@angular/common';
 
@@ -32,6 +33,7 @@ export class mapComponent implements OnInit, OnChanges, AfterViewInit {
  private currentPage: any;
  private pageSize: any;
  sortedData: any;
+ selectedVisitor: VisitorVisitDetailView;
   constructor(private _renderer2: Renderer2,private sanitization: DomSanitizer,
     @Inject(DOCUMENT) private _document) { }
     dtOptions: any = {};
@@ -128,8 +130,15 @@ export class mapComponent implements OnInit, OnChanges, AfterViewInit {
     this.alertFlash();
   }
 
-  
-
+  openGuestReport = function (item) {
+    this.selectedVisitor = item;
+    document.getElementById('visitorlight11').style.display = 'block';
+    document.getElementById('fadereport').style.display = 'block';
+  }
+  closePopUpVRreport=function() {
+    document.getElementById('visitorlight11').style.display = 'none';
+    document.getElementById('fadereport').style.display = 'none';
+  }
   onGateSelected=function(label) {
     document.getElementById('gatemetricpopup').style.display = 'block';
     document.getElementById('fade').style.display = 'block';
