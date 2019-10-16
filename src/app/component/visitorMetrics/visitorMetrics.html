@@ -238,7 +238,7 @@
                         </tr>
                         <tr>
                             <td>VEHICLES</td>
-                            <td>{{!!selectedVisitor && !!selectedVisitor.vehicles ? selectedVisitor.vehicles : '-'}}</td>
+                            <td><span *ngFor="let vehicle of selectedVisitor.vehicles">Vehicle No.: {{(!!selectedVisitor.vehicles)?vehicle.vehicleNo:'-'}}<br></span></td>
                         </tr>
                     </table>
                 </div>

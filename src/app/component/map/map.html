@@ -60,7 +60,11 @@
     </thead>
     <tbody>
       <tr  *ngFor="let element of datasource">
-        <td *ngFor="let filterCol of displayedColumns">{{element[filterCol]}}</td>
+        <td *ngFor="let filterCol of displayedColumns">
+            <span *ngIf="filterCol=='vehicles'"><span *ngFor="let vehicle of element.vehicles">{{vehicle.vehicleNo}}</span></span>
+            <span *ngIf="filterCol!='vehicles' && filterCol!='otherGuests'">{{element[filterCol]}}</span>
+            <span *ngIf="filterCol=='otherGuests'"><span *ngFor="let otherguest of element.otherGuests">{{otherguest.name}}</span></span>
+        </td>
       </tr>
       
     </tbody>
