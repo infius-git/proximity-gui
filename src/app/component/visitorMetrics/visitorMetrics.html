@@ -217,20 +217,24 @@
                 <div class="visitor_detailstbl">
                     <table class="table">
                         <tr>
-                            <td>Expected Arrival Time</td>
-                            <td>{{!!selectedVisitor && !!selectedVisitor.actualInTime ? selectedVisitor.actualInTime : '-'}}</td>
+                            <td>Actual Arrival Time</td>
+                            <td>{{(!!selectedVisitor && !!selectedVisitor.actualInTime) ? (selectedVisitor.actualInTime | date: "medium") : '-'}}</td>
                         </tr>
                         <tr>
                             <td>Visiting Person/Zone</td>
                             <td>{{!!selectedVisitor && selectedVisitor.targetZone ? selectedVisitor.targetZone : '-'}}</td>
                         </tr>
                         <tr>
-                            <td>EXPECTED TIME OUT</td>
-                            <td>{{!!selectedVisitor && !!selectedVisitor.actualOutTime ? selectedVisitor.actualOutTime : '-'}}</td>
+                            <td>Actual TIME OUT</td>
+                            <td>{{!!selectedVisitor && !!selectedVisitor.actualOutTime ? (selectedVisitor.actualOutTime | date: "medium") : '-'}}</td>
+                        </tr>
+                        <tr>
+                            <td>SCHD DURATION</td>
+                            <td>{{selectedVisitor.expectedIn | date: "medium"}} To {{selectedVisitor.expectedOut | date: "medium"}}</td>
                         </tr>
                         <tr>
                             <td>NUMBER OF GUEST</td>
-                            <td>{{!!selectedVisitor && !!selectedVisitor.otherGuests ? selectedVisitor.otherGuests : '-'}}</td>
+                            <td><span *ngFor="let otherguest of selectedVisitor.otherGuests">{{(!!otherguest.name)?otherguest.name:'-'}}<br></span></td>
                         </tr>
                         <tr>
                             <td>PARKING REQUIRED</td>
@@ -238,7 +242,7 @@
                         </tr>
                         <tr>
                             <td>VEHICLES</td>
-                            <td><span *ngFor="let vehicle of selectedVisitor.vehicles">Vehicle No.: {{(!!selectedVisitor.vehicles)?vehicle.vehicleNo:'-'}}<br></span></td>
+                            <td><span *ngFor="let vehicle of selectedVisitor.vehicles">{{(!!selectedVisitor.vehicles)?vehicle.vehicleNo:'-'}}<br></span></td>
                         </tr>
                     </table>
                 </div>

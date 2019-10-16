@@ -30,6 +30,8 @@ export class mapComponent implements OnInit, OnChanges, AfterViewInit {
  pathpoints: any;
  zoneImage: SafeUrl;
  zoneName: string;
+ zoneid: any;
+
  displayedColumns: string[];
  displayedColumnsReport: string[];
  displayedColumnsAlertReport: string[];
@@ -61,6 +63,7 @@ export class mapComponent implements OnInit, OnChanges, AfterViewInit {
     //     this.sortedData.paginator.pageSize = 5;
     //     this.sortedData.paginator.pageSizeOptions = [1, 5, 10, 15, 20, 25, 50, 100];
     // }
+    console.log(this.datasource);
     this.allAlerts = !!this.alertFeedMetrics  && this.alertFeedMetrics[0]!==undefined ? this.alertFeedMetrics[0].alert_event_feed : [{category:'None',type:'INFO', color: 'green',zone_name: 'No', text: 'No Alerts' ,deviceId: null,deviceType: null, timestamp: null, cardId: null }];
     this.image = this.sanitization.bypassSecurityTrustUrl(this.mapData.baseMapImage);
     this.imagestyle = this.sanitization.bypassSecurityTrustStyle(`url(${this.mapData.baseMapImage})`);
@@ -154,6 +157,8 @@ export class mapComponent implements OnInit, OnChanges, AfterViewInit {
     document.getElementById('fade').style.display = 'none';
   }
   onGateSelected=function(label) {
+    console.log('gate',label);
+    this.gateSelected=label;
     document.getElementById('gatemetricpopup').style.display = 'block';
     document.getElementById('fade').style.display = 'block';
   }
@@ -164,6 +169,7 @@ export class mapComponent implements OnInit, OnChanges, AfterViewInit {
   
   openZoneImage(zone): void {
     this.drawPath = false;
+    this.zoneid=zone.id;
     this.zoneName = zone.name;
     this.zoneImage = this.sanitization.bypassSecurityTrustUrl(zone.zoneImage);
     //document.getElementById('light').style.display = 'block';

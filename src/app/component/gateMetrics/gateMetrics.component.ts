@@ -18,6 +18,7 @@ export class GateMetricsComponent implements OnInit, AfterViewInit {
   selectedMetric: Array<gatePass>;
   selectedalert: Array<gatePass>;
   allAlerts: Array<alertEvents>;
+  gateSelected: any;
   scrollbarOptions: any;
   gateTime: any;
   constructor(private mScrollbarService: MalihuScrollbarService, private _renderer2: Renderer2,
@@ -81,6 +82,8 @@ export class GateMetricsComponent implements OnInit, AfterViewInit {
   //   this.openPopUp();
   // }
   onGateSelected=function(label) {
+    console.log('gate',label);
+    this.gateSelected=label;
     document.getElementById('gatemetricpopup').style.display = 'block';
     document.getElementById('fade').style.display = 'block';
   }
@@ -93,10 +96,20 @@ export class GateMetricsComponent implements OnInit, AfterViewInit {
     document.getElementById('visitorfade').style.display = 'block';
   }
   closePopUp(): void {
-    document.getElementById('gatelight').style.display = 'none';
-    document.getElementById('gatefade').style.display = 'none';
+    document.getElementById('visitorlight').style.display = 'none';
+    document.getElementById('visitor-report').style.display = 'none';
+    document.getElementById('zonepopup').style.display = 'none';
+    document.getElementById('visitorlight1').style.display = 'none';
+    document.getElementById('gatemetricpopup').style.display = 'none';
+  document.getElementById('light').style.display = 'none';
+  document.getElementById('light2').style.display = 'none';
+  document.getElementById('fade').style.display = 'none';
+ }
+  // closePopUp(): void {
+  //   document.getElementById('gatelight').style.display = 'none';
+  //   document.getElementById('gatefade').style.display = 'none';
 
-  }
+  // }
   closePopUp1(): void {
     document.getElementById('guestlight').style.display = 'none';
     document.getElementById('guestfade').style.display = 'none';

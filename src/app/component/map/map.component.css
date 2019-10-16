@@ -404,9 +404,9 @@ button.close {
 {
     padding: 20px 25px;
 }
-.fas
+.fas,.fa
 {
-    margin-right: 10px;
+    margin-left: 10px;
     color: #969799;
     font-size: 24px;
    
