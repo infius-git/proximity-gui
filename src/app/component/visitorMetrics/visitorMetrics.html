@@ -217,32 +217,40 @@
                 <div class="visitor_detailstbl">
                     <table class="table">
                         <tr>
-                            <td>Actual Arrival Time</td>
-                            <td>{{(!!selectedVisitor && !!selectedVisitor.actualInTime) ? (selectedVisitor.actualInTime | date: "medium") : '-'}}</td>
-                        </tr>
-                        <tr>
-                            <td>Visiting Person/Zone</td>
+                            <td>Visiting Zone</td>
                             <td>{{!!selectedVisitor && selectedVisitor.targetZone ? selectedVisitor.targetZone : '-'}}</td>
                         </tr>
                         <tr>
-                            <td>Actual TIME OUT</td>
-                            <td>{{!!selectedVisitor && !!selectedVisitor.actualOutTime ? (selectedVisitor.actualOutTime | date: "medium") : '-'}}</td>
+                            <td>In Time</td>
+                            <td>{{(!!selectedVisitor && !!selectedVisitor.actualInTime) ? (selectedVisitor.actualInTime | date: 'EEE, MMM d, y hh:mm a') : '-'}}</td>
                         </tr>
                         <tr>
-                            <td>SCHD DURATION</td>
-                            <td>{{selectedVisitor.expectedIn | date: "medium"}} To {{selectedVisitor.expectedOut | date: "medium"}}</td>
+                            <td>Out Time</td>
+                            <td>{{!!selectedVisitor && !!selectedVisitor.actualOutTime ? (selectedVisitor.actualOutTime | date: 'EEE, MMM d, y hh:mm a') : '-'}}</td>
                         </tr>
                         <tr>
-                            <td>NUMBER OF GUEST</td>
-                            <td><span *ngFor="let otherguest of selectedVisitor.otherGuests">{{(!!otherguest.name)?otherguest.name:'-'}}<br></span></td>
+                            <td>Visit Sched.</td>
+                            <td>{{(selectedVisitor.expectedIn | date: 'EEE, MMM d, y hh:mm a') + ' TO ' + (selectedVisitor.expectedOut | date: 'EEE, MMM d, y hh:mm a')}}</td>
                         </tr>
                         <tr>
-                            <td>PARKING REQUIRED</td>
-                            <td>{{!!selectedVisitor && !!selectedVisitor.vehicles ? 'Yes' : 'No'}}</td>
+                            <td>Add. Guest</td>
+                            <td>
+                                <span>{{(!!selectedVisitor && !!selectedVisitor.otherGuests) ? selectedVisitor.otherGuests.length :'-'}}<br>
+                                <span *ngFor="let otherguest of selectedVisitor.otherGuests">{{(!!otherguest.name) ? (' -  ' + otherguest.name +' ('+ otherguest.mobile +')') : '-'}}<br></span>
+                                </span>
+                            </td>
                         </tr>
                         <tr>
-                            <td>VEHICLES</td>
-                            <td><span *ngFor="let vehicle of selectedVisitor.vehicles">{{(!!selectedVisitor.vehicles)?vehicle.vehicleNo:'-'}}<br></span></td>
+                            <td>Parking</td>
+                            <td>{{!!selectedVisitor && !!selectedVisitor.vehicles ? 'Yes' : 'Not Required'}}</td>
+                        </tr>
+                        <tr>
+                            <td>Vehicles</td>
+                            <td>
+                                <span>{{(!!selectedVisitor.vehicles) ? selectedVisitor.vehicles.length :'-'}}<br>
+                                <span *ngFor="let vehicle of selectedVisitor.vehicles">{{(!!selectedVisitor.vehicles) ? ' -  '+vehicle.vehicleNo:'-'}}<br></span>
+                                </span>
+                            </td>
                         </tr>
                     </table>
                 </div>
@@ -251,4 +259,4 @@
         </div>
 
     </div>
-</div>
+</div>s
