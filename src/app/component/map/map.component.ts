@@ -89,7 +89,7 @@ export class mapComponent implements OnInit, OnChanges, AfterViewInit {
                             'Visitor Images',
                             'Visitor Info',
                             'Hardware carried',
-                            'Invitee Info',
+                            'Host Info',
                             'In Time',
                             'Out Time',
                             'vehicle Details',
