@@ -314,7 +314,8 @@
     </thead>
     <tbody>
       <tr  *ngFor="let element of datasource" (click)="openGuestReport(element)">
-        <td>Name: {{element.name}}<br>Address: {{element.fromAddress?element.fromAddress:"No Address"}}<br>Mobile: {{element.mobile}}<br>Purpose Of Visit: <br>Duration: {{element.expectedIn | date: "medium"}} to<br> {{element.expectedOut | date: "medium"}}</td>
+        <td style="text-align: left !important"><img alt="" [attr.src]="element.guestThumbnailPic"></td>
+        <td style="text-align: left !important">Name: {{element.name}}<br>Address: {{element.fromAddress?element.fromAddress:"No Address"}}<br>Mobile: {{element.mobile}}<br>Purpose Of Visit: <br>Duration: {{element.expectedIn | date: "medium"}} to<br> {{element.expectedOut | date: "medium"}}</td>
         <td style="text-align: left !important">Hardware</td>
         <td>invitee</td>
         <td>{{element.expectedIn | date: "medium"}}</td>

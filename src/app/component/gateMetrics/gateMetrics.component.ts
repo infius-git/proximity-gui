@@ -30,6 +30,7 @@ export class GateMetricsComponent implements OnInit, AfterViewInit {
     this.mScrollbarService.initScrollbar('#alertFeed', { axis: 'y', theme: 'dark-thick', scrollButtons: { enable: true } });
   }
   ngOnInit() {
+    console.log('monitor',this.monitorMetrics);
     this.gateTime = new Date().toDateString()
     this.scrollbarOptions = { axis: 'yx', theme: 'minimal-dark' };
     let script = this._renderer2.createElement('script');

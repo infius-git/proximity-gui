@@ -46,6 +46,8 @@ export class mapComponent implements OnInit, OnChanges, AfterViewInit {
   
 
   ngOnInit() {
+    console.log('alert',alertFeedMetrics);
+    console.log('alert',this.datasource);
     this.dtOptions = {
       dom: 'Bfrtip',
       buttons: [
@@ -83,7 +85,9 @@ export class mapComponent implements OnInit, OnChanges, AfterViewInit {
                               'targetZone',
                               'targetSite'
                             ];
-                            this.displayedColumnsReport = [ 'Visitor Info',
+                            this.displayedColumnsReport = [ 
+                            'Visitor Images',
+                            'Visitor Info',
                             'Hardware carried',
                             'Invitee Info',
                             'In Time',
