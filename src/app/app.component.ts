@@ -7,7 +7,6 @@ import { CommonResponse } from "../model/commonresponse";
 import { SecurityGuardView } from "../model/securityGuardView";
 import { VisitorVisitDetailView } from "../model/visitorVisitDetailView";
 import { EventSummaryView } from "../model/eventSummaryView";
-import { ActiveDescendantKeyManager } from '@angular/cdk/a11y';
 const timeInterval = interval(50000);
 
 
@@ -31,6 +30,8 @@ export class AppComponent implements OnInit {
   towerEntry: towerEntry;
   eventData: any = [];
   visitorMetrics: Array<VisitorVisitDetailView>;
+  newTableData: Array<any> = [];
+  displayedColumns: Array<any> = [];
   anomalySummary: anomalySummary;
   parkingMetrics: parkingMetrics;
   isDataAvailable: boolean;
@@ -42,19 +43,19 @@ export class AppComponent implements OnInit {
   dateTime: any;
   registeredUsersData: any;
   constructor(private proximityService: ProximityService) { }
-  
+
   ngOnInit() {
     this.isDataAvailable = false;
 
     this.proximityService.getMapData().subscribe(mapData => {
-        this.mapData = mapData;
-        this.isMapAvailable = true;
-      });
-	
-	this.proximityService.getAllUserData().subscribe(registeredUsersArray => {
-        this.registeredUsersData = registeredUsersArray.data;
-      });
-  
+      this.mapData = mapData;
+      this.isMapAvailable = true;
+    });
+
+    this.proximityService.getAllUserData().subscribe(registeredUsersArray => {
+      this.registeredUsersData = registeredUsersArray.data;
+    });
+
     this.proximityService.getStaticData().subscribe(proximity => {
       this.staticProximity = proximity;
       this.topBar = proximity.top_bar;
@@ -71,32 +72,32 @@ export class AppComponent implements OnInit {
 
       // this.securityOverview = proximity.data.securityGuardsSummary;
       if (!!proximity.data.eventSummary && proximity.data.eventSummary.length > 0) {
-          this.eventSummary = proximity.data.eventSummary;
-          this.calculateEventData();
+        this.eventSummary = proximity.data.eventSummary;
+        this.calculateEventData();
       }
 
       if (!!proximity.data.visitorSummary && proximity.data.visitorSummary.length > 0) {
-          this.visitorMetrics = proximity.data.visitorSummary;
-		  this.registeredUsersData.forEach(user => {
+        this.visitorMetrics = proximity.data.visitorSummary;
+        this.registeredUsersData.forEach(user => {
           this.visitorMetrics.map((visitor, index) => {
-              if (user.id === visitor.hostUserId) {
-                  this.visitorMetrics[index].hostActiveMobileNo = user.activeMobileNumber;
-                  this.visitorMetrics[index].hostPic = user.actualPicUrl;
-                  this.visitorMetrics[index].hostThumbnailPic = user.thumbnailPicUrl;
-                  this.visitorMetrics[index].hostHouseNo = user.houseNo;
-                  this.visitorMetrics[index].hostName = user.name;
-                  this.visitorMetrics[index].hostPrimaryZone = user.primaryZone;
-                  this.visitorMetrics[index].hostSite = user.site;
-              }
-            });
+            if (user.id === visitor.hostUserId) {
+              this.visitorMetrics[index].hostActiveMobileNo = user.activeMobileNumber;
+              this.visitorMetrics[index].hostPic = user.actualPicUrl;
+              this.visitorMetrics[index].hostThumbnailPic = user.thumbnailPicUrl;
+              this.visitorMetrics[index].hostHouseNo = user.houseNo;
+              this.visitorMetrics[index].hostName = user.name;
+              this.visitorMetrics[index].hostPrimaryZone = user.primaryZone;
+              this.visitorMetrics[index].hostSite = user.site;
+            }
           });
+        });
       }
 
       this.isDataAvailable = true;
     });
 
     this.subscription = timer(40000, 40000).pipe(
-      
+
       switchMap(() => this.proximityService.getPartialData())).subscribe(partialData => {
         if (!!partialData.data.eventSummary && partialData.data.eventSummary.length > 0) {
           this.eventSummary = partialData.data.eventSummary;
@@ -107,16 +108,16 @@ export class AppComponent implements OnInit {
         }
         if (!!partialData.data.visitorSummary && partialData.data.visitorSummary.length > 0) {
           this.visitorMetrics = partialData.data.visitorSummary;
-		  this.registeredUsersData.forEach(user => {
-          this.visitorMetrics.map((visitor, index) => {
+          this.registeredUsersData.forEach(user => {
+            this.visitorMetrics.map((visitor, index) => {
               if (user.id === visitor.hostUserId) {
-                  this.visitorMetrics[index].hostActiveMobileNo = user.activeMobileNumber;
-                  this.visitorMetrics[index].hostPic = user.actualPicUrl;
-                  this.visitorMetrics[index].hostThumbnailPic = user.thumbnailPicUrl;
-                  this.visitorMetrics[index].hostHouseNo = user.houseNo;
-                  this.visitorMetrics[index].hostName = user.name;
-                  this.visitorMetrics[index].hostPrimaryZone = user.primaryZone;
-                  this.visitorMetrics[index].hostSite = user.site;
+                this.visitorMetrics[index].hostActiveMobileNo = user.activeMobileNumber;
+                this.visitorMetrics[index].hostPic = user.actualPicUrl;
+                this.visitorMetrics[index].hostThumbnailPic = user.thumbnailPicUrl;
+                this.visitorMetrics[index].hostHouseNo = user.houseNo;
+                this.visitorMetrics[index].hostName = user.name;
+                this.visitorMetrics[index].hostPrimaryZone = user.primaryZone;
+                this.visitorMetrics[index].hostSite = user.site;
               }
             });
           });
@@ -127,16 +128,16 @@ export class AppComponent implements OnInit {
   calculateEventData() {
     let temp = {};
     let newTemp = {};
-    let zonedetails1 :any=[];
+    let zonedetails1: any = [];
     let gateMetricData = [];
     let alertFeedData = [];
     this.eventData = [];
-    this.alertFeedMetrics=[];
+    this.alertFeedMetrics = [];
     let alertsFeedOnly = [];
     let warnsFeedOnly = [];
     let alertsAndWarnsFeed = [];
     let color = '';
-   //
+    //
     this.eventSummary.forEach(item => {
 
       if (!!temp[item.eventCatagory]) {
@@ -154,22 +155,22 @@ export class AppComponent implements OnInit {
           } else if (item.eventType === 'ALERT') {
             color = 'red';
           }
-          if (!!newTemp[item.gateId]) { 
-              gateMetricData.push({ type: item.eventType, color: color, zone_name: item.zoneId, text: item.eventText });
-              newTemp[item.gateId]['gate_pass_metrics'] = gateMetricData;
-              if(item.eventType === 'ALERT') {
-                alertFeedData.push({ type: item.eventType, color: color, zone_name: item.zoneId, text: item.eventText });
-                newTemp[item.gateId]['alert_feed'] = alertFeedData;
-              }
+          if (!!newTemp[item.gateId]) {
+            gateMetricData.push({ type: item.eventType, color: color, zone_name: item.zoneId, text: item.eventText });
+            newTemp[item.gateId]['gate_pass_metrics'] = gateMetricData;
+            if (item.eventType === 'ALERT') {
+              alertFeedData.push({ type: item.eventType, color: color, zone_name: item.zoneId, text: item.eventText });
+              newTemp[item.gateId]['alert_feed'] = alertFeedData;
+            }
           } else {
-              gateMetricData = [];
-              alertFeedData = [];
-              gateMetricData.push({ type: item.eventType, color: color, zone_name: item.zoneId, text: item.eventText });
-              newTemp[item.gateId] = {label: item.gateId};
-              newTemp[item.gateId]['gate_pass_metrics'] = gateMetricData;
-              if (item.eventType === 'ALERT') {
-                alertFeedData.push({ type: item.eventType, color: color, zone_name: item.zoneId, text: item.eventText });
-                newTemp[item.gateId]['gate_alert_feed'] = alertFeedData;
+            gateMetricData = [];
+            alertFeedData = [];
+            gateMetricData.push({ type: item.eventType, color: color, zone_name: item.zoneId, text: item.eventText });
+            newTemp[item.gateId] = { label: item.gateId };
+            newTemp[item.gateId]['gate_pass_metrics'] = gateMetricData;
+            if (item.eventType === 'ALERT') {
+              alertFeedData.push({ type: item.eventType, color: color, zone_name: item.zoneId, text: item.eventText });
+              newTemp[item.gateId]['gate_alert_feed'] = alertFeedData;
             }
           }
         }
@@ -179,20 +180,20 @@ export class AppComponent implements OnInit {
           alertsFeedOnly.push({
             category: item.eventCatagory,
             type: item.eventType,
-            color:  'red',
+            color: 'red',
             zone_name: item.zoneId,
             text: item.eventText,
             deviceId: item.deviceId,
             deviceType: item.deviceType,
             timestamp: item.timestamp,
             cardId: item.cardId
-           });
+          });
         }
         if (item.eventType === 'WARNING') {
           warnsFeedOnly.push({
             category: item.eventCatagory,
             type: item.eventType,
-            color:  'yellow',
+            color: 'yellow',
             zone_name: item.zoneId,
             text: item.eventText,
             deviceId: item.deviceId,
@@ -204,27 +205,28 @@ export class AppComponent implements OnInit {
       }
     });
     alertsAndWarnsFeed.push.apply(alertsAndWarnsFeed, alertsFeedOnly);
-    alertsAndWarnsFeed.push.apply(alertsAndWarnsFeed, warnsFeedOnly);   
-    this.alertFeedMetrics.push({alert_event_feed: alertsAndWarnsFeed});
+    alertsAndWarnsFeed.push.apply(alertsAndWarnsFeed, warnsFeedOnly);
+    this.alertFeedMetrics.push({ alert_event_feed: alertsAndWarnsFeed });
     console.log(this.alertFeedMetrics);
     this.mapData.zonesDetail.forEach(zoneElement => {
       zoneElement.zoneAlerts = [];
       this.alertFeedMetrics[0].alert_event_feed.forEach(alertElement => {
-        let alertDateTZ = alertElement.timestamp + "Z";
-        let date=new Date(alertDateTZ);
-        let alertTimestamp=date.getTime();
-        let currenttime=new Date();
-        let priortime=new Date(currenttime.setSeconds(currenttime.getSeconds() - 45));
-        let priorTimestamp=priortime.getTime();
-        if((zoneElement.id===alertElement.zone_name)&&(alertTimestamp>priorTimestamp)){
-          
+        // tslint:disable-next-line: prefer-const
+        let alertDateTZ = alertElement.timestamp + 'Z';
+        let date = new Date(alertDateTZ);
+        let alertTimestamp = date.getTime();
+        let currenttime = new Date();
+        let priortime = new Date(currenttime.setSeconds(currenttime.getSeconds() - 45));
+        let priorTimestamp = priortime.getTime();
+        if ((zoneElement.id === alertElement.zone_name) && (alertTimestamp > priorTimestamp)) {
+
           zoneElement.zoneAlerts.push(alertElement);
-         
+
         }
       });
       zonedetails1.push(zoneElement);
     });
-    this.mapData.zonesDetail=zonedetails1;
+    this.mapData.zonesDetail = zonedetails1;
     for (let item in newTemp) {
       this.monitorMetrics.push(newTemp[item]);
     }
@@ -237,9 +239,17 @@ export class AppComponent implements OnInit {
       this.pathData = path;
     });
   }
-  openNewTable() {
+  openNewTable(dataArray) {
     this.openTable = true;
+    this.newTableData = dataArray[0];
+    this.displayedColumns = dataArray[1];
   }
+
+  closingTheTableNow(flag) {
+    this.openTable = !flag;
+  }
+
+
   // getProximity(): void {
   //   this.proximityService.getAllData()
   //   .subscribe(CommonResponse => {

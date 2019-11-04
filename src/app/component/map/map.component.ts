@@ -1,9 +1,7 @@
-import {Component, OnInit, AfterViewInit,Renderer2, Input,Inject, ViewChild, OnChanges, SimpleChanges} from '@angular/core';
+import {Component, OnInit, Renderer2, Input, Inject, OnChanges, SimpleChanges, AfterViewInit, EventEmitter, Output} from '@angular/core';
 import {DomSanitizer, SafeStyle, SafeUrl} from '@angular/platform-browser';
-import {mapData,alertEvents, alertFeedMetrics} from '../../../proximity';
-import { Sort, MatPaginator, MatTableDataSource} from '@angular/material';
+import {mapData, alertEvents, alertFeedMetrics} from '../../../proximity';
 import { VisitorVisitDetailView } from '../../../model/visitorVisitDetailView';
-import { FormControl } from '@angular/forms';
 import { DOCUMENT } from '@angular/common';
 
 
@@ -13,15 +11,15 @@ import { DOCUMENT } from '@angular/common';
   styleUrls: ['./map.component.css']
 })
 
-export class mapComponent implements OnInit, OnChanges, AfterViewInit {
+export class mapComponent implements OnInit, OnChanges {
 
 @Input() datasource: any;
+@Input() displayedColumns: any;
 @Input() openTable: any;
 @Input() mapData: mapData;
 @Input() pathData: any;
 @Input() alertFeedMetrics: alertFeedMetrics;
-@ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
-
+@Output() closeTheTablePlease = new EventEmitter<any>();
  openTheTable: Boolean = false;
  allAlerts: Array<alertEvents>;
  image: SafeUrl;
@@ -31,23 +29,19 @@ export class mapComponent implements OnInit, OnChanges, AfterViewInit {
  zoneImage: SafeUrl;
  zoneName: string;
  zoneid: any;
-
- displayedColumns: string[];
  displayedColumnsReport: string[];
  displayedColumnsAlertReport: string[];
  private currentPage: any;
  private pageSize: any;
  sortedData: any;
  selectedVisitor: VisitorVisitDetailView;
-  constructor(private _renderer2: Renderer2,private sanitization: DomSanitizer,
+  constructor(private _renderer2: Renderer2, private sanitization: DomSanitizer,
     @Inject(DOCUMENT) private _document) { }
     dtOptions: any = {};
-    tableData:any;
-  
+    tableData: any;
+
 
   ngOnInit() {
-    console.log('alert',alertFeedMetrics);
-    console.log('alert',this.datasource);
     this.dtOptions = {
       dom: 'Bfrtip',
       buttons: [
@@ -57,39 +51,19 @@ export class mapComponent implements OnInit, OnChanges, AfterViewInit {
         'pdf',
       ]
     };
-    // this.sortedData = new MatTableDataSource(this.datasource);
-    // // console.log(JSON.stringify(this.sortedData.data));
-    // if (!!this.sortedData &&  this.sortedData !== undefined && this.datasource !==undefined) {
-    //     this.sortedData.paginator = this.paginator;
-    //     this.sortedData.paginator.length = this.datasource.length;
-    //     this.sortedData.paginator.pageSize = 5;
-    //     this.sortedData.paginator.pageSizeOptions = [1, 5, 10, 15, 20, 25, 50, 100];
-    // }
-    console.log(this.datasource);
-    this.allAlerts = !!this.alertFeedMetrics  && this.alertFeedMetrics[0]!==undefined ? this.alertFeedMetrics[0].alert_event_feed : [{category:'None',type:'INFO', color: 'green',zone_name: 'No', text: 'No Alerts' ,deviceId: null,deviceType: null, timestamp: null, cardId: null }];
+
+    this.allAlerts = !!this.alertFeedMetrics  && this.alertFeedMetrics[0] !== undefined ?
+    this.alertFeedMetrics[0].alert_event_feed : [{category: 'None', type: 'INFO', color: 'green', zone_name: 'No',
+    text: 'No Alerts' , deviceId: null, deviceType: null, timestamp: null, cardId: null }];
+
     this.image = this.sanitization.bypassSecurityTrustUrl(this.mapData.baseMapImage);
     this.imagestyle = this.sanitization.bypassSecurityTrustStyle(`url(${this.mapData.baseMapImage})`);
     this.alertFlash();
-    this.displayedColumns = [ 'name',
-                              'mobile',
-                              'email',
-                              'guestType',
-                              'visitorVisitStatus',
-                              'issuedCardId',
-                              'actualInTime',
-                              'actualOutTime',
-                              'expectedIn',
-                              'expectedOut',
-                              'vehicles',
-                              'otherGuests',
-                              'targetZone',
-                              'targetSite'
-                            ];
-                            this.displayedColumnsReport = [ 
-                            'Visitor Images',
+
+                            this.displayedColumnsReport = [ 'Visitor Image',
                             'Visitor Info',
                             'Hardware carried',
-                            'Host Info',
+                            'Invitee Info',
                             'In Time',
                             'Out Time',
                             'vehicle Details',
@@ -101,14 +75,13 @@ export class mapComponent implements OnInit, OnChanges, AfterViewInit {
                           'Status',
                           'Resolved/Owened By'
                         ];
-                          
 
-   let script = this._renderer2.createElement('script');
+
+   const script = this._renderer2.createElement('script');
     script.type = `text/javascript`;
     script.text = `
         {
           $(document).ready(function() {
-            
 
         function printData()
         {
@@ -118,7 +91,7 @@ export class mapComponent implements OnInit, OnChanges, AfterViewInit {
            newWin.print();
            newWin.close();
         }
-        
+
         $('#button').on('click',function(){
         printData();
         })
@@ -128,21 +101,13 @@ export class mapComponent implements OnInit, OnChanges, AfterViewInit {
     this._renderer2.appendChild(this._document.body, script);
   }
 
-  ngAfterViewInit() {
-    if (!!this.sortedData && this.sortedData !== undefined) {
-    this.sortedData.paginator = this.paginator;
-  }
-}
 
-  ngOnChanges(changes: SimpleChanges) {
+  ngOnChanges (changes: SimpleChanges) {
     if (!!changes.pathData && !changes.pathData.firstChange) {
       if (changes.pathData.currentValue.pathDetail.length > 0) {
     this.drawPath = true;
     this.pathpoints = changes.pathData.currentValue;
       }
-    }
-    if (!!changes.openTable && !changes.openTable.firstChange) {
-      this.openTheTable = true;
     }
     this.alertFlash();
   }
@@ -151,39 +116,35 @@ export class mapComponent implements OnInit, OnChanges, AfterViewInit {
     this.selectedVisitor = item;
     document.getElementById('visitorlight11').style.display = 'block';
     document.getElementById('fadereport').style.display = 'block';
-  }
-  closePopUpVRreport=function() {
+  };
+  closePopUpVRreport = function() {
     document.getElementById('visitorlight11').style.display = 'none';
     document.getElementById('fadereport').style.display = 'none';
-  }
-  closePopUpARreport=function() {
+  };
+  closePopUpARreport = function() {
     document.getElementById('visitor-report-alert').style.display = 'none';
     document.getElementById('fade').style.display = 'none';
-  }
-  onGateSelected=function(label) {
-    console.log('gate',label);
-    this.gateSelected=label;
+  };
+  onGateSelected = function(label) {
+    console.log('gate', label);
+    this.gateSelected = label;
     document.getElementById('gatemetricpopup').style.display = 'block';
     document.getElementById('fade').style.display = 'block';
-  }
-  closeTabularReport=function() {
-    document.getElementById('fullfade').style.display = 'none';
-    $('.visitor-mat-tbl').hide();
-  }
-  
+  };
+
   openZoneImage(zone): void {
     this.drawPath = false;
-    this.zoneid=zone.id;
+    this.zoneid = zone.id;
     this.zoneName = zone.name;
     this.zoneImage = this.sanitization.bypassSecurityTrustUrl(zone.zoneImage);
-    //document.getElementById('light').style.display = 'block';
-    //document.getElementById('light2').style.display = 'block';
+    // document.getElementById('light').style.display = 'block';
+    // document.getElementById('light2').style.display = 'block';
     document.getElementById('zonepopup').style.display = 'block';
     document.getElementById('fade').style.display = 'block';
     // Zone Alert Flash/Blink Animation Removal.
     this.removeAlertFlash(zone);
   }
-  
+
   closePopUp(): void {
     document.getElementById('visitorlight').style.display = 'none';
     document.getElementById('visitor-report').style.display = 'none';
@@ -198,7 +159,7 @@ export class mapComponent implements OnInit, OnChanges, AfterViewInit {
  alertFlash() {
   $(document).ready(function() {
     const animateElements = document.getElementsByTagName('animate');
-    for(let i = 0; i < animateElements.length; i++) {
+    for (let i = 0; i < animateElements.length; i++) {
       const zoneId = animateElements[i].getAttribute('id').split('-')[1];
      document.getElementById('zone-' + zoneId).classList.add('active');
     }
@@ -206,65 +167,18 @@ export class mapComponent implements OnInit, OnChanges, AfterViewInit {
 }
 
 removeAlertFlash(zone) {
-  
   const zonePolygonEle = document.getElementById('zone-' + zone.id);
-  if(zonePolygonEle.style.stroke === 'red') {
+  if (zonePolygonEle.style.stroke === 'red') {
     zonePolygonEle.classList.remove('active');
-    //zonePolygonEle.setAttribute('style', "position: 'absolute'; stroke: rgb(175, 175, 175);");
-    //zonePolygonEle.removeChild(zonePolygonEle.firstElementChild); 
-    this.mapData.zonesDetail[zone.id-1].zoneAlerts=[];
-    console.log('map data',this.mapData.zonesDetail[zone.id-1].zoneAlerts);
+    // zonePolygonEle.setAttribute('style', "position: 'absolute'; stroke: rgb(175, 175, 175);");
+    // zonePolygonEle.removeChild(zonePolygonEle.firstElementChild);
+    this.mapData.zonesDetail[zone.id - 1].zoneAlerts = [];
+    console.log('map data', this.mapData.zonesDetail[zone.id - 1].zoneAlerts);
   }
 }
 
-sortData(sort: Sort) {
-  const data = (!!this.datasource && this.datasource !== undefined) ? this.datasource.slice() : null;
-  if (!sort.active || sort.direction === '') {
-    this.sortedData = data;
-    return;
-  }
-
-  this.sortedData = !!data ? data.sort((a, b) => {
-    const isAsc = sort.direction === 'asc';
-    switch (sort.active) {
-      case 'name': return this.compare(a.name, b.name, isAsc);
-      case 'mobile number': return this.compare(a.mobile, b.mobile, isAsc);
-      case 'vehicle number': return this.compare(a.vehicle_number, b.vehicle_number, isAsc);
-      case 'vehicle type': return this.compare(a.vehicle_type, b.vehicle_type, isAsc);
-      case 'in time': return this.compare(a.in_time, b.in_time, isAsc);
-      case 'out time': return this.compare(a.out_time, b.out_time, isAsc);
-      case 'parking time': return this.compare(a.parking_time, b.parking_time, isAsc);
-      case 'qr code': return this.compare(a.qr_code, b.qr_code, isAsc);
-      default: return 0;
-    }
-  }) : null;
+closeTheTable(flag) {
+  this.closeTheTablePlease.emit(true);
 }
 
-compare(a: number | string, b: number | string, isAsc: boolean) {
-    return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
-  }
-
-  updatePage(e) {
-    this.currentPage = e.pageIndex;
-    this.pageSize = e.pageSize;
-    this.iterator();
-  }
-
-  private iterator() {
-    const end = (this.currentPage + 1) * this.pageSize;
-    const start = this.currentPage * this.pageSize;
-    const part = this.datasource.slice(start, end);
-    this.sortedData = part;
-  }
-
-  setupFilter(column: string) {
-    this.sortedData.filterPredicate = function(data, filter) {
-    const textToSearch = data[column] && data[column].toLowerCase() || '';
-    return textToSearch.indexOf(filter) !== -1;
-    };
-  }
-
-  applyFilter(filterValue: string) {
-    this.sortedData.filter = filterValue.trim().toLowerCase();
-  }
 }

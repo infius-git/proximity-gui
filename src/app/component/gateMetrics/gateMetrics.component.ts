@@ -30,7 +30,6 @@ export class GateMetricsComponent implements OnInit, AfterViewInit {
     this.mScrollbarService.initScrollbar('#alertFeed', { axis: 'y', theme: 'dark-thick', scrollButtons: { enable: true } });
   }
   ngOnInit() {
-    console.log('monitor',this.monitorMetrics);
     this.gateTime = new Date().toDateString()
     this.scrollbarOptions = { axis: 'yx', theme: 'minimal-dark' };
     let script = this._renderer2.createElement('script');
@@ -83,11 +82,22 @@ export class GateMetricsComponent implements OnInit, AfterViewInit {
   //   this.openPopUp();
   // }
   onGateSelected=function(label) {
-    console.log('gate',label);
-    this.gateSelected=label;
+    console.log('gate', label);
+    this.gateSelected = label;
     document.getElementById('gatemetricpopup').style.display = 'block';
     document.getElementById('fade').style.display = 'block';
-  }
+    this.monitorMetrics.forEach((item) => {
+          if (item.label === label) {
+            this.selectedGate = 'Gate ' + item.label;
+            this.selectedLabel = item.label;
+            console.log('label = ' + label);
+            console.log('gate pass metrics = ' + JSON.stringify(item));
+            this.selectedMetric = item.gate_pass_metrics;
+            this.selectedalert = item.gate_alert_feed;
+          }
+        });
+  };
+
   openPopUp(): void {
     document.getElementById('gatelight').style.display = 'block';
     document.getElementById('gatefade').style.display = 'block';

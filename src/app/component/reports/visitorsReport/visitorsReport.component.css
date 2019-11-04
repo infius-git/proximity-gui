@@ -1,0 +1,50 @@
+.mat-table#id {
+    font-family: 'Barlow Semi Condensed', sans-serif !important;
+}
+
+.visitor-mat-tbl {
+    position: absolute;
+    float: unset;
+    top: 31%;
+    left: 25%;
+    z-index: 1000;
+}
+
+#tbl-expand {
+    font-size: 53px;
+    cursor: pointer;
+    position: absolute;
+    right: 13px;
+    top: -26px;
+    color: #ffffff;
+}
+
+#tbl-expand .fa-expand {
+    font-size: 23px;
+    color: white;
+}
+
+..mat-table tbody td {
+    font-size: 15px;
+}
+
+.example-container {
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+}
+
+.example-header {
+    min-height: 64px;
+    padding: 8px 24px 0;
+}
+
+.mat-form-field {
+    font-size: 14px;
+    width: 100%;
+}
+
+.mat-table {
+    overflow: auto;
+    max-height: 500px;
+}

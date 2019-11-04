@@ -1,11 +1,8 @@
 import { Component, OnInit, Renderer2, Input, Inject, Output, EventEmitter } from '@angular/core';
-import { DomSanitizer, SafeStyle, SafeUrl } from '@angular/platform-browser';
+import { DomSanitizer } from '@angular/platform-browser';
 import { DOCUMENT } from '@angular/common';
-import { visitorMetrics, metrics } from '../../../proximity';
 import { VisitorVisitDetailView } from '../../../model/visitorVisitDetailView';
-import * as $ from 'jquery';
 import 'lightslider';
-import { IfStmt, CompileShallowModuleMetadata } from '@angular/compiler';
 @Component({
   selector: 'visitor-metrics',
   styleUrls: ['./visitorMetrics.component.css'],
@@ -16,8 +13,16 @@ export class VisitorMetricsComponent implements OnInit {
   @Output() pathInfo = new EventEmitter<any>();
   @Output() openTable = new EventEmitter<any>();
   selectedVisitor: VisitorVisitDetailView;
-  //columData = ['name', 'mobile', 'Vehicle No.', 'Make', 'Arrival Time', 'Exp. Out Time', 'parking allocation time', 'Barcode'];
   columData = ['name', 'mobile', 'In Time', 'Out Time', 'Vehicle No.'];
+  visitorDisplayColumns: Array<any> = [
+    {'element': 'visitorId', 'label': 'Visitor Id'},
+    {'element': 'visitorInfo', 'label': 'Visitor Info'},
+    {'element': 'inviteeInfo', 'label': 'Invitee Info'},
+    {'element': 'hardwareCarried', 'label': 'Hardware Info'},
+    {'element': 'actualInTime', 'label': 'In Time'},
+    {'element': 'actualOutTime', 'label': 'Out Time'},
+    {'element': 'vehicles', 'label': 'Vehicles'},
+    {'element': 'otherGuests', 'label': 'Add. Guest Info'}];
   constructor(private _renderer2: Renderer2, private sanitization: DomSanitizer,
     @Inject(DOCUMENT) private _document) { }
 
@@ -29,13 +34,13 @@ export class VisitorMetricsComponent implements OnInit {
         item.hostPic = this.sanitization.bypassSecurityTrustUrl(item.hostPic);
       });
     }
-    let script = this._renderer2.createElement('script');
+    const script = this._renderer2.createElement('script');
     script.type = `text/javascript`;
     script.text = `
         {
           $(document).ready(function() {
             var autoplaySlider = $('#autoplay').lightSlider({
-                item: 6,
+                item: 5,
                 auto: true,
                 loop: true,
                 autoWidth: false,
@@ -53,8 +58,6 @@ export class VisitorMetricsComponent implements OnInit {
         }
     `;
     this._renderer2.appendChild(this._document.body, script);
-
-   
   }
 
   openPopover = function (item) {
@@ -62,16 +65,16 @@ export class VisitorMetricsComponent implements OnInit {
     console.log(this.selectedVisitor);
     document.getElementById('visitorlight1').style.display = 'block';
     document.getElementById('fade').style.display = 'block';
-  }
+  };
   drawPath = function (item) {
-    this.pathInfo.emit(item.visitId)
-  }
+    this.pathInfo.emit(item.visitId);
+  };
 
   openTabularReport() {
-    this.openTable.emit(true);
-    document.getElementById('fullfade').style.display = 'block';
+    this.openTable.emit([this.visitorMetrics, this.visitorDisplayColumns]);
+    //document.getElementById('fullfade').style.display = 'block';
   }
- 
+
   closePopUp(): void {
     document.getElementById('visitorlight').style.display = 'none';
     document.getElementById('visitorlight1').style.display = 'none';
@@ -113,7 +116,8 @@ export class VisitorMetricsComponent implements OnInit {
   setVisitingZonePerson(selectedVisitor) {
     let visitingZonePersonDetails = '';
     if (!!selectedVisitor && !!selectedVisitor.toAddress) {
-      visitingZonePersonDetails = visitingZonePersonDetails + selectedVisitor.toAddress.address1 + ', ' + selectedVisitor.toAddress.address2 + ', ' + selectedVisitor.toAddress.address3 + ', ';
+      visitingZonePersonDetails = visitingZonePersonDetails + selectedVisitor.toAddress.address1 + ', '
+      + selectedVisitor.toAddress.address2 + ', ' + selectedVisitor.toAddress.address3 + ', ';
     }
     if (!!selectedVisitor && !!selectedVisitor.targetZone) {
       visitingZonePersonDetails = visitingZonePersonDetails + 'Zone-' + selectedVisitor.targetZone;
@@ -129,11 +133,13 @@ export class VisitorMetricsComponent implements OnInit {
 
   setVisitorCurrentZone(selectedVisitor) {
     // TBD based on events received for the visitor inside the premises.
-    if (!!selectedVisitor && selectedVisitor.visitorVisitStatus === 'CHECK_IN' && new Date(selectedVisitor.expectedOut) < new Date() && !!selectedVisitor.actualInTime) {
+    if (!!selectedVisitor && selectedVisitor.visitorVisitStatus === 'CHECK_IN' &&
+    new Date(selectedVisitor.expectedOut) < new Date() && !!selectedVisitor.actualInTime) {
       return 'Visitor Visiting Session Expired. Checkout immediate or extend visitng hours.';
     }
 
-    if (!!selectedVisitor && selectedVisitor.visitorVisitStatus === 'INVITED' && new Date(selectedVisitor.expectedOut) < new Date() && !selectedVisitor.actualInTime) {
+    if (!!selectedVisitor && selectedVisitor.visitorVisitStatus === 'INVITED' &&
+    new Date(selectedVisitor.expectedOut) < new Date() && !selectedVisitor.actualInTime) {
       return 'Visitor could not visit within allowed visit session.';
     } else if (!!selectedVisitor) {
       return 'Visitor checked out of the premise.';

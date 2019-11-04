@@ -1,0 +1,129 @@
+<div [hidden]="!openTable" class="mat-elevation-z8 visitor-mat-tbl">
+    <span id="tbl-expand" (click)="closeTabularReport()">&times;</span>
+    <!-- <table datatable [dtOptions]="dtOptions" class="row-border hover">
+        <thead>
+            <tr>
+                <th *ngFor="let filterCol of displayedColumns">{{filterCol}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let element of dataSource">
+                <td *ngFor="let filterCol of displayedColumns">
+                    <span *ngIf="filterCol=='vehicles'"><span *ngFor="let vehicle of element.vehicles">{{vehicle.vehicleNo}}</span></span>
+                    <span *ngIf="filterCol!='vehicles' && filterCol!='otherGuests'">{{element[filterCol]}}</span>
+                    <span *ngIf="filterCol=='otherGuests'"><span *ngFor="let otherguest of element.otherGuests">{{otherguest.name}}</span></span>
+                </td>
+            </tr>
+
+        </tbody>
+    </table> -->
+
+
+
+    <table datatable [dtOptions]="dtOptions" class="row-border hover">
+        <thead>
+            <tr>
+                <th *ngFor="let filterCol of displayedColumns">{{filterCol}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let element of dataSource" (click)="openGuestReport(element)">
+                <td style="text-align: left !important"><img alt="" [attr.src]="element.guestThumbnailPic"></td>
+                <td>Name: {{element.name}}<br>Address: {{element.fromAddress?element.fromAddress:"No Address"}}<br>Mobile: {{element.mobile}}<br>Purpose Of Visit: <br>Duration: {{element.expectedIn | date: "medium"}} to<br> {{element.expectedOut | date: "medium"}}
+                </td>
+                <td style="text-align: left !important">Hardware</td>
+                <td>invitee</td>
+                <td>{{element.expectedIn | date: "medium"}}</td>
+                <td>{{element.expectedOut | date: "medium"}}</td>
+                <td><span *ngFor="let vehicle of element.vehicles">{{vehicle.vehicleNo}}<br></span></td>
+                <td><span *ngFor="let otherGuest of element.otherGuests">{{otherGuest.name}}<br></span></td>
+            </tr>
+
+        </tbody>
+    </table>
+
+
+    <!-- <table mat-table [dataSource]="sortedData" matSort (matSortChange)="sortData($event)"> -->
+
+    <!-- <mat-form-field class="filter" floatLabel="never">
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+        </mat-form-field> -->
+
+    <!--- Note that these columns can be defined in any order.
+                          The actual rendered columns are set as a property on the row definition" -->
+    <!-- Visitor Id Column -->
+    <!-- <ng-container stlye="display: flex;">
+            <ng-container matColumnDef="visitorId">
+                <th mat-header-cell *matHeaderCellDef style="width: 380px;">Visitor Id</th>
+                <td mat-cell *matCellDef="let row" style="padding-left: 15px; width: 2500px;">
+                    <a href="#">{{row.visitorId}} </a>
+                </td>
+            </ng-container> -->
+    <!-- Visitor Information Column -->
+    <!-- <ng-container matColumnDef="visitorInfo">
+                <th mat-header-cell *matHeaderCellDef style="width: 380px;">Visitor Info</th>
+                <td mat-cell *matCellDef="let row" style="padding-left: 15px; width: 2500px;">
+                    {{'Name: ' + row.name}}
+                    <br> {{'Company Name: Infius Synergy'}}
+                    <br> {{'Address: ' + row.fromAddress}}
+                    <br> {{'Mobile No: ' + row.mobile}}
+                    <br> {{'Purpose of Visit: ' + row.mobile}}
+                    <br> {{'Visit Schedule: ' + (row.expectedIn | date:'medium') +'-' + (row.expectedOut | date:'medium')}}
+                </td>
+            </ng-container> -->
+    <!-- Invitee Information Column -->
+    <!-- <ng-container matColumnDef="inviteeInfo">
+                <th mat-header-cell *matHeaderCellDef style="width: 380px;">Invitee Info</th>
+                <td mat-cell *matCellDef="let row" style="padding-left: 15px; width: 2500px;">
+                    {{'Name: ' + row.name}}
+                    <br> {{'Company Name: Infius Synergy'}}
+                    <br> {{'Address: ' + row.fromAddress}}
+                    <br> {{'Mobile No: ' + row.mobile}}
+                    <br> {{'Purpose of Visit: ' + row.mobile}}
+                    <br> {{'Visit Schedule: ' + (row.expectedIn | date:'medium') +'-' + (row.expectedOut | date:'medium')}}
+                </td>
+            </ng-container> -->
+    <!-- Hardware Carried Information Column -->
+    <!-- <ng-container matColumnDef="hardwareCarried">
+                <th mat-header-cell *matHeaderCellDef style="width: 380px;">Hardware Info</th>
+                <td mat-cell *matCellDef="let row" style="padding-left: 15px; width: 2500px;">
+                    {{' XYZNNNNN ' }}
+                </td>
+            </ng-container> -->
+    <!-- Actual Time In Information Column -->
+    <!-- <ng-container matColumnDef="actualInTime">
+                <th mat-header-cell *matHeaderCellDef style="width: 380px;">In Time</th>
+                <td mat-cell *matCellDef="let row" style="padding-left: 15px; width: 2500px;">
+                    {{(!!row.actualInTime && row.actualInTime !== undefined) ? (row.actualInTime | date: 'medium') : ' Not Yet Arrived! '}}
+                </td>
+            </ng-container> -->
+    <!-- Actual Time Out Information Column -->
+    <!-- <ng-container matColumnDef="actualOutTime">
+                <th mat-header-cell *matHeaderCellDef style="width: 380px;">Out Time</th>
+                <td mat-cell *matCellDef="let row" style="padding-left: 15px; width: 2500px;">
+                    {{(!!row.actualOutTime && row.actualOutTime !== undefined) ? (row.actualOutTime | date: 'medium') : ' Not Checked Out Yet! '}}
+                </td>
+            </ng-container> -->
+    <!-- Vehicles Information Column -->
+    <!-- <ng-container matColumnDef="vehicles">
+                <th mat-header-cell *matHeaderCellDef style="width: 380px;">Vehicles</th>
+                <td mat-cell *matCellDef="let row" style="padding-left: 15px; width: 2500px;">
+                    {{(!!row.vehicles && row.vehicles !== undefined) ? row.vehicles[0].vehicleNo : ' No Vehicles.'}}
+                </td>
+            </ng-container> -->
+    <!-- Additional Guests Information Column -->
+    <!-- <ng-container matColumnDef="otherGuests">
+                <th mat-header-cell *matHeaderCellDef style="width: 380px;">Add. Guest Info</th>
+                <td mat-cell *matCellDef="let row" style="padding-left: 15px; width: 2500px;">
+                    {{(!!row.otherGuests && row.otherGuests !== undefined) ? row.otherGuests[0].name : ' No add. guests.'}}
+                </td>
+            </ng-container> -->
+    <!-- </ng-container> -->
+    <!-- <tr mat-header-row *matHeaderRowDef="displayColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayColumns;"></tr>
+    </table>
+
+    <mat-paginator [length]="sortedData!==undefined && sortedData.paginator!==undefined? sortedData.paginator.length : 25" [pageSize]="sortedData!==undefined && sortedData.paginator!==undefined? sortedData.paginator.pageSize : 5" [pageSizeOptions]="sortedData!==undefined && sortedData.paginator!==undefined? sortedData.paginator.pageSizeOptions : [1, 5, 10, 15, 20, 25]"
+        (page)="updatePage($event)">
+    </mat-paginator> -->
+</div>

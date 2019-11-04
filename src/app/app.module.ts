@@ -27,6 +27,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTableExporterModule } from 'mat-table-exporter';
 import { MatSelectModule } from '@angular/material/select';
 import { DataTablesModule } from 'angular-datatables';
+import {VisitorsReportComponent} from './component/reports/visitorsReport/visitorsReport.component';
 
 
 
@@ -44,6 +45,7 @@ import { DataTablesModule } from 'angular-datatables';
         FooterComponent,
         TowerEntryComponent,
         VisitorMetricsComponent,
+        VisitorsReportComponent,
         DashboardComponent
     ],
     imports: [
