@@ -72,16 +72,16 @@ export class VisitorMetricsComponent implements OnInit {
 
   openTabularReport() {
     this.openTable.emit([this.visitorMetrics, this.visitorDisplayColumns]);
-    //document.getElementById('fullfade').style.display = 'block';
+    document.getElementById('fade').style.display = 'block';
   }
 
-  closePopUp(): void {
-    document.getElementById('visitorlight').style.display = 'none';
-    document.getElementById('visitorlight1').style.display = 'none';
-    document.getElementById('visitorlightf').style.display = 'none';
-    document.getElementById('visitorfade').style.display = 'none';
-    document.getElementById('fade').style.display = 'none';
-  }
+  // closePopUp(): void {
+  //   document.getElementById('visitorlight').style.display = 'none';
+  //   document.getElementById('visitorlight1').style.display = 'none';
+  //   document.getElementById('visitorlightf').style.display = 'none';
+  //   document.getElementById('visitorfade').style.display = 'none';
+  //   document.getElementById('fade').style.display = 'none';
+  // }
 
   setVisitorTypeColor(type) {
     switch (type) {

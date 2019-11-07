@@ -1,5 +1,6 @@
 import {Component, OnInit, Input,Output, OnChanges, SimpleChanges, EventEmitter} from '@angular/core';
 import { Sort, MatPaginator, MatTableDataSource} from '@angular/material';
+import { VisitorVisitDetailView } from 'src/model/visitorVisitDetailView';
 
 @Component({
     selector: 'visitors-report',
@@ -12,15 +13,36 @@ import { Sort, MatPaginator, MatTableDataSource} from '@angular/material';
     @Input() displayColumns: any;
     @Input() openTable: any;
     @Output() closeTable = new EventEmitter<any>();
+    @Input() visitorMetrics: Array<VisitorVisitDetailView>;
     // @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
     // private currentPage: any;
     // private pageSize: any;
     // sortedData: any;
     displayedColumns: any = [];
-    openTheTable: Boolean = false;
+    displayedColumnsReport: string[];
     constructor() { }
+    dtOptions: any = {};
+    tableData: any;
 
     ngOnInit(): void {
+      this.dtOptions = {
+        dom: 'Bfrtip',
+        buttons: [
+          'copy',
+          'print',
+          'excel',
+          'pdf',
+        ]
+      };
+      this.displayedColumnsReport = [ 'Visitor Image',
+                            'Visitor Info',
+                            'Hardware carried',
+                            'Invitee Info',
+                            'In Time',
+                            'Out Time',
+                            'vehicle Details',
+                            'Additional Guest Info'
+                          ];
       //   this.sortedData = new MatTableDataSource(this.dataSource);
       //  if (!!this.sortedData &&  this.sortedData !== undefined && this.dataSource !== undefined) {
       //      this.sortedData.paginator = this.paginator;
@@ -37,7 +59,13 @@ import { Sort, MatPaginator, MatTableDataSource} from '@angular/material';
           }
       }
 
-
+      // openVisitorReport=function()
+      // {
+        
+      //     this.openTable.emit([this.visitorMetrics, this.visitorDisplayColumns]);
+      //     //document.getElementById('fullfade').style.display = 'block';
+        
+      // }
       // sortData(sort: Sort) {
       //   const data = (!!this.dataSource && this.dataSource !== undefined) ? this.dataSource.slice() : null;
       //   if (!sort.active || sort.direction === '') {
@@ -91,7 +119,7 @@ import { Sort, MatPaginator, MatTableDataSource} from '@angular/material';
 
         closeTabularReport = function() {
            this.closeTable.emit(true);
-        //   document.getElementById('fullfade').style.display = 'none';
+           document.getElementById('fade').style.display = 'none';
       //      $('.visitor-mat-tbl').hide();
           };
 

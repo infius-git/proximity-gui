@@ -20,7 +20,7 @@
 
 
 
-    <table datatable [dtOptions]="dtOptions" class="row-border hover">
+    <table *ngIf="openTable" datatable [dtOptions]="dtOptions" class="row-border hover">
         <thead>
             <tr>
                 <th *ngFor="let filterCol of displayedColumns">{{filterCol}}</th>
@@ -29,10 +29,10 @@
         <tbody>
             <tr *ngFor="let element of dataSource" (click)="openGuestReport(element)">
                 <td style="text-align: left !important"><img alt="" [attr.src]="element.guestThumbnailPic"></td>
-                <td>Name: {{element.name}}<br>Address: {{element.fromAddress?element.fromAddress:"No Address"}}<br>Mobile: {{element.mobile}}<br>Purpose Of Visit: <br>Duration: {{element.expectedIn | date: "medium"}} to<br> {{element.expectedOut | date: "medium"}}
+                <td style="text-align: left !important;">Name: {{element.name}}<br>Address: {{element.fromAddress?element.fromAddress:"No Address"}}<br>Mobile: {{element.mobile}}<br>Purpose Of Visit: <br>Duration: {{element.expectedIn | date: "medium"}} to<br> {{element.expectedOut | date: "medium"}}
                 </td>
-                <td style="text-align: left !important">Hardware</td>
-                <td>invitee</td>
+                <td style="text-align: left !important">Host Info</td>
+                <td>Hardware</td>
                 <td>{{element.expectedIn | date: "medium"}}</td>
                 <td>{{element.expectedOut | date: "medium"}}</td>
                 <td><span *ngFor="let vehicle of element.vehicles">{{vehicle.vehicleNo}}<br></span></td>
