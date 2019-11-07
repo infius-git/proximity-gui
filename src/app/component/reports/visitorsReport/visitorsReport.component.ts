@@ -11,15 +11,15 @@ import { VisitorVisitDetailView } from 'src/model/visitorVisitDetailView';
   export class VisitorsReportComponent implements OnInit, OnChanges {
     @Input() dataSource: any;
     @Input() displayColumns: any;
-    @Input() openTable: any;
+    @Input() openReportTable: any;
     @Output() closeTable = new EventEmitter<any>();
     @Input() visitorMetrics: Array<VisitorVisitDetailView>;
     // @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
     // private currentPage: any;
     // private pageSize: any;
     // sortedData: any;
+    openTable:boolean;
     displayedColumns: any = [];
-    displayedColumnsReport: string[];
     constructor() { }
     dtOptions: any = {};
     tableData: any;
@@ -34,15 +34,7 @@ import { VisitorVisitDetailView } from 'src/model/visitorVisitDetailView';
           'pdf',
         ]
       };
-      this.displayedColumnsReport = [ 'Visitor Image',
-                            'Visitor Info',
-                            'Hardware carried',
-                            'Invitee Info',
-                            'In Time',
-                            'Out Time',
-                            'vehicle Details',
-                            'Additional Guest Info'
-                          ];
+      
       //   this.sortedData = new MatTableDataSource(this.dataSource);
       //  if (!!this.sortedData &&  this.sortedData !== undefined && this.dataSource !== undefined) {
       //      this.sortedData.paginator = this.paginator;
@@ -51,11 +43,28 @@ import { VisitorVisitDetailView } from 'src/model/visitorVisitDetailView';
       //      this.sortedData.paginator.pageSizeOptions = [1, 5, 10, 15, 20, 25, 50, 100];
       //  }
        this.displayedColumns = this.displayColumns.map(col => col.element);
-      }
 
+      
+
+      }
+      
       ngOnChanges(changes: SimpleChanges): void {
-        if (!!changes.openTable && !changes.openTable.firstChange) {
-            this.displayedColumns = this.displayColumns.map(col => col.label);
+        this.displayedColumns = [ 'Visitor Image',
+                            'Visitor Info',
+                            'Hardware carried',
+                            'Invitee Info',
+                            'In Time',
+                            'Out Time',
+                            'vehicle Details',
+                            'Additional Guest Info'
+                          ];
+          if(this.openReportTable=="visitorReport")
+          {
+            this.openTable=true;
+          }
+          else
+          {
+            this.openTable=false;
           }
       }
 
@@ -118,7 +127,7 @@ import { VisitorVisitDetailView } from 'src/model/visitorVisitDetailView';
       //   }
 
         closeTabularReport = function() {
-           this.closeTable.emit(true);
+           this.closeTable.emit("");
            document.getElementById('fade').style.display = 'none';
       //      $('.visitor-mat-tbl').hide();
           };

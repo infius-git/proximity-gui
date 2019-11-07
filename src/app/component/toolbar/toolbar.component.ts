@@ -1,5 +1,5 @@
 import { Component, OnInit,Input, EventEmitter, Output } from '@angular/core';
-import {topBar, visitorMetrics} from '../../../proximity';
+import {topBar, visitorMetrics, alertFeedMetrics} from '../../../proximity';
 @Component({
   selector: 'top-toolbar',
   templateUrl: './toolbar.html',
@@ -7,6 +7,7 @@ import {topBar, visitorMetrics} from '../../../proximity';
 })
 export class ToolbarComponent implements OnInit {
 @Input() topData: topBar;
+@Input() alertFeedMetrics: alertFeedMetrics;
 @Input() visitorMetrics: visitorMetrics;
 @Output() openNewTable = new EventEmitter<any>();
 @Output() closeTheTablePlease = new EventEmitter<any>();
@@ -31,13 +32,13 @@ visitorDisplayColumns: Array<any> = [
   openVisitorReport=function()
   {
     
-      this.openNewTable.emit([this.visitorMetrics, this.visitorDisplayColumns]);
+      this.openNewTable.emit([this.visitorMetrics, this.visitorDisplayColumns,"visitorReport"]);
       document.getElementById('fade').style.display = 'block';
     
   }
   openAlertReport=function()
   {
-    document.getElementById('visitor-report-alert').style.display = 'block';
-    document.getElementById('fade').style.display = 'block';
+    this.openNewTable.emit([this.alertFeedMetrics, this.visitorDisplayColumns,"alertReport"]);
+      document.getElementById('fade').style.display = 'block';
   }
 }

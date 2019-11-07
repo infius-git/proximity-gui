@@ -1,0 +1,26 @@
+ <!---------------------------------------------------------------------------------->
+ <div [hidden]="!openTable" class="mat-elevation-z8 visitor-mat-tbl-report">
+  <span id="tbl-expand" (click)="closeTabularReport()">&times;</span>
+
+
+  <table *ngIf="openTable" datatable [dtOptions]="dtOptions" class="row-border hover">
+      <thead>
+          <tr>
+              <th *ngFor="let filterCol of displayedColumnsAlertReport">{{filterCol}}</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let element of allAlerts">
+              <td>{{element.type}}</td>
+              <td style="text-align:left;">High</td>
+              <td>{{element.timestamp | date: "medium"}}</td>
+              <td>Open</td>
+              <td>RamPal</td>
+          </tr>
+
+      </tbody>
+  </table>
+</div>
+
+
+<!---------------------------------------------------------------------------->

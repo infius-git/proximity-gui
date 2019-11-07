@@ -38,7 +38,7 @@ export class AppComponent implements OnInit {
   isMapAvailable: boolean;
   mapData: mapData;
   pathData: any;
-  openTable: boolean;
+  openReportTable: string;
   subscription: Subscription;
   dateTime: any;
   registeredUsersData: any;
@@ -240,13 +240,13 @@ export class AppComponent implements OnInit {
     });
   }
   openNewTable(dataArray) {
-    this.openTable = true;
+    this.openReportTable = dataArray[2];
     this.newTableData = dataArray[0];
     this.displayedColumns = dataArray[1];
   }
 
   closingTheTableNow(flag) {
-    this.openTable = !flag;
+    this.openReportTable = flag;
   }
 
 

@@ -1,4 +1,4 @@
-import { Component, OnInit, Renderer2, Input, Inject, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Renderer2, Input, Inject, Output, EventEmitter, SimpleChanges } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { DOCUMENT } from '@angular/common';
 import { VisitorVisitDetailView } from '../../../model/visitorVisitDetailView';
@@ -11,7 +11,9 @@ import 'lightslider';
 export class VisitorMetricsComponent implements OnInit {
   @Input() visitorMetrics: Array<VisitorVisitDetailView>;
   @Output() pathInfo = new EventEmitter<any>();
-  @Output() openTable = new EventEmitter<any>();
+  @Input() openReportTable: any;
+  @Output() openNewTable = new EventEmitter<any>();
+  openTable:boolean;
   selectedVisitor: VisitorVisitDetailView;
   columData = ['name', 'mobile', 'In Time', 'Out Time', 'Vehicle No.'];
   visitorDisplayColumns: Array<any> = [
@@ -23,6 +25,7 @@ export class VisitorMetricsComponent implements OnInit {
     {'element': 'actualOutTime', 'label': 'Out Time'},
     {'element': 'vehicles', 'label': 'Vehicles'},
     {'element': 'otherGuests', 'label': 'Add. Guest Info'}];
+  displayedColumnsReport: string[];
   constructor(private _renderer2: Renderer2, private sanitization: DomSanitizer,
     @Inject(DOCUMENT) private _document) { }
 
@@ -34,6 +37,15 @@ export class VisitorMetricsComponent implements OnInit {
         item.hostPic = this.sanitization.bypassSecurityTrustUrl(item.hostPic);
       });
     }
+    this.displayedColumnsReport = [ 'Visitor Image',
+                        'Visitor Info',
+                        'Hardware carried',
+                        'Invitee Info',
+                        'In Time',
+                        'Out Time',
+                        'vehicle Details',
+                        'Additional Guest Info'
+                      ];
     const script = this._renderer2.createElement('script');
     script.type = `text/javascript`;
     script.text = `
@@ -60,6 +72,19 @@ export class VisitorMetricsComponent implements OnInit {
     this._renderer2.appendChild(this._document.body, script);
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    
+      if(this.openReportTable=="visitorReport")
+      {
+        alert('a');
+        this.openTable=true;
+      }
+      else
+      {
+        this.openTable=false;
+      }
+  }
+
   openPopover = function (item) {
     this.selectedVisitor = item;
     console.log(this.selectedVisitor);
@@ -71,7 +96,7 @@ export class VisitorMetricsComponent implements OnInit {
   };
 
   openTabularReport() {
-    this.openTable.emit([this.visitorMetrics, this.visitorDisplayColumns]);
+    this.openNewTable.emit([this.visitorMetrics, this.displayedColumnsReport,"visitorReport"]);
     document.getElementById('fade').style.display = 'block';
   }
 

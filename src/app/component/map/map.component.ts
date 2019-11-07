@@ -15,7 +15,7 @@ export class mapComponent implements OnInit, OnChanges {
 
 @Input() datasource: any;
 @Input() displayedColumns: any;
-@Input() openTable: any;
+@Input() openReportTable: any;
 @Input() mapData: mapData;
 @Input() pathData: any;
 @Input() alertFeedMetrics: alertFeedMetrics;
@@ -60,21 +60,8 @@ export class mapComponent implements OnInit, OnChanges {
     this.imagestyle = this.sanitization.bypassSecurityTrustStyle(`url(${this.mapData.baseMapImage})`);
     this.alertFlash();
 
-                            this.displayedColumnsReport = [ 'Visitor Image',
-                            'Visitor Info',
-                            'Hardware carried',
-                            'Invitee Info',
-                            'In Time',
-                            'Out Time',
-                            'vehicle Details',
-                            'Additional Guest Info'
-                          ];
-                          this.displayedColumnsAlertReport = [ 'Type',
-                          'Severity',
-                          'Time',
-                          'Status',
-                          'Resolved/Owened By'
-                        ];
+                            
+                          
 
 
    const script = this._renderer2.createElement('script');

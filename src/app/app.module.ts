@@ -28,7 +28,7 @@ import { MatTableExporterModule } from 'mat-table-exporter';
 import { MatSelectModule } from '@angular/material/select';
 import { DataTablesModule } from 'angular-datatables';
 import {VisitorsReportComponent} from './component/reports/visitorsReport/visitorsReport.component';
-
+import {AlertReportComponent} from './component/reports/alertReport/alertReport.component';
 
 
 @NgModule({
@@ -46,6 +46,7 @@ import {VisitorsReportComponent} from './component/reports/visitorsReport/visito
         TowerEntryComponent,
         VisitorMetricsComponent,
         VisitorsReportComponent,
+        AlertReportComponent,
         DashboardComponent
     ],
     imports: [

@@ -1,12 +1,12 @@
 <div class="overlay" style="display:none;"></div>
 <div *ngIf="isDataAvailable">
-    <top-toolbar [topData]="topBar" [visitorMetrics]="visitorMetrics" (openNewTable)="openNewTable($event)"></top-toolbar>
+    <top-toolbar [topData]="topBar" [visitorMetrics]="visitorMetrics" [alertFeedMetrics]="alertFeedMetrics" (openNewTable)="openNewTable($event)"></top-toolbar>
     <div class="container-fluid main_container">
         <div class="row">
             <side-bar style="display: contents" [sideBarData]="sideBar"></side-bar>
             <main role="main" style="margin-left:0!important;" class="col-sm-9 col-md-9 ml-sm-auto">
                 <div class="row">
-                    <main-map [datasource]="newTableData" [displayedColumns]="displayedColumns" [alertFeedMetrics]="alertFeedMetrics" *ngIf="isMapAvailable" [mapData]="mapData" [openTable]="openTable" (closeTheTablePlease)="closingTheTableNow($event)" [pathData]="pathData"
+                    <main-map [datasource]="newTableData" [displayedColumns]="displayedColumns" [alertFeedMetrics]="alertFeedMetrics" *ngIf="isMapAvailable" [mapData]="mapData" [openReportTable]="openReportTable" (closeTheTablePlease)="closingTheTableNow($event)" [pathData]="pathData"
                         style="display: contents"></main-map>
                     <div class="col-sm-6 col-md-6 P-left content_right" style="margin-left:10px !important;">
                         <div class="">
@@ -29,7 +29,7 @@
                                 <tower-entry style="display: contents" [towerEntry]="towerEntry" [anomalySummary]="anomalySummary"></tower-entry>
                             </div>
                         </div>
-                        <visitor-metrics style="display: contents" [visitorMetrics]="visitorMetrics" (pathInfo)="getPathInfo($event)" (openTable)="openNewTable($event)"></visitor-metrics>
+                        <visitor-metrics style="display: contents" [visitorMetrics]="visitorMetrics" (pathInfo)="getPathInfo($event)"  (openNewTable)="openNewTable($event)"></visitor-metrics>
                     </div>
                 </div>
             </main>
