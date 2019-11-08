@@ -42,6 +42,6 @@
 
 <footer id="footer">
     <div *ngIf="isDataAvailable">
-        <foot-bar [parkingMetrics]="parkingMetrics"></foot-bar>
+        <foot-bar [parkingMetrics]="parkingMetrics" (openNewTable)="openNewTable($event)"></foot-bar>
     </div>
 </footer>

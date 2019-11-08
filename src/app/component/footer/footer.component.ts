@@ -1,4 +1,4 @@
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit,Input, Output, EventEmitter } from '@angular/core';
 import {parkingMetrics} from '../../../proximity';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 import {Chart} from 'angular-highcharts'
@@ -9,6 +9,9 @@ import {Chart} from 'angular-highcharts'
 })
 export class FooterComponent implements OnInit {
 @Input() parkingMetrics:parkingMetrics;
+visitorName: any;
+@Input() openReportTable: any;
+@Output() openNewTable = new EventEmitter<any>();
 alertChart:Chart;
 predictiveChart:Chart;
   constructor(config: NgbCarouselConfig) {
@@ -22,12 +25,13 @@ predictiveChart:Chart;
 
 
    openFVisitorPopup=function(){
-    document.getElementById('visitorlight').style.display = 'block';
+    document.getElementById('visitorlightf').style.display = 'block';
     document.getElementById('fade').style.display = 'block';
    }
 
-   openFVisitor1Popup=function(){
-    document.getElementById('visitorlightf').style.display = 'block';
+   openFVisitor1Popup=function(name){
+    this.visitorName = name;
+    this.openNewTable.emit([this.visitorName, this.displayedColumnsReport,"BlackListedPopup"]);
     document.getElementById('fade').style.display = 'block';
    }
 

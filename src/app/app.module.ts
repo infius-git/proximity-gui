@@ -32,6 +32,7 @@ import {AlertReportComponent} from './component/reports/alertReport/alertReport.
 import { VisitorPopupComponent } from './visitorMetrics/RelatedComponent/visitor-popup/visitor-popup.component';
 import { VisitorDetailsComponent } from './component/visitorMetrics/RelatedComponent/visitor-details/visitor-details.component';
 import { GateDetailsComponent } from './component/gateMetrics/RelatedComponent/gate-details/gate-details.component';
+import { BlacklistedVisitorPopupComponent } from './component/footer/RelatedComponent/blacklisted-visitor-popup/blacklisted-visitor-popup.component';
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import { GateDetailsComponent } from './component/gateMetrics/RelatedComponent/g
         DashboardComponent,
         VisitorPopupComponent,
         VisitorDetailsComponent,
-        GateDetailsComponent
+        GateDetailsComponent,
+        BlacklistedVisitorPopupComponent
     ],
     imports: [
         BrowserModule,
