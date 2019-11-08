@@ -27,11 +27,12 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let element of dataSource" (click)="openGuestReport(element)">
+            <tr *ngFor="let element of dataSource" (click)="openGuestReport(element)" style="vertical-align: top;">
                 <td style="text-align: left !important"><img alt="" [attr.src]="element.guestThumbnailPic"></td>
                 <td style="text-align: left !important;">Name: {{element.name}}<br>Address: {{element.fromAddress?element.fromAddress:"No Address"}}<br>Mobile: {{element.mobile}}<br>Purpose Of Visit: <br>Duration: {{element.expectedIn | date: "medium"}} to<br> {{element.expectedOut | date: "medium"}}
                 </td>
-                <td style="text-align: left !important">Host Info</td>
+                <td style="text-align: left !important;">Name: {{element.hostName}}<br>Address: {{element.hostHouseNo?element.hostHouseNo:"No Address"}}<br>Mobile: {{element.hostActiveMobileNo}}
+                </td>
                 <td>Hardware</td>
                 <td>{{element.expectedIn | date: "medium"}}</td>
                 <td>{{element.expectedOut | date: "medium"}}</td>

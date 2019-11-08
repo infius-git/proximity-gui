@@ -51,8 +51,8 @@ import { VisitorVisitDetailView } from 'src/model/visitorVisitDetailView';
       ngOnChanges(changes: SimpleChanges): void {
         this.displayedColumns = [ 'Visitor Image',
                             'Visitor Info',
-                            'Hardware carried',
                             'Invitee Info',
+                            'Hardware carried',
                             'In Time',
                             'Out Time',
                             'vehicle Details',
@@ -66,6 +66,7 @@ import { VisitorVisitDetailView } from 'src/model/visitorVisitDetailView';
           {
             this.openTable=false;
           }
+          console.log(this.dataSource);
       }
 
       // openVisitorReport=function()
