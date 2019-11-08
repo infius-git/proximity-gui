@@ -1,0 +1,209 @@
+  <!-- gate matric popup -->
+  <div class="backmain" *ngIf="openTable">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-12">
+                       <div id="light21" class="white_content_new">
+                      <button type="button" class="close" (click)="closePopUp()" data-dismiss="popover" aria-hidden="true">&times;</button>
+                      <h3>Gate Matrix</h3>
+                      <div class="pop-body">
+                          <div class="row borderbottom">
+                              <div class="col-md-12">
+                              <div class="heading-data">
+                                  <h1>Gate Number {{gateSelected}}</h1>
+                                  <p>25 NOV 6:46 HRS</p>
+                              </div>
+                              </div>
+                              
+                          </div>
+                          <div class="row">
+                              <div class="col-md-6 borderright">
+                                    <div class="col-md-12 nopadding">
+                                        <div class="row">
+                                            <div class="col-md-6 gatetxt">
+                                                    Gate Entries
+                                            </div>
+                                            <div class="col-md-6">
+                                                    <button class="orgbutgm btn pull-right">Select Another Zone</button>
+                                            </div>
+                                        </div>
+                                            
+                                            
+                                        </div>
+                                  <table class="table margint10">
+                                      <tr>
+                                          <td>Total Visitors In</td>
+                                          <td>52</td>
+                                      </tr>
+                                      <tr>
+                                          <td>Total Visitors Out</td>
+                                          <td>28</td>
+                                      </tr>
+                                      <tr>
+                                          <td>VEHICLES IN</td>
+                                          <td>52</td>
+                                      </tr>
+                                      <tr>
+                                          <td>VEHICLES Out</td>
+                                          <td>52</td>
+                                      </tr>				    					
+                                  </table>
+                                  <div>
+                                        <div class="row gatepopalertbox alert alertblue">
+                                            <div _ngcontent-rwm-c6="" class="col-lg-9 col-md-9  oj-sm-9"> ALERTS ON GATE </div>
+                                            <div _ngcontent-rwm-c6="" class="col-lg-3 col-md-3  oj-sm-3">5</div>
+                                        </div>
+                                        <div class="row gatepopalertbox alert alert-success">
+                                            <div _ngcontent-rwm-c6="" class="col-lg-9 col-md-9  oj-sm-9"> ACTIVE ALERTS </div>
+                                            <div _ngcontent-rwm-c6="" class="col-lg-3 col-md-3  oj-sm-3">5</div>
+                                        </div>
+                                        <div class="row gatepopalertbox alert alertgreen">
+                                            <div _ngcontent-rwm-c6="" class="col-lg-9 col-md-9  oj-sm-9"> AVAILABLE PARKING </div>
+                                            <div _ngcontent-rwm-c6="" class="col-lg-3 col-md-3  oj-sm-3">5</div>
+                                        </div>
+                                  </div>
+                                  <div class="gatenotification margint10">HEAVY RUSH EXPECTED AT GATE ON 16:00 AND 18:00 HRS</div>
+                              </div>
+                              <!-- <div class="col-md-12"> -->
+                                    <div class="col-md-6 borderright">
+                                    <div class="col-md-12 nopadding">
+                                            <div class="row">
+                                                    <div class="col-md-6 gatetxt">
+                                                            Forthcoming Visit
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                            <button class="orgbutgm btn pull-right">Select Another Zone</button>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                  <table class="table margint10">
+                                      <tr>
+                                          <th>TIME</th>
+                                          <th>EXPECTED VISITOR IN</th>
+                                      </tr>
+                                      <tr>
+                                          <td>16:00 : 16:30</td>
+                                          <td class="text-right"><span class="text-danger">52</span></td>
+                                      </tr>
+                                      <tr>
+                                          <td>17:00 : 17:30</td>
+                                          <td class="text-right"><span class="white">28</span></td>
+                                      </tr>
+                                      <tr>
+                                          <td>15:00 : 15:30</td>
+                                          <td class="text-right"><span class="text-warning">2</span></td>
+                                      </tr>
+                                      <tr>
+                                          <td>18:00 : 18:30</td>
+                                          <td class="text-right"><span class="text-danger">20</span></td>
+                                      </tr>				    					
+                                  </table>
+                                  <div>
+                                        <div class="row gatemetrixbinfo">
+                                                <div class="col-lg-9 col-md-9  oj-sm-9">
+                                                    REGISTERED VISITORS FOR DAY
+                                                </div>
+                                                <div class="col-lg-3 col-md-3  oj-sm-3">
+                                                    <div>300</div>
+                                                </div>
+                                            </div>
+                                            <div class="row gatemetrixbinfo">
+                                                <div class="col-lg-9 col-md-9  oj-sm-9">
+                                                    EXPECTED VEHCLED FOR DAY
+                                                </div>
+                                                <div class="col-lg-3 col-md-3  oj-sm-3">
+                                                    <div>200/500</div>
+                                                </div>
+                                            </div>
+                                            <div class="gatemetrixbinfo row">
+                                                <div class="col-lg-9 col-md-9  oj-sm-9">
+                                                    REGISTERED VISITORS WALKERS FOR DAY
+                                                </div>
+                                                <div class="col-lg-3 col-md-3  oj-sm-3">
+                                                    <div>100</div>
+                                                </div>
+                                            </div>
+                                  </div>
+                                  
+                              </div>
+                              <!-- </div> -->
+                          </div>
+                      </div>
+                  </div>
+                 </div>
+               </div>
+        </div>
+        <div class="col-md-5 ml-35">
+            <div class="row">
+                <div class="col-md-12">
+                       <div id="light21" class="white_content_new">
+                       <button type="button" class="close" (click)="closePopUp()" data-dismiss="popover" aria-hidden="true">&times;</button>
+                       <h3>GUEST NOTIFICATIONS</h3>
+                       <div style="">
+                               <table class="table table-striped" style="width: 95%; margin: auto;">
+                                   <tr>
+                                       <th>TIME</th>
+                                       <th>EXPECTED VISITORS IN</th>
+                                   </tr>
+                                   <tr>
+                                       <td>12:00 : 12:30</td>
+                                       <td>Q801,Q1105</td>
+                                   </tr>
+                                   <tr>
+                                       <td>12:00 : 12:30</td>
+                                       <td>Q801,Q1105</td>
+                                   </tr>
+                                   <tr>
+                                       <td>12:00 : 12:30</td>
+                                       <td>Q801,Q1105</td>
+                                   </tr>				    					
+                               </table>
+                       </div>
+                   </div>
+                </div>
+               </div>
+               <div class="row">
+                   <div class="col-md-12 mt15">
+                           <div id="light21" class="white_content_new">
+                           <button type="button" class="close" (click)="closePopUp()" data-dismiss="popover" aria-hidden="true">&times;</button>
+                           <h3>REGISTERED VISITORS</h3>
+                           <div>
+                                   <table class="table" style="width: 95%; margin: auto;">
+                                        <tr>
+                                                <td><span>ACTIVE RFID</span></td>
+                                                <td class="text-right"><span class="white">52</span></td>
+                                            </tr>
+                                            <tr>
+                                                    <td><span>UNTRACED RID</span></td>
+                                                    <td class="text-right"><span class="text-warning">2</span></td>
+                                            </tr>
+                                            <tr>
+                                                    <td><span class="text-danger">LAPSED RFID</span></td>
+                                                    <td class="text-right"><span class="text-danger">2</span></td>
+                                            </tr>
+                                            <tr>
+                                                    <td><span class="text-danger">ISSUES QR CODE</span></td>
+                                                    <td class="text-right"><span class="text-danger">20</span></td>
+                                            </tr>
+                                            <tr>
+                                                    <td><span class="">QR CODE CONSUMED</span></td>
+                                                    <td class="text-right"><span class="text-warning">3</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><span class="text-danger">PENDING GUEST ARRIVAL ACKNOWLEDGEMENT</span></td>
+                                                <td class="text-right"><span class="text-danger">2</span></td>
+                                            </tr>					    					
+                                       </table>
+                                       
+                           </div>
+                       </div>
+                    </div>
+                
+               </div>
+               
+        </div>
+    </div>
+  </div>
+
+<!---------------------------------------------------------------------------------->

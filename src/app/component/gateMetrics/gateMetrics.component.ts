@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Renderer2, Inject, AfterViewInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, Renderer2, Inject, AfterViewInit, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { monitorMetrics, gatePass, alertEvents, alertFeedMetrics } from '../../../proximity';
 import * as $ from 'jquery';
@@ -12,6 +12,8 @@ import { MalihuScrollbarService, } from 'ngx-malihu-scrollbar';
 export class GateMetricsComponent implements OnInit, AfterViewInit {
   @Input() monitorMetrics: Array<monitorMetrics>;
   @Input() alertFeedMetrics: Array<alertFeedMetrics>;
+  @Input() openReportTable: any;
+  @Output() openNewTable = new EventEmitter<any>();
   gateCount: Array<any>;
   selectedGate; any;
   selectedLabel: any;
@@ -82,20 +84,22 @@ export class GateMetricsComponent implements OnInit, AfterViewInit {
   //   this.openPopUp();
   // }
   onGateSelected=function(label) {
-    console.log('gate', label);
-    this.gateSelected = label;
-    document.getElementById('gatemetricpopup').style.display = 'block';
+
+     this.gateSelected = label;
+     this.openNewTable.emit([this.gateSelected, this.displayedColumnsReport,"GatePopup"]);
     document.getElementById('fade').style.display = 'block';
-    this.monitorMetrics.forEach((item) => {
-          if (item.label === label) {
-            this.selectedGate = 'Gate ' + item.label;
-            this.selectedLabel = item.label;
-            console.log('label = ' + label);
-            console.log('gate pass metrics = ' + JSON.stringify(item));
-            this.selectedMetric = item.gate_pass_metrics;
-            this.selectedalert = item.gate_alert_feed;
-          }
-        });
+    // document.getElementById('gatemetricpopup').style.display = 'block';
+    // document.getElementById('fade').style.display = 'block';
+    // this.monitorMetrics.forEach((item) => {
+    //       if (item.label === label) {
+    //         this.selectedGate = 'Gate ' + item.label;
+    //         this.selectedLabel = item.label;
+    //         console.log('label = ' + label);
+    //         console.log('gate pass metrics = ' + JSON.stringify(item));
+    //         this.selectedMetric = item.gate_pass_metrics;
+    //         this.selectedalert = item.gate_alert_feed;
+    //       }
+    //     });
   };
 
   openPopUp(): void {

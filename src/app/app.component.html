@@ -15,7 +15,7 @@
                                     <div class="col-sm-6 col-md-6 col-lg-6 third_colunm">
                                         <security-overview style="display: contents" [securityOverview]="securityOverview"></security-overview>
                                         <event-summary style="display: contents" [eventSummary]="eventSummary" [eventData]="eventData"></event-summary>
-                                        <monitor-metric style="display: contents" [monitorMetrics]="monitorMetrics" [alertFeedMetrics]="alertFeedMetrics"></monitor-metric>
+                                        <monitor-metric style="display: contents" [monitorMetrics]="monitorMetrics" [alertFeedMetrics]="alertFeedMetrics"  (openNewTable)="openNewTable($event)"></monitor-metric>
                                     </div>
                                     <div class="col-sm-6 col-md-6 col-lg-6 fourth_colunm">
                                         <entry-summary style="display: contents" [entrySummary]="entrySummary"></entry-summary>

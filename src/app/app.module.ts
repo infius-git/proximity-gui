@@ -31,6 +31,7 @@ import {VisitorsReportComponent} from './component/reports/visitorsReport/visito
 import {AlertReportComponent} from './component/reports/alertReport/alertReport.component';
 import { VisitorPopupComponent } from './visitorMetrics/RelatedComponent/visitor-popup/visitor-popup.component';
 import { VisitorDetailsComponent } from './component/visitorMetrics/RelatedComponent/visitor-details/visitor-details.component';
+import { GateDetailsComponent } from './component/gateMetrics/RelatedComponent/gate-details/gate-details.component';
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import { VisitorDetailsComponent } from './component/visitorMetrics/RelatedCompo
         AlertReportComponent,
         DashboardComponent,
         VisitorPopupComponent,
-        VisitorDetailsComponent
+        VisitorDetailsComponent,
+        GateDetailsComponent
     ],
     imports: [
         BrowserModule,
