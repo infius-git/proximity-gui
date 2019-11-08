@@ -87,8 +87,7 @@ export class VisitorMetricsComponent implements OnInit {
 
   openPopover = function (item) {
     this.selectedVisitor = item;
-    console.log(this.selectedVisitor);
-    document.getElementById('visitorlight1').style.display = 'block';
+    this.openNewTable.emit([this.selectedVisitor, this.displayedColumnsReport,"visitorDetailsPopup"]);
     document.getElementById('fade').style.display = 'block';
   };
   drawPath = function (item) {

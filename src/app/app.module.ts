@@ -29,6 +29,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { DataTablesModule } from 'angular-datatables';
 import {VisitorsReportComponent} from './component/reports/visitorsReport/visitorsReport.component';
 import {AlertReportComponent} from './component/reports/alertReport/alertReport.component';
+import { VisitorPopupComponent } from './visitorMetrics/RelatedComponent/visitor-popup/visitor-popup.component';
+import { VisitorDetailsComponent } from './component/visitorMetrics/RelatedComponent/visitor-details/visitor-details.component';
 
 
 @NgModule({
@@ -47,7 +49,9 @@ import {AlertReportComponent} from './component/reports/alertReport/alertReport.
         VisitorMetricsComponent,
         VisitorsReportComponent,
         AlertReportComponent,
-        DashboardComponent
+        DashboardComponent,
+        VisitorPopupComponent,
+        VisitorDetailsComponent
     ],
     imports: [
         BrowserModule,
