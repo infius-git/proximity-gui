@@ -134,10 +134,11 @@ export class mapComponent implements OnInit, OnChanges {
 
   closePopUp(): void {
     document.getElementById('visitorlight').style.display = 'none';
-    document.getElementById('visitor-report').style.display = 'none';
+    
     document.getElementById('zonepopup').style.display = 'none';
     document.getElementById('visitorlight1').style.display = 'none';
     document.getElementById('gatemetricpopup').style.display = 'none';
+    document.getElementById('zonepopup').style.display = 'none';
   document.getElementById('light').style.display = 'none';
   document.getElementById('light2').style.display = 'none';
   document.getElementById('fade').style.display = 'none';
