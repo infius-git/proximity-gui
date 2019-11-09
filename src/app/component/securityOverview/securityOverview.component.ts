@@ -18,7 +18,6 @@ nightCount:any=0;
 
   ngOnInit() {
       this.drawSecurityChart();
-      console.log(this.securityOverview);
     
     for( var el in this.securityOverview.team_stats.allocations ) {
         if( this.securityOverview.team_stats.allocations.hasOwnProperty( el ) ) {
