@@ -2,6 +2,7 @@ import { Component, OnInit,Input } from '@angular/core';
 import {securityOverview} from '../../../proximity';
 import { Chart } from 'angular-highcharts';
 import {SecurityGuardView} from '../../../model/securityGuardView';
+import { AngularWaitBarrier } from 'blocking-proxy/built/lib/angular_wait_barrier';
 // import * as highcharts from '../../../../node_modules/highcharts/highcharts';
 @Component({
   selector: 'security-overview',
@@ -11,10 +12,20 @@ import {SecurityGuardView} from '../../../model/securityGuardView';
 export class securityOverviewComponent implements OnInit {
 @Input() securityOverview:securityOverview;
 chart:Chart;
+dayCount:any=0;
+nightCount:any=0;
   constructor() { }
 
   ngOnInit() {
       this.drawSecurityChart();
+      console.log(this.securityOverview);
+    
+    for( var el in this.securityOverview.team_stats.allocations ) {
+        if( this.securityOverview.team_stats.allocations.hasOwnProperty( el ) ) {
+            this.dayCount += parseFloat( this.securityOverview.team_stats.allocations[el] );
+            this.nightCount += parseFloat( this.securityOverview.team_stats.allocations[el] );
+          }
+    }
   }
 drawSecurityChart = function(){
     var statsData = []; 

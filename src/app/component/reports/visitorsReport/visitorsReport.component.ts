@@ -66,7 +66,6 @@ import { VisitorVisitDetailView } from 'src/model/visitorVisitDetailView';
           {
             this.openTable=false;
           }
-          console.log(this.dataSource);
       }
 
       // openVisitorReport=function()
