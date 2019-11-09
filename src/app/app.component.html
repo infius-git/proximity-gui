@@ -6,7 +6,7 @@
             <side-bar style="display: contents" [sideBarData]="sideBar"></side-bar>
             <main role="main" style="margin-left:0!important;" class="col-sm-9 col-md-9 ml-sm-auto">
                 <div class="row">
-                    <main-map [datasource]="newTableData" [displayedColumns]="displayedColumns" [alertFeedMetrics]="alertFeedMetrics" *ngIf="isMapAvailable" [mapData]="mapData" [openReportTable]="openReportTable" (closeTheTablePlease)="closingTheTableNow($event)" [pathData]="pathData"
+                    <main-map [datasource]="newTableData" [displayedColumns]="displayedColumns" [alertFeedMetrics]="alertFeedMetrics" *ngIf="isMapAvailable" [mapData]="mapData" [openReportTable]="openReportTable" (closeTheTablePlease)="closingTheTableNow($event)" (openNewTable)="openNewTable($event)" [pathData]="pathData"
                         style="display: contents"></main-map>
                     <div class="col-sm-6 col-md-6 P-left content_right" style="margin-left:10px !important;">
                         <div class="">

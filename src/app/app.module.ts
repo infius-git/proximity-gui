@@ -33,6 +33,7 @@ import { VisitorPopupComponent } from './visitorMetrics/RelatedComponent/visitor
 import { VisitorDetailsComponent } from './component/visitorMetrics/RelatedComponent/visitor-details/visitor-details.component';
 import { GateDetailsComponent } from './component/gateMetrics/RelatedComponent/gate-details/gate-details.component';
 import { BlacklistedVisitorPopupComponent } from './component/footer/RelatedComponent/blacklisted-visitor-popup/blacklisted-visitor-popup.component';
+import { ZonalDetailsComponent } from './component/map/RelatedComponent/zonal-details/zonal-details.component';
 
 
 @NgModule({
@@ -55,7 +56,8 @@ import { BlacklistedVisitorPopupComponent } from './component/footer/RelatedComp
         VisitorPopupComponent,
         VisitorDetailsComponent,
         GateDetailsComponent,
-        BlacklistedVisitorPopupComponent
+        BlacklistedVisitorPopupComponent,
+        ZonalDetailsComponent
     ],
     imports: [
         BrowserModule,

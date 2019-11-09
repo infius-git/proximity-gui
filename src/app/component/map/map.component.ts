@@ -20,15 +20,17 @@ export class mapComponent implements OnInit, OnChanges {
 @Input() pathData: any;
 @Input() alertFeedMetrics: alertFeedMetrics;
 @Output() closeTheTablePlease = new EventEmitter<any>();
+@Output() openNewTable = new EventEmitter<any>();
  openTheTable: Boolean = false;
  allAlerts: Array<alertEvents>;
  image: SafeUrl;
  imagestyle: SafeStyle;
  drawPath: Boolean = false;
  pathpoints: any;
- zoneImage: SafeUrl;
- zoneName: string;
- zoneid: any;
+//  zoneImage: SafeUrl;
+//  zoneName: string;
+//  zoneid: any;
+zoneDetails:any;
  displayedColumnsReport: string[];
  displayedColumnsAlertReport: string[];
  private currentPage: any;
@@ -121,12 +123,11 @@ export class mapComponent implements OnInit, OnChanges {
 
   openZoneImage(zone): void {
     this.drawPath = false;
-    this.zoneid = zone.id;
-    this.zoneName = zone.name;
-    this.zoneImage = this.sanitization.bypassSecurityTrustUrl(zone.zoneImage);
-    // document.getElementById('light').style.display = 'block';
-    // document.getElementById('light2').style.display = 'block';
-    document.getElementById('zonepopup').style.display = 'block';
+    this.zoneDetails=zone;
+    // this.zoneid = zone.id;
+    // this.zoneName = zone.name;
+    // this.zoneImage = this.sanitization.bypassSecurityTrustUrl(zone.zoneImage);
+    this.openNewTable.emit([this.zoneDetails, this.displayedColumnsReport,"ZonePopup"]);
     document.getElementById('fade').style.display = 'block';
     // Zone Alert Flash/Blink Animation Removal.
     this.removeAlertFlash(zone);

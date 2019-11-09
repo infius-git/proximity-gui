@@ -14,7 +14,6 @@ export class EventSummaryComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-  
   }
 
 }
