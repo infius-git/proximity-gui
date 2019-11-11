@@ -2,8 +2,8 @@ import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges } from '@
 
 @Component({
   selector: 'gate-details',
-  templateUrl: './gate-details.html',
-  styleUrls: ['./gate-details.component.css']
+  templateUrl: './gateDetails.html',
+  styleUrls: ['./gateDetails.component.css']
 })
 export class GateDetailsComponent implements OnInit {
   @Input() openReportTable: any;

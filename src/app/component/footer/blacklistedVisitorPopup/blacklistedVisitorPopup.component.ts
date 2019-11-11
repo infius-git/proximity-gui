@@ -1,11 +1,11 @@
 import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges } from '@angular/core';
 
 @Component({
-  selector: 'interzonal-visitor-popup',
-  templateUrl: './interzonal-visitor-popup.html',
-  styleUrls: ['./interzonal-visitor-popup.component.css']
+  selector: 'blacklisted-visitor-popup',
+  templateUrl: './blacklistedVisitorPopup.html',
+  styleUrls: ['./blacklistedVisitorPopup.component.css']
 })
-export class InterzonalVisitorPopupComponent implements OnInit {
+export class BlacklistedVisitorPopupComponent implements OnInit {
   @Input() dataSource: any;
   @Input() displayColumns: any;
   @Input() openReportTable: any;
@@ -15,9 +15,8 @@ export class InterzonalVisitorPopupComponent implements OnInit {
 
   ngOnInit() {
   }
-
   ngOnChanges(changes: SimpleChanges): void {
-    if(this.openReportTable=="InterZonal")
+    if(this.openReportTable=="BlackListedPopup")
     {
       this.openTable=true;
     }
@@ -31,5 +30,4 @@ closePopUp = function() {
   document.getElementById('fade').style.display = 'none';
 //      $('.visitor-mat-tbl').hide();
  };
-
 }

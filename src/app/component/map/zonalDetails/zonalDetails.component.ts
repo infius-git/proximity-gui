@@ -3,8 +3,8 @@ import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'zonal-details',
-  templateUrl: './zonal-details.html',
-  styleUrls: ['./zonal-details.component.css']
+  templateUrl: './zonalDetails.html',
+  styleUrls: ['./zonalDetails.component.css']
 })
 export class ZonalDetailsComponent implements OnInit {
   @Input() openReportTable: any;

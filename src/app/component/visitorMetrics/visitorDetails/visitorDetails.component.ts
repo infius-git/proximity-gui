@@ -2,8 +2,8 @@ import { Component, OnInit, SimpleChanges, Input, Output, EventEmitter } from '@
 
 @Component({
   selector: 'visitor-details',
-  templateUrl: './visitor-details.html',
-  styleUrls: ['./visitor-details.component.css']
+  templateUrl: './visitorDetails.html',
+  styleUrls: ['./visitorDetails.component.css']
 })
 export class VisitorDetailsComponent implements OnInit {
   @Input() dataSource: any;

@@ -29,12 +29,12 @@ import { MatSelectModule } from '@angular/material/select';
 import { DataTablesModule } from 'angular-datatables';
 import {VisitorsReportComponent} from './component/reports/visitorsReport/visitorsReport.component';
 import {AlertReportComponent} from './component/reports/alertReport/alertReport.component';
-import { VisitorPopupComponent } from './visitorMetrics/RelatedComponent/visitor-popup/visitor-popup.component';
-import { VisitorDetailsComponent } from './component/visitorMetrics/visitor-details/visitor-details.component';
-import { GateDetailsComponent } from './component/gateMetrics/RelatedComponent/gate-details/gate-details.component';
-import { BlacklistedVisitorPopupComponent } from './component/footer/blacklisted-visitor-popup/blacklisted-visitor-popup.component';
-import { ZonalDetailsComponent } from './component/map/RelatedComponent/zonal-details/zonal-details.component';
-import { InterzonalVisitorPopupComponent } from './component/footer/interzonal-visitor-popup/interzonal-visitor-popup.component';
+import { VisitorPopupComponent } from './visitorMetrics/visitor-popup/visitor-popup.component';
+import { VisitorDetailsComponent } from './component/visitorMetrics/visitorDetails/visitorDetails.component';
+import { GateDetailsComponent } from './component/gateMetrics/gateDetails/gateDetails.component';
+import { BlacklistedVisitorPopupComponent } from './component/footer/blacklistedVisitorPopup/blacklistedVisitorPopup.component';
+import { ZonalDetailsComponent } from './component/map/zonalDetails/zonalDetails.component';
+import { InterzonalVisitorPopupComponent } from './component/footer/interzonalVisitorPopup/interzonalVisitorPopup.component';
 
 
 @NgModule({
