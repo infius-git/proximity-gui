@@ -1,0 +1,80 @@
+<!--------------------- Guest PopUP with qr code--------------------------------------->
+
+
+<div   *ngIf="openTable" class="white_content_visitor" style="display: block;">
+    <button type="button" class="close" (click)="closePopUp()" data-dismiss="popover" aria-hidden="true">&times;</button>
+    <h3>Flat NUMBER : <span id="flatno">{{!!selectedVisitor ? selectedVisitor.hostHouseNo : '-'}}</span></h3>
+    <div class="popup_content">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="visitormaintitle">
+                    Host Details
+                </div>
+                <div class="visitor_profile ml-0"><span><img alt="" [attr.src]="!!selectedVisitor ? selectedVisitor.hostPic : 'No Data Available'"></span></div>
+                <div class="visitor_details">
+                    <h4>{{!!selectedVisitor ? selectedVisitor.hostName : '-'}}</h4>
+                    <p>Contact Number : {{!!selectedVisitor ? selectedVisitor.hostActiveMobileNo : '-'}}</p>
+                </div>
+                <div style="clear:both;"></div>
+                <div class="visitor_detailstbl">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTrr_6SZl1Az-DPPQrPoJqxl8H_rH2-xk8C7gzxoduRAHoFMTBQ" class="qrimage">
+                </div>
+                <div style="clear: both"></div>
+            </div>
+            <div class="col-md-6">
+                <div class="visitormaintitle">
+                    Guest Details
+                </div>
+                <div class="visitor_profile ml-0"><span><img alt="" [attr.src]="!!selectedVisitor ? selectedVisitor.guestPic : 'No Data Available'"></span></div>
+                <div class="visitor_details">
+                    <h4>{{!!selectedVisitor ? selectedVisitor.name: '-'}}</h4>
+                    <!-- <h4>{{selectedVisitor.name}}</h4> -->
+                    <p>Contact Number : {{!!selectedVisitor && !!selectedVisitor.mobile ? ('+91'+selectedVisitor.mobile) : '-'}}</p>
+                </div>
+                <div style="clear:both;"></div>
+                <div class="visitor_detailstbl">
+                    <table class="table">
+                        <tr>
+                            <td>Visiting Zone</td>
+                            <td>{{!!selectedVisitor && selectedVisitor.targetZone ? selectedVisitor.targetZone : '-'}}</td>
+                        </tr>
+                        <tr>
+                            <td>In Time</td>
+                            <td>{{(!!selectedVisitor && !!selectedVisitor.actualInTime) ? (selectedVisitor.actualInTime | date: 'EEE, MMM d, y hh:mm a') : '-'}}</td>
+                        </tr>
+                        <tr>
+                            <td>Out Time</td>
+                            <td>{{!!selectedVisitor && !!selectedVisitor.actualOutTime ? (selectedVisitor.actualOutTime | date: 'EEE, MMM d, y hh:mm a') : '-'}}</td>
+                        </tr>
+                        <tr>
+                            <td>Visit Sched.</td>
+                            <td>{{(selectedVisitor.expectedIn | date: 'EEE, MMM d, y hh:mm a') + ' TO ' + (selectedVisitor.expectedOut | date: 'EEE, MMM d, y hh:mm a')}}</td>
+                        </tr>
+                        <tr>
+                            <td>Add. Guest</td>
+                            <td>
+                                <span>{{(!!selectedVisitor && !!selectedVisitor.otherGuests) ? selectedVisitor.otherGuests.length :'-'}}<br>
+                                <span *ngFor="let otherguest of selectedVisitor.otherGuests">{{(!!otherguest.name) ? (' -  ' + otherguest.name +' ('+ otherguest.mobile +')') : '-'}}<br></span>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Parking</td>
+                            <td>{{!!selectedVisitor && !!selectedVisitor.vehicles ? 'Yes' : 'Not Required'}}</td>
+                        </tr>
+                        <tr>
+                            <td>Vehicles</td>
+                            <td>
+                                <span>{{(!!selectedVisitor.vehicles) ? selectedVisitor.vehicles.length :'-'}}<br>
+                                <span *ngFor="let vehicle of selectedVisitor.vehicles">{{(!!selectedVisitor.vehicles) ? ' -  '+vehicle.vehicleNo:'-'}}<br></span>
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div style="clear: both"></div>
+            </div>
+        </div>
+
+    </div>
+</div>

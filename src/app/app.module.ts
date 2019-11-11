@@ -30,7 +30,7 @@ import { DataTablesModule } from 'angular-datatables';
 import {VisitorsReportComponent} from './component/reports/visitorsReport/visitorsReport.component';
 import {AlertReportComponent} from './component/reports/alertReport/alertReport.component';
 import { VisitorPopupComponent } from './visitorMetrics/RelatedComponent/visitor-popup/visitor-popup.component';
-import { VisitorDetailsComponent } from './component/visitorMetrics/RelatedComponent/visitor-details/visitor-details.component';
+import { VisitorDetailsComponent } from './component/visitorMetrics/visitor-details/visitor-details.component';
 import { GateDetailsComponent } from './component/gateMetrics/RelatedComponent/gate-details/gate-details.component';
 import { BlacklistedVisitorPopupComponent } from './component/footer/blacklisted-visitor-popup/blacklisted-visitor-popup.component';
 import { ZonalDetailsComponent } from './component/map/RelatedComponent/zonal-details/zonal-details.component';
