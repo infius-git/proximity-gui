@@ -42,11 +42,11 @@ export class AppComponent implements OnInit {
   subscription: Subscription;
   dateTime: any;
   registeredUsersData: any;
+  securityGuards:any;
   constructor(private proximityService: ProximityService) { }
 
   ngOnInit() {
     this.isDataAvailable = false;
-
     this.proximityService.getMapData().subscribe(mapData => {
       this.mapData = mapData;
       this.isMapAvailable = true;
@@ -69,8 +69,8 @@ export class AppComponent implements OnInit {
     });
 
     this.proximityService.getAllData().subscribe(proximity => {
-
       // this.securityOverview = proximity.data.securityGuardsSummary;
+       this.securityGuards = proximity.data.securityGuardsSummary;
       if (!!proximity.data.eventSummary && proximity.data.eventSummary.length > 0) {
         this.eventSummary = proximity.data.eventSummary;
         this.calculateEventData();
