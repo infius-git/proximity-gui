@@ -24,8 +24,9 @@ predictiveChart:Chart;
    }
 
 
-   openFVisitorPopup=function(){
-    document.getElementById('visitorlightf').style.display = 'block';
+   openFVisitorPopup=function(name){
+    this.visitorName = name;
+    this.openNewTable.emit([this.visitorName, this.displayedColumnsReport,"InterZonal"]);
     document.getElementById('fade').style.display = 'block';
    }
 

@@ -28,6 +28,7 @@
     <visitor-details [dataSource]="datasource" [openReportTable]="openReportTable" (closeTable)="closeTheTable($event)"></visitor-details>
     <gate-details [dataSource]="datasource" [openReportTable]="openReportTable" (closeTable)="closeTheTable($event)"></gate-details>
     <blacklisted-visitor-popup [dataSource]="datasource" [openReportTable]="openReportTable" (closeTable)="closeTheTable($event)"></blacklisted-visitor-popup>
+    <interzonal-visitor-popup [dataSource]="datasource" [openReportTable]="openReportTable" (closeTable)="closeTheTable($event)"></interzonal-visitor-popup>
    <!-- <div [hidden]="!openTheTable" class="mat-elevation-z8 visitor-mat-tbl"> -->
     <!-- <span id="tbl-expand" (click)="closeTabularReport()">&times;</span> -->
     <!-- <table id="printTable" mat-table matTableExporter #exporter="matTableExporter" [dataSource]="sortedData" matSort (matSortChange)="sortData($event)">
