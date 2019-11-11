@@ -53,7 +53,7 @@ zoneDetails:any;
         'pdf',
       ]
     };
-
+    
     this.allAlerts = !!this.alertFeedMetrics  && this.alertFeedMetrics[0] !== undefined ?
     this.alertFeedMetrics[0].alert_event_feed : [{category: 'None', type: 'INFO', color: 'green', zone_name: 'No',
     text: 'No Alerts' , deviceId: null, deviceType: null, timestamp: null, cardId: null }];

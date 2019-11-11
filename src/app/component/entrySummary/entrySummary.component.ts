@@ -9,6 +9,7 @@ import { AmChart } from "@amcharts/amcharts3-angular";
 })
 export class EntrySummaryComponent implements OnInit {
 @Input() entrySummary:entrySummary;
+@Input() alertFeedMetrics:any;
 chart:Chart;
 options:any;
   constructor() {
