@@ -18,6 +18,10 @@
     top: -26px;
     color: #ffffff;
 }
+#visitorfade
+{
+    z-index: 1005;
+}
 
 #tbl-expand .fa-expand {
     font-size: 23px;

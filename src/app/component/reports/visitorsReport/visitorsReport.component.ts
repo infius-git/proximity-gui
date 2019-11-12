@@ -18,7 +18,9 @@ import { VisitorVisitDetailView } from 'src/model/visitorVisitDetailView';
     // private currentPage: any;
     // private pageSize: any;
     // sortedData: any;
+    selectedVisitor:any;
     openTable:boolean;
+    openPopUp:boolean;
     displayedColumns: any = [];
     constructor() { }
     dtOptions: any = {};
@@ -68,6 +70,18 @@ import { VisitorVisitDetailView } from 'src/model/visitorVisitDetailView';
           }
       }
 
+      openGuestReport=function(selectedelement)
+      {
+          this.openPopUp=true;
+         console.log(selectedelement);
+          this.selectedVisitor=selectedelement;
+          document.getElementById('visitorfade').style.display = 'block';
+        
+      }
+      closePopUpReport=function() {
+        this.openPopUp=false;
+        document.getElementById('visitorfade').style.display = 'none';
+      }
       // openVisitorReport=function()
       // {
         
